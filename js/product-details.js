@@ -18,18 +18,51 @@ const products = [
 
     stock: "In Stock",
 
-    bitSizes: [
-        "3.175x12mm",
-        "3.175x22mm",
-        "4x22mm",
-        "4x32mm",
-        "6x32mm",
-        "6x62mm",
-        "8x32mm",
-        "8x42mm",
-        "8x50mm",
-        "12x100mm"
-    ],
+
+bitSizes: [
+    {
+        size: "3.175x12mm",
+        price: 850
+    },
+    {
+        size: "3.175x22mm",
+        price: 900
+    },
+    {
+        size: "4x22mm",
+        price: 950
+    },
+    {
+        size: "4x32mm",
+        price: 1050
+    },
+    {
+        size: "6x32mm",
+        price: 1200
+    },
+    {
+        size: "6x62mm",
+        price: 1450
+    },
+    {
+        size: "8x32mm",
+        price: 1350
+    },
+    {
+        size: "8x42mm",
+        price: 1500
+    },
+    {
+        size: "8x50mm",
+        price: 1650
+    },
+    {
+        size: "12x100mm",
+        price: 2200
+    }
+],
+
+
 
     description:
         "Flat Nose Single Flute Spiral Bit suitable for CNC engraving and cutting applications."
@@ -357,18 +390,15 @@ ${product.rating}
 
 <p class="price">
 
-<del>
-
-Rs.${product.oldPrice.toLocaleString()}
-
-</del>
 
 
-<strong>
 
-Rs.${product.price.toLocaleString()}
 
+<strong id="product-price">
+    Rs.${product.price.toLocaleString()}
 </strong>
+
+
 
 
 </p>
@@ -428,43 +458,32 @@ ${product.description}
     </div>
 
 
-    <!-- Bit Size -->
-
-    ${
-        product.bitSizes
-        ?
-        `
-        <div class="option-group">
-
-            <label class="option-title">
-                Bit Size
-            </label>
-
-            <div class="bit-sizes">
-
-                ${product.bitSizes.map((size, index) => `
-                    
-                    <label>
-
-                        <input
-                            type="radio"
-                            name="bitSize"
-                            value="${size}"
-                            ${index === 0 ? "checked" : ""}
-                        >
-
-                        ${size}
-
-                    </label>
-
-                `).join("")}
-
-            </div>
-
-        </div>
-        `
-        :
-        ""
+ <!-- Bit Size --> ${ product.bitSizes ? ` 
+ <div class="option-group">
+ <label class="option-title">
+ Bit Size 
+ </label> 
+ <div class="bit-sizes"> 
+ ${product.bitSizes.map((item, index) => `
+ <label class="bit-option"> 
+ <input 
+ type="radio" 
+ name="bitSize" 
+ value="${item.size}" 
+ data-price="${item.price}" 
+ ${index === 0 ? "checked" : ""}
+ onchange="changeBitPrice(this)" >
+ <span> 
+ ${item.size} 
+ </span>
+ <small> 
+ Rs.${item.price.toLocaleString()} 
+ </small>
+ </label> `).join("")}
+ </div> 
+ </div> ` 
+         :
+         "" 
     }
 
 </div>
@@ -500,7 +519,17 @@ container.innerHTML =
 
 }
 
-
+// ======================================== // CHANGE PRICE WHEN BIT SIZE IS SELECTED // ======================================== 
+function changeBitPrice(selectedBit) { 
+    const newPrice = Number( 
+        selectedBit.dataset.price 
+    ); 
+    const priceElement = document.getElementById("product-price"); 
+    if (!priceElement) { 
+        return; 
+    } priceElement.textContent = "Rs." + newPrice.toLocaleString(); 
+    console.log( "Selected Bit Size:", selectedBit.value ); 
+    console.log( "New Price:", newPrice ); }
 
 
 function changeQty(value) { 

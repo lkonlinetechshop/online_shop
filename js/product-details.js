@@ -1008,4 +1008,31 @@ function addToCart() {
         "index.html";
 
 }
+// Update cart icon number
 
+function updateCartCount(){
+
+    let count = 0;
+
+
+    cart.forEach(item=>{
+
+        count += item.quantity;
+
+    });
+
+
+    let cartCount =
+    document.querySelector(".cart-count");
+
+
+    if(cartCount){
+
+        cartCount.innerHTML=count;
+
+    }
+
+}
+
+
+updateCartCount();

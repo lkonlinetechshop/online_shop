@@ -34,7 +34,7 @@ const products = [
             default: "3.175x12mm"
         }
     }
-}
+},
 
 
 {

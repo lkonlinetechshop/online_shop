@@ -40,22 +40,25 @@ console.log("Button clicked");
             "Product:", 
             product 
         );
-            // Get selected bit size
-
-    const selectedSize =
-        document.querySelector(
-            'input[name="bitSize"]:checked'
-        );
-
-// Selected price 
-        let selectedPrice = 
-            product.price; 
+           // =============================== // GET SELECTED BIT SIZE // =============================== 
+        const selectedBit = 
+            document.querySelector( 
+                'input[name="bitSize"]:checked' 
+            ); 
         let selectedSize = null; 
+        let selectedPrice = 
+            Number(button.dataset.price); 
         if (selectedBit) { 
             selectedSize = 
-                selectedBit.value; 
+            selectedBit.value; 
             selectedPrice = Number( 
-                selectedBit.dataset.price ); }
+                selectedBit.dataset.price ); } 
+        console.log( "Selected Size:", 
+                    selectedSize ); 
+        console.log( 
+        "Selected Price:", 
+            selectedPrice );
+        
         // Existing cart 
         let cart = JSON.parse( localStorage.getItem("cart") ) || []; 
         // Check same product + same bit size 

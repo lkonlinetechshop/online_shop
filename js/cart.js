@@ -31,7 +31,7 @@ console.log("Button clicked");
 
             quantity:quantity
                 
-             bitSize: bitSize
+             bitSize: selectedSize
 
             
         };
@@ -47,18 +47,19 @@ console.log("Button clicked");
             'input[name="bitSize"]:checked'
         );
 
-
-    const bitSize =
-        selectedSize
-        ? selectedSize.value
-        : null;
-
-
-
-        let existing = cart.find(
-            item.id === product.id &&
-            item.bitSize === bitSize
-        );
+// Selected price 
+        let selectedPrice = 
+            product.price; 
+        let selectedSize = null; 
+        if (selectedBit) { 
+            selectedSize = 
+                selectedBit.value; 
+            selectedPrice = Number( 
+                selectedBit.dataset.price ); }
+        // Existing cart 
+        let cart = JSON.parse( localStorage.getItem("cart") ) || []; 
+        // Check same product + same bit size 
+        const existingProduct = cart.find(item => item.id === product.id && item.bitSize === selectedSize );
 
 
         if(existing){
@@ -83,14 +84,13 @@ console.log("Button clicked");
 
 
         alert(
-            product.name +
-        " x " +
-        quantity +
-        (bitSize
-            ? " (" + bitSize + ")"
-            : "") +
-        " added to cart!"
-        );
+           product.name + 
+            "\nBit Size: " +
+            (selectedSize || "Standard") +
+            "\nPrice: Rs." + 
+            selectedPrice.toLocaleString() + 
+            "\nQuantity: " + quantity +
+            "\n\nAdded to cart!" );
 
 
     }

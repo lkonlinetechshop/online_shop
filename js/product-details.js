@@ -1,5 +1,42 @@
 const products = [
 
+
+{
+    id: 11,
+    name: "Flat Nose Single Flute Spiral Bit",
+    category: "CNC parts",
+    image: "images/flatnosesingle.jpg",
+
+    oldPrice: 935,
+    price: 850,
+    discount: "10%",
+    rating: "★★★★★",
+    stock: "In Stock",
+
+    description: "Flat Nose Single Flute Spiral Bit",
+
+    options: {
+        bitSize: {
+            label: "Bit Size",
+            type: "radio",
+            values: [
+                "3.175x12mm",
+                "3.175x22mm",
+                "4x22mm",
+                "4x32mm",
+                "6x32mm",
+                "6x62mm",
+                "8x32mm",
+                "8x42mm",
+                "8x50mm",
+                "12x100mm"
+            ],
+            default: "3.175x12mm"
+        }
+    }
+}
+
+
 {
 id:10,
 

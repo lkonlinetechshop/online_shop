@@ -2,17 +2,17 @@ const products = [
 {
     id: 11,
 
-    name: "767 Flat Nose Single Flute Spiral Bit",
+    name: "Flat Nose Single Flute Spiral Bit",
 
     category: "CNC parts",
 
-    image: "images/767.jpg",
+    image: "images/flatnosesingle.jpg",
 
-    oldPrice: 2500,
+    oldPrice: 935,
 
-    price: 2200,
+    price: 850,
 
-    discount: "12%",
+    discount: "10%",
 
     rating: "★★★★★",
 
@@ -32,7 +32,7 @@ const products = [
     ],
 
     description:
-        "767 Flat Nose Single Flute Spiral Bit suitable for CNC engraving and cutting applications."
+        "Flat Nose Single Flute Spiral Bit suitable for CNC engraving and cutting applications."
 },
     
 {

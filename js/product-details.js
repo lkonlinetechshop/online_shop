@@ -492,11 +492,7 @@ ${product.description}
 
 <button 
 type="button" 
-class="add-cart buy-btn" 
-data-id="${product.id}" 
-data-name="${product.name}" 
-data-price="${product.price}" 
-data-image="${product.image}" > 
+class="add-cart buy-btn"  > 
 <i class="fa-solid fa-cart-shopping"></i>
 Add To Cart 
 </button>

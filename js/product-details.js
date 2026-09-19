@@ -1,74 +1,5 @@
 const products = [
-{
-    id: 11,
 
-    name: "Flat Nose Single Flute Spiral Bit",
-
-    category: "CNC parts",
-
-    image: "images/flatnosesingle.jpg",
-
-oldPrice:1200,
-
-price:984,
-   
-
-    discount: "10%",
-
-    rating: "★★★★★",
-
-    stock: "In Stock",
-
-
-bitSizes: [
-    {
-        size: "3.175x12mm",
-        price: 850
-    },
-    {
-        size: "3.175x22mm",
-        price: 900
-    },
-    {
-        size: "4x22mm",
-        price: 950
-    },
-    {
-        size: "4x32mm",
-        price: 1050
-    },
-    {
-        size: "6x32mm",
-        price: 1200
-    },
-    {
-        size: "6x62mm",
-        price: 1450
-    },
-    {
-        size: "8x32mm",
-        price: 1350
-    },
-    {
-        size: "8x42mm",
-        price: 1500
-    },
-    {
-        size: "8x50mm",
-        price: 1650
-    },
-    {
-        size: "12x100mm",
-        price: 2200
-    }
-],
-
-
-
-    description:
-        "Flat Nose Single Flute Spiral Bit suitable for CNC engraving and cutting applications."
-},
-    
 {
 id:10,
 
@@ -344,17 +275,14 @@ container.innerHTML = `
 <div class="product-details">
 
 
-
 <div>
 
-<img src="${product.image}"
-    alt="${product.name}"
->
+<img src="${product.image}">
 
 </div>
 
 
-<!-- Product Information -->
+
 <div class="product-info">
 
 
@@ -391,15 +319,18 @@ ${product.rating}
 
 <p class="price">
 
+<del>
+
+Rs.${product.oldPrice.toLocaleString()}
+
+</del>
 
 
+<strong>
 
+Rs.${product.price.toLocaleString()}
 
-<strong id="product-price">
-    Rs.${product.price.toLocaleString()}
 </strong>
-
-
 
 
 </p>
@@ -420,35 +351,36 @@ ${product.description}
 
 </p>
 
- <!-- PRODUCT OPTIONS -->
 
-<div class="product-options">
 
-    <!-- Quantity -->
+<div class="quantity-box">
 
-    <div class="option-group">
+    <button
+        type="button"
+        onclick="changeQty(-1)">
+        -
+    </button>
 
-        <label class="option-title">
-            Quantity
-        </label>
 
-        <div class="quantity-box">
+    <input
+        id="qty"
+        type="number"
+        value="1"
+        min="1"
+        readonly
+    >
 
-            <input
-                id="qty"
-                type="number"
-                value="1"
-                min="1"
-                readonly
-            >
 
-            <button
-                type="button"
-                onclick="changeQty(-1)">
-                −
-            </button>
+    <button
+        type="button"
+        onclick="changeQty(1)">
+        +
+    </button>
 
-            <button
+</div>
+
+
+<button
     type="button"
     class="add-cart buy-btn"
     onclick="addToCart()">
@@ -459,437 +391,6 @@ ${product.description}
 
     Add To Cart
 
-</button>
-
-        </div>
-```javascript
-// ========================================
-// GET PRODUCT ID FROM URL
-// ========================================
-
-const urlParams = new URLSearchParams(window.location.search);
-const id = Number(urlParams.get("id"));
-
-// Find product
-const product = products.find(p => p.id === id);
-
-const container = document.getElementById("product-details");
-
-
-// ========================================
-// DISPLAY PRODUCT
-// ========================================
-
-if (product) {
-
-    container.innerHTML = `
-
-    <div class="product-details">
-
-        <!-- PRODUCT IMAGE -->
-        <div class="product-image">
-            <img
-                src="${product.image}"
-                alt="${product.name}"
-            >
-        </div>
-
-
-        <!-- PRODUCT INFORMATION -->
-        <div class="product-info">
-
-            <span class="discount">
-                -${product.discount}
-            </span>
-
-            <h1>
-                ${product.name}
-            </h1>
-
-            <p class="category">
-                ${product.category}
-            </p>
-
-            <div class="rating">
-                ${product.rating}
-            </div>
-
-
-            <!-- PRICE -->
-            <p class="price">
-                <strong id="product-price">
-                    Rs.${product.price.toLocaleString()}
-                </strong>
-            </p>
-
-
-            <!-- STOCK -->
-            <span class="stock">
-                ${product.stock}
-            </span>
-
-
-            <!-- DESCRIPTION -->
-            <p class="product-description">
-                ${product.description}
-            </p>
-
-
-            <!-- PRODUCT OPTIONS -->
-            <div class="product-options">
-
-
-                <!-- BIT SIZE -->
-                ${
-                    product.bitSizes
-                        ? `
-                    <div class="option-group">
-
-                        <label class="option-title">
-                            Bit Size
-                        </label>
-
-                        <div class="bit-sizes">
-
-                            ${product.bitSizes.map((item, index) => `
-
-                                <label class="bit-option">
-
-                                    <input
-                                        type="radio"
-                                        name="bitSize"
-                                        value="${item.size}"
-                                        data-price="${item.price}"
-                                        ${index === 0 ? "checked" : ""}
-                                        onchange="changeBitPrice(this)"
-                                    >
-
-                                    <span>
-                                        ${item.size}
-                                    </span>
-
-                                    <small>
-                                        Rs.${item.price.toLocaleString()}
-                                    </small>
-
-                                </label>
-
-                            `).join("")}
-
-                        </div>
-
-                    </div>
-                    `
-                        : ""
-                }
-
-
-                <!-- QUANTITY -->
-                <div class="option-group">
-
-                    <label class="option-title">
-                        Quantity
-                    </label>
-
-                    <div class="quantity-box">
-
-                        <button
-                            type="button"
-                            onclick="changeQty(-1)"
-                        >
-                            −
-                        </button>
-
-                        <input
-                            id="qty"
-                            type="number"
-                            value="1"
-                            min="1"
-                            readonly
-                        >
-
-                        <button
-                            type="button"
-                            onclick="changeQty(1)"
-                        >
-                            +
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- ADD TO CART -->
-            <button
-                type="button"
-                class="add-cart buy-btn"
-                onclick="addToCart()"
-            >
-                <i class="fa-solid fa-cart-shopping"></i>
-                Add To Cart
-            </button>
-
-        </div>
-
-    </div>
-
-    `;
-
-}
-else {
-
-    container.innerHTML = `
-        <h2>Product Not Found</h2>
-    `;
-
-}
-
-
-// ========================================
-// CHANGE PRICE WHEN BIT SIZE IS SELECTED
-// ========================================
-
-function changeBitPrice(selectedBit) {
-
-    const newPrice = Number(selectedBit.dataset.price);
-
-    const priceElement =
-        document.getElementById("product-price");
-
-    if (!priceElement) {
-        return;
-    }
-
-    priceElement.textContent =
-        "Rs." + newPrice.toLocaleString();
-
-    console.log("Selected Bit Size:", selectedBit.value);
-    console.log("New Price:", newPrice);
-}
-
-
-// ========================================
-// CHANGE QUANTITY
-// ========================================
-
-function changeQty(value) {
-
-    const qtyInput =
-        document.getElementById("qty");
-
-    if (!qtyInput) {
-        console.log("Quantity input not found!");
-        return;
-    }
-
-    let currentQty =
-        parseInt(qtyInput.value) || 1;
-
-    currentQty += value;
-
-    // Minimum quantity = 1
-    if (currentQty < 1) {
-        currentQty = 1;
-    }
-
-    qtyInput.value = currentQty;
-
-    console.log("Quantity:", currentQty);
-}
-
-
-// ========================================
-// ADD TO CART
-// ========================================
-
-function addToCart() {
-
-    if (!product) {
-        return;
-    }
-
-
-    // ------------------------------------
-    // GET QUANTITY
-    // ------------------------------------
-
-    const qtyInput =
-        document.getElementById("qty");
-
-    const quantity =
-        parseInt(qtyInput.value) || 1;
-
-
-    // ------------------------------------
-    // GET SELECTED BIT SIZE
-    // ------------------------------------
-
-    const selectedBit =
-        document.querySelector(
-            'input[name="bitSize"]:checked'
-        );
-
-
-    // ------------------------------------
-    // DEFAULT PRODUCT PRICE
-    // ------------------------------------
-
-    let selectedPrice =
-        product.price;
-
-    let selectedSize =
-        null;
-
-
-    // ------------------------------------
-    // IF BIT SIZE EXISTS
-    // ------------------------------------
-
-    if (selectedBit) {
-
-        selectedSize =
-            selectedBit.value;
-
-        selectedPrice =
-            Number(selectedBit.dataset.price);
-
-    }
-
-
-    // ------------------------------------
-    // GET EXISTING CART
-    // ------------------------------------
-
-    let cart =
-        JSON.parse(
-            localStorage.getItem("cart")
-        ) || [];
-
-
-    // ------------------------------------
-    // CHECK SAME PRODUCT + SAME SIZE
-    // ------------------------------------
-
-    const existingProduct =
-        cart.find(item =>
-            item.id === product.id &&
-            item.bitSize === selectedSize
-        );
-
-
-    // ------------------------------------
-    // UPDATE EXISTING PRODUCT
-    // ------------------------------------
-
-    if (existingProduct) {
-
-        existingProduct.quantity += quantity;
-
-    }
-
-    // ------------------------------------
-    // ADD NEW PRODUCT
-    // ------------------------------------
-
-    else {
-
-        cart.push({
-
-            id: product.id,
-
-            name: product.name,
-
-            price: selectedPrice,
-
-            image: product.image,
-
-            quantity: quantity,
-
-            bitSize: selectedSize
-
-        });
-
-    }
-
-
-    // ------------------------------------
-    // SAVE CART
-    // ------------------------------------
-
-    localStorage.setItem(
-        "cart",
-        JSON.stringify(cart)
-    );
-
-
-    // ------------------------------------
-    // CONFIRMATION
-    // ------------------------------------
-
-    alert(
-        product.name +
-        "\nBit Size: " +
-        (selectedSize || "Standard") +
-        "\nPrice: Rs." +
-        selectedPrice.toLocaleString() +
-        "\nQuantity: " +
-        quantity +
-        "\n\nAdded to cart!"
-    );
-
-
-    // ------------------------------------
-    // GO TO HOME PAGE
-    // ------------------------------------
-
-    window.location.href =
-        "index.html";
-}
-```
-
-    </div>
-
-
- <!-- Bit Size --> ${ product.bitSizes ? ` 
- <div class="option-group">
- <label class="option-title">
- Bit Size 
- </label> 
- <div class="bit-sizes"> 
- ${product.bitSizes.map((item, index) => `
- <label class="bit-option"> 
- <input 
- type="radio" 
- name="bitSize" 
- value="${item.size}" 
- data-price="${item.price}" 
- ${index === 0 ? "checked" : ""}
- onchange="changeBitPrice(this)" >
- <span> 
- ${item.size} 
- </span>
- <small> 
- Rs.${item.price.toLocaleString()} 
- </small>
- </label> `).join("")}
- </div> 
- </div> ` 
-         :
-         "" 
-    }
-
-</div>
-
- <!-- ADD TO CART -->
-
-<button 
-type="button" 
-class="add-cart buy-btn"  > 
-<i class="fa-solid fa-cart-shopping"></i>
-Add To Cart 
 </button>
 
 </div>
@@ -908,17 +409,7 @@ container.innerHTML =
 
 }
 
-// ======================================== // CHANGE PRICE WHEN BIT SIZE IS SELECTED // ======================================== 
-function changeBitPrice(selectedBit) { 
-    const newPrice = Number( 
-        selectedBit.dataset.price 
-    ); 
-    const priceElement = document.getElementById("product-price"); 
-    if (!priceElement) { 
-        return; 
-    } priceElement.textContent = "Rs." + newPrice.toLocaleString(); 
-    console.log( "Selected Bit Size:", selectedBit.value ); 
-    console.log( "New Price:", newPrice ); }
+
 
 
 function changeQty(value) { 
@@ -947,16 +438,6 @@ function addToCart() {
          const qtyInput = document.getElementById("qty"); 
          const quantity = parseInt(qtyInput.value) || 1; 
          console.log("Adding quantity:", quantity); 
-    // Selected bit size 
-    const selectedBit = document.querySelector( 
-        'input[name="bitSize"]:checked' ); 
-    // Selected price
-    let selectedPrice = product.price; 
-    let selectedSize = null; 
-    if (selectedBit) {
-        selectedSize = selectedBit.value; 
-        selectedPrice = Number( 
-            selectedBit.dataset.price );
           window.location.href = "index.html";
          // Get existing cart 
          let cart = JSON.parse( 
@@ -972,10 +453,9 @@ function addToCart() {
             cart.push({ 
                 id: product.id,
                  name: product.name, 
-                price: selectedPrice, 
+                 price: product.price, 
                  image: product.image, 
                  quantity: quantity 
-                bitSize: selectedSize
                 }); 
             } 
             // Save cart 
@@ -985,11 +465,8 @@ function addToCart() {
                 ); 
                 alert( 
                     product.name + 
-                    "\nBit Size: " + 
-                    (selectedSize || "Standard") + 
-                    "\nPrice: Rs." + selectedPrice.toLocaleString() + 
-                    "\nQuantity: " + quantity + 
-                    "\n\nAdded to cart!" 
-                );
-    window.location.href = "index.html";
+                    " x " + 
+                    quantity + 
+                    " added to cart!" 
+                ); 
             }

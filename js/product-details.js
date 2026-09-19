@@ -490,17 +490,15 @@ ${product.description}
 
  <!-- ADD TO CART -->
 
-<button
-    type="button"
-    class="add-cart buy-btn"
-    onclick="addToCart()">
-
-    <i class="fa-solid fa-cart-shopping"></i>
-    <a href="index.html">
-    </a>
-
-    Add To Cart
-
+<button 
+type="button" 
+class="add-cart buy-btn" 
+data-id="${product.id}" 
+data-name="${product.name}" 
+data-price="${product.price}" 
+data-image="${product.image}" > 
+<i class="fa-solid fa-cart-shopping"></i>
+Add To Cart 
 </button>
 
 </div>

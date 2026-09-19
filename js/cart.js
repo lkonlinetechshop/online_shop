@@ -30,6 +30,8 @@ console.log("Button clicked");
             image: button.dataset.image,
 
             quantity:quantity
+                
+             bitSize: bitSize
 
             
         };
@@ -38,10 +40,24 @@ console.log("Button clicked");
             "Product:", 
             product 
         );
+            // Get selected bit size
+
+    const selectedSize =
+        document.querySelector(
+            'input[name="bitSize"]:checked'
+        );
+
+
+    const bitSize =
+        selectedSize
+        ? selectedSize.value
+        : null;
+
 
 
         let existing = cart.find(
-            item => item.id == product.id
+            item.id === product.id &&
+            item.bitSize === bitSize
         );
 
 
@@ -67,10 +83,13 @@ console.log("Button clicked");
 
 
         alert(
-            product.name+
-            " x " +
-            quantity +
-            " Added To Cart"
+            product.name +
+        " x " +
+        quantity +
+        (bitSize
+            ? " (" + bitSize + ")"
+            : "") +
+        " added to cart!"
         );
 
 

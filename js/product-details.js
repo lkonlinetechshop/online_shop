@@ -1,6 +1,29 @@
 
 const products = [
 
+
+    {
+        id: 13,
+
+        name: "RichAuto A18 4 Axis DSP CNC Controller",
+
+        category: "CNC parts",
+
+        image: "images/richauto-a18-4-axis-dsp-cnc-controller.jpg",
+        size: "",
+
+        oldPrice: 215500,
+        price: 21000,
+
+        discount: "5%",
+        rating: "★★★★★",
+        stock: "In Stock",
+
+        description:
+            "RichAuto A18 4-Axis CNC Controller is a compact and reliable DSP controller designed for CNC routers and engraving machines. It supports 4-axis control (X, Y, Z, and A), providing precise and convenient offline operation for cutting, carving, and engraving applications."
+    },
+
+
     {
         id: 12,
 

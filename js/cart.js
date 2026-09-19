@@ -1,162 +1,61 @@
-
 // ===============================
 // TECH STORE CART SYSTEM
 // ===============================
 
 
-let cart =
-    JSON.parse(localStorage.getItem("cart")) || [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-
-// ===============================
-// ADD TO CART
-// ===============================
-
+// Add cart buttons
 document.addEventListener(
-    "click",
-    function (e) {
+    "click", 
+    function(e){
 
-        console.log(e.target);
+console.log(e.target);
 
-
-        if (!e.target.closest(".add-cart")) {
-            return;
-        }
+    if(e.target.closest(".add-cart")){
+console.log("Button clicked");
 
 
-        console.log("Button clicked");
 
+        let button = e.target.closest(".add-cart");
 
-        const button =
-            e.target.closest(".add-cart");
-
-
-        // ===============================
-        // GET QUANTITY
-        // ===============================
-
-        const qtyInput =
-            document.getElementById("qty");
-
-
-        const quantity =
-            qtyInput
-                ? parseInt(qtyInput.value) || 1
-                : 1;
-
-
-        // ===============================
-        // GET SELECTED BIT SIZE
-        // ===============================
-
-        const selectedBit =
-            document.querySelector(
-                'input[name="bitSize"]:checked'
-            );
-
-
-        let selectedSize = null;
-
-        let selectedPrice =
-            Number(button.dataset.price);
-
-
-        if (selectedBit) {
-
-            selectedSize =
-                selectedBit.value;
-
-
-            selectedPrice =
-                Number(
-                    selectedBit.dataset.price
-                );
-
-        }
-
-
-        console.log(
-            "Selected Size:",
-            selectedSize
-        );
-
-
-        console.log(
-            "Selected Price:",
-            selectedPrice
-        );
-
-
-        // ===============================
-        // CREATE PRODUCT
-        // ===============================
-
-        const product = {
+        let product = {
 
             id: button.dataset.id,
 
             name: button.dataset.name,
 
-            price: selectedPrice,
+            price: Number(button.dataset.price),
 
             image: button.dataset.image,
 
-            quantity: quantity,
+            quantity:quantity
 
-            bitSize: selectedSize
-
+            
         };
-
-
-        console.log(
-            "Product:",
-            product
+        
+        console.log( 
+            "Product:", 
+            product 
         );
 
 
-        // ===============================
-        // GET CART
-        // ===============================
-
-        let cart =
-            JSON.parse(
-                localStorage.getItem("cart")
-            ) || [];
+        let existing = cart.find(
+            item => item.id == product.id
+        );
 
 
-        // ===============================
-        // CHECK SAME PRODUCT + SAME SIZE
-        // ===============================
+        if(existing){
 
-        const existingProduct =
-            cart.find(
-                item =>
-                    item.id === product.id &&
-                    item.bitSize === selectedSize
-            );
-
-
-        // ===============================
-        // UPDATE QUANTITY
-        // ===============================
-
-        if (existingProduct) {
-
-            existingProduct.quantity +=
-                quantity;
+            existing.quantity += quantity;
 
         }
-
-        else {
+        else{
 
             cart.push(product);
 
         }
 
-
-        // ===============================
-        // SAVE CART
-        // ===============================
 
         localStorage.setItem(
             "cart",
@@ -164,88 +63,51 @@ document.addEventListener(
         );
 
 
-        // Update global cart variable
-        window.cart = cart;
-
-
-        // ===============================
-        // UPDATE CART COUNT
-        // ===============================
-
         updateCartCount();
 
 
-        // ===============================
-        // MESSAGE
-        // ===============================
-
         alert(
-
-            product.name +
-
-            "\nBit Size: " +
-
-            (
-                selectedSize ||
-                "Standard"
-            ) +
-
-            "\nPrice: Rs." +
-
-            selectedPrice.toLocaleString() +
-
-            "\nQuantity: " +
-
+            product.name+
+            " x " +
             quantity +
-
-            "\n\nAdded to cart!"
-
+            " Added To Cart"
         );
+
 
     }
 
-);
+});
 
 
-// ===============================
-// UPDATE CART ICON NUMBER
-// ===============================
 
-function updateCartCount() {
 
+
+// Update cart icon number
+
+function updateCartCount(){
 
     let count = 0;
 
 
     cart.forEach(
-        item => {
+        item=>{
 
-            count +=
-                Number(item.quantity) || 0;
+        count += item.quantity;
 
-        }
-    );
+    });
 
 
-    const cartCount =
-        document.querySelector(
-            ".cart-count"
-        );
+    let cartCount =
+    document.querySelector(".cart-count");
 
 
-    if (cartCount) {
+    if(cartCount){
 
-        cartCount.textContent =
-            count;
+        cartCount.innerHTML=count;
 
     }
 
 }
 
 
-// ===============================
-// INITIAL CART COUNT
-// ===============================
-
 updateCartCount();
-

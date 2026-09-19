@@ -816,6 +816,40 @@ font-size:15px;
     background:#dc2626;
 }
 
+/* =================================
+   BIT SIZE
+================================= */
+
+.bit-sizes {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+
+.bit-sizes label {
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    font-size: 14px;
+
+    color: #666;
+
+    cursor: pointer;
+}
+
+
+.bit-sizes input[type="radio"] {
+    margin: 0;
+
+    cursor: pointer;
+}
+
 .cart-summary{
     background:#1e293b;
     padding:25px;

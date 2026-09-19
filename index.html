@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta name="theme-color" content="#0f172a">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tech Store</title>
+
+<link rel="stylesheet" href="style.css">
+
+<meta
+name="description"
+content="Buy CNC Machine, CNC Parts, Electronic , Handcraft item and Pc Accessories at the best prices in Sri Lanka.">
+
+<meta
+name="keywords"
+content="CNC machine sri lanka, CNC parts, Electronics, Pc Accessories, Mouse, Keybord,handcraft">
+
+<meta
+name="author"
+content="Tech Store Sri Lanka">
+
+<meta property="og:title"
+      content="Tech Store Sri Lanka">
+
+<meta property="og:description"
+      content="CNC Machine, Handcraft, CNC Parts, Electronic accessories.">
+
+<meta property="og:image"
+      content="images/logo.png">
+
+<meta property="og:url"
+      content="https://www.lankacnc.giize.com/">
+
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+
+<link rel="icon"
+      href="images/logo.png"
+      type="image/png">
+
+
+</head>
+
+<body>
+
+<header>
+
+    <button class="menu-toggle" id="menu-toggle" aria-label="Open Menu">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <div class="logo">
+        <img src="images/logo.png" alt="Tech Store Logo">
+        <h2>Tech Store</h2>
+        
+    </div>
+
+    
+
+    <nav id="nav-menu">
+
+        <a href="index.html">Home</a>
+        <a href="index.html">Products</a>
+        
+        <a href="contact.html">Contact</a>
+
+        <a href="signin.html" id="signin-link">
+            Sign In
+        </a>
+
+        <span id="user-status"></span>
+
+        <button id="logout-btn" style="display:none;">
+            Logout
+        </button>
+
+        <a href="admin.html" id="admin-link" style="display:none;">
+            Admin
+        </a>
+    </nav>
+       <div class="cart-icon">
+        <a href="cart.html">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="cart-count">0</span>
+        </a>
+    </div>
+
+</header>
+<main>
+<section class="hero">
+
+<h1>We have the technical solution to your problem.</h1>
+
+<p>Best Prices in Sri Lanka</p>
+
+<button onclick="location.href='index.html'">
+    Shop Now
+</button>
+
+<div class="search-box">
+
+    <input
+        type="text"
+        id="search"
+        placeholder="Search products..."
+        aria-label="Search products">
+
+    <button>
+        <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+
+</div>
+
+<div class="filters">
+
+
+   <button onclick="filterProducts('All')">
+        All
+    </button>
+
+    <button onclick="filterProducts('Pc')">
+         Pc Accessories 
+    </button>
+
+    <button onclick="filterProducts('CNC Parts')">
+        CNC Parts
+    </button>
+
+    <button onclick="filterProducts('Machineries')">
+       Machineries
+    </button>
+
+    <button onclick="filterProducts('Electronics')">
+        Electronics
+    </button>
+
+    <button onclick="filterProducts('Handcraft')">
+        Handcraft Item
+    </button>
+
+</div>
+</section>
+
+<section class="products" id="product-list">
+
+
+      <!---------------------------------------------------------------------------------------------------->
+<div class="card"
+     data-id="10"
+     data-category="Pc">
+
+    <span class="discount">-18%</span>
+
+    <a href="product-details.html?id=10">
+        <img src="images/win7.jpg"
+     alt="Windows 7 Activation Key"
+     loading="lazy">
+    </a>
+
+    <h3>Windows 7 Activation Key</h3>
+
+    <div class="rating">
+        ★★★★★
+    </div>
+
+    <p class="price">
+        <del>Rs.1,200</del>
+        <strong>Rs.984</strong>
+    </p>
+
+    <span class="stock">
+        In Stock
+    </span>
+<button
+    class="add-cart"
+    data-id="10"
+    data-name="Windows 7 Activation Key"
+    data-price="984"
+    data-image="win7.jpg">
+    Add to Cart
+</button>
+</div>
+      
+      <!---------------------------------------------------------------------------------------------------->
+<div class="card"
+     data-id="9"
+     data-category="Pc">
+
+    <span class="discount">-18%</span>
+
+    <a href="product-details.html?id=9">
+        <img src="images/win11.jpg"
+     alt="Windows 11 Activation Key"
+     loading="lazy">
+    </a>
+
+    <h3>Windows 11 Activation Key</h3>
+
+    <div class="rating">
+        ★★★★★
+    </div>
+
+    <p class="price">
+        <del>Rs.1,200</del>
+        <strong>Rs.984</strong>
+    </p>
+
+    <span class="stock">
+        In Stock
+    </span>
+<button
+    class="add-cart"
+    data-id="9"
+    data-name="Windows 11 Activation Key"
+    data-price="984"
+    data-image="win11.jpg">
+    Add to Cart
+</button>
+</div>
+      
+<!---------------------------------------------------------------------------------------------------->
+<div class="card"
+     data-id="8"
+     data-category="Pc">
+
+    <span class="discount">-18%</span>
+
+    <a href="product-details.html?id=8">
+        <img src="images/win10.jpg"
+     alt="Windows 10 Activation Key"
+     loading="lazy">
+    </a>
+
+    <h3>Windows 10 Activation Key</h3>
+
+    <div class="rating">
+        ★★★★★
+    </div>
+
+    <p class="price">
+        <del>Rs.1,200</del>
+        <strong>Rs.984</strong>
+    </p>
+
+    <span class="stock">
+        In Stock
+    </span>
+<button
+    class="add-cart"
+    data-id="8"
+    data-name="Windows 10 Activation Key"
+    data-price="984"
+    data-image="win10.jpg">
+    Add to Cart
+</button>
+</div>
+      
+<!---------------------------------------------------------------------------------------------------->
+<div class="card"
+     data-id="7"
+     data-category="Pc">
+
+    <span class="discount">-21%</span>
+
+    <a href="product-details.html?id=7">
+        <img src="images/g102.jpg"
+     alt="Logitech G102 USB Wired Gaming Mouse 8000 DPI For PC/Mac Computer and Laptop"
+     loading="lazy">
+    </a>
+
+    <h3>Logitech G102 USB Wired Gaming Mouse 8000 DPI For PC/Mac Computer and Laptop</h3>
+
+    <div class="rating">
+        ★★★★★
+    </div>
+
+    <p class="price">
+        <del>Rs.2,480</del>
+        <strong>Rs.1,959</strong>
+    </p>
+
+    <span class="stock">
+        In Stock
+    </span>
+<button
+    class="add-cart"
+    data-id="7"
+    data-name="Logitech G102 USB Wired Gaming Mouse 8000 DPI For PC/Mac Computer and Laptop"
+    data-price="1959"
+    data-image="g102.jpg">
+    Add to Cart
+</button>
+</div>
+      
+<!----------------------------------------------------------------------------------------------------------------->
+
+<div class="card"
+     data-id="1"
+     data-category="CNC Parts">
+
+    <span class="discount">-10%</span>
+
+    <a href="product-details.html?id=1">
+        <img src="images/RichAuto_A11E.jpg"
+     alt="RichAuto A11E 3 Axis CNC Controller"
+     loading="lazy">
+    </a>
+
+    <h3>RichAuto A11E 3 Axis CNC Controller</h3>
+
+    <div class="rating">
+
+★★★★★
+
+    </div>
+
+    <p class="price">
+
+        <del>Rs.126,500</del>
+
+        <strong>Rs.115,000</strong>
+
+    </p>
+
+    <span class="stock">
+        In Stock
+    </span>
+
+        <button
+    class="add-cart"
+    data-id="1"
+    data-name="RichAuto A11E 3 Axis CNC Controller"
+    data-price="115000"
+    data-image="images/RichAuto_A11E.jpg">
+    Add to Cart
+</button>
+    </div>
+
+      
+<div class="card"
+     data-id="2"
+     data-category="CNC Parts">
+
+    <span class="discount">-12%</span>
+
+    <a href="product-details.html?id=2">
+        <img src="images/cloned_richauto_a11.jpg"
+     alt="Cloned RichAuto A11 3 Axis 0501 DSP CNC Controller"
+     loading="lazy">
+    </a>
+
+    <h3>Cloned RichAuto A11 3 Axis 0501 DSP CNC Controller</h3>
+
+    <div class="rating">
+        ★★★★★
+    </div>
+
+    <p class="price">
+        <del>Rs.67,200</del>
+        <strong>Rs.60,000</strong>
+    </p>
+
+    <span class="stock">
+        In Stock
+    </span>
+<button
+    class="add-cart"
+    data-id="2"
+    data-name="Cloned RichAuto A11 3 Axis 0501 DSP CNC Controller"
+    data-price="8500"
+    data-image="images/cloned_richauto_a11.jpg">
+    Add to Cart
+</button>
+
+</div>
+
+<div class="card"
+     data-id="3"
+     data-category="CNC Parts">
+
+    <span class="discount">-5%</span>
+
+    <a href="product-details.html?id=3">
+        <img src="images/mach3.jpg"
+     alt="4 Axis CNC Breakout Board For Mach3"
+     loading="lazy">
+    </a>
+
+    <h3>4 Axis CNC Breakout Board For Mach3</h3>
+
+    <div class="rating">
+        ★★★★★
+    </div>
+
+    <p class="price">
+        <del>Rs.5,985</del>
+        <strong>Rs.5,700</strong>
+    </p>
+
+    <span class="stock">
+        In Stock
+    </span>
+<button
+    class="add-cart"
+    data-id="3"
+    data-name="4 Axis CNC Breakout Board For Mach3"
+    data-price="5700"
+    data-image="images/mach3.jpg">
+    Add to Cart
+</button>
+</div>
+
+<div class="card"
+     data-id="4"
+     data-category="Electronics">
+
+    <span class="discount">-2%</span>
+
+    <a href="product-details.html?id=4">
+        <img src="images/unooriginal.jpg"
+     alt="Arduino UNO Original Development Board with USB Cable"
+     loading="lazy">
+    </a>
+
+    <h3>Arduino UNO Original Development Board with USB Cable</h3>
+
+    <div class="rating">
+        ★★★★★
+    </div>
+
+    <p class="price">
+        <del>Rs.2,448</del>
+        <strong>Rs.2,400</strong>
+    </p>
+
+    <span class="stock">
+        In Stock
+    </span>
+<button
+    class="add-cart"
+    data-id="4"
+    data-name="Arduino UNO Original Development Board with USB Cable"
+    data-price="2400"
+    data-image="images/unooriginal.jpg">
+    Add to Cart
+</button>
+</div>
+<div class="card"
+     data-id="5"
+     data-category="Electronics">
+
+    <span class="discount">-2%</span>
+
+    <a href="product-details.html?id=5">
+        <img src="images/unonormal.jpg"
+     alt="Arduino UNO Normal Development Board with USB Cable"
+     loading="lazy">
+    </a>
+
+    <h3>Arduino UNO Normal Development Board with USB Cable</h3>
+
+    <div class="rating">
+        ★★★★★
+    </div>
+
+    <p class="price">
+        <del>Rs.1,275</del>
+        <strong>Rs.1,250</strong>
+    </p>
+
+    <span class="stock">
+        In Stock
+    </span>
+<button
+    class="add-cart"
+    data-id="5"
+    data-name="Arduino UNO Normal Development Board with USB Cable"
+    data-price="2400"
+    data-image="images/unonormal.jpg">
+    Add to Cart
+</button>
+</div>
+
+      <div class="card"
+     data-id="6"
+     data-category="Machineries">
+
+    <span class="discount">-5%</span>
+
+    <a href="product-details.html?id=6">
+        <img src="images/smartstringhopper.jpg"smartstringhopper
+     alt="Smart String Hopper Making machine (800pcs per hour)Without Compressure"
+     loading="lazy">
+    </a>
+
+    <h3>Smart String Hopper Making machine (800pcs per hour)Without Compressure</h3>
+
+    <div class="rating">
+        ★★★★★
+    </div>
+
+    <p class="price">
+        <del>Rs.77,700</del>
+        <strong>Rs.74,000</strong>
+    </p>
+
+    <span class="stock">
+        In Stock
+    </span>
+<button
+    class="add-cart"
+    data-id="6"
+    data-name="Smart String Hopper Making machine (800pcs per hour)Without Compressure"
+    data-price="74000"
+    data-image="smartstringhopper.jpg">
+    Add to Cart
+</button>
+</div>
+      
+<!----------------------------------------------------------------------------------------------------------------->
+</section>
+
+</main>
+
+
+<button id="topBtn">
+    ↑
+</button>
+
+<a
+href="https://wa.me/94764960463"
+class="whatsapp-btn"
+target="_blank"
+rel="noopener noreferrer">
+
+<i class="fa-brands fa-whatsapp"></i>
+
+</a>
+
+
+<footer>
+
+    <div class="footer-links">
+
+        <a href="about.html">About</a>
+
+        <a href="privacy.html">Privacy Policy</a>
+
+        <a href="terms.html">Terms & Conditions</a>
+
+        <a href="contact.html">Contact</a>
+
+    </div>
+
+    <p>&copy; 2026 Tech Store Sri Lanka. All Rights Reserved.</p>
+
+</footer>
+
+<script src="js/menu.js"></script>
+<script src="js/product-details.js"></script>
+
+<script src="js/indexcart.js"></script>
+
+<script src="js/filterproduct.js"></script>
+
+<script src="js/search.js"></script>
+
+<script src="js/auth.js"></script>
+
+
+<script src="js/topbutton.js"></script>
+
+</body>
+</html>

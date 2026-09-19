@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+.admin-container{
+    width:90%;
+    max-width:1200px;
+    margin:40px auto;
+}
+
+.admin-form{
+    background:#1e293b;
+    padding:20px;
+    border-radius:12px;
+    margin-bottom:30px;
+}
+
+.admin-form input,
+.admin-form select,
+.admin-form textarea{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:none;
+    border-radius:8px;
+}
+
+.admin-form button{
+    padding:12px 20px;
+    cursor:pointer;
+}
+
+.admin-products{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+    gap:20px;
+}
+
+.admin-card{
+    background:#1e293b;
+    padding:15px;
+    border-radius:12px;
+}
+
+.admin-card img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+}
+
+.actions{
+    display:flex;
+    gap:10px;
+    margin-top:10px;
+}
+
+.delete-btn{
+    background:red;
+    color:white;
+}
+
+.edit-btn{
+    background:orange;
+}
+
+.stock{
+    color:#38bdf8;
+}
+
+.orders{
+    margin-top:50px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="admin-container">
+
+<h1>Tech Store Admin Panel</h1>
+
+<div class="admin-form">
+
+<h2>Add Product</h2>
+
+<input type="text" id="name" placeholder="Product Name">
+
+<input type="number" id="price" placeholder="Price">
+
+<input type="number" id="stock" placeholder="Stock Quantity">
+
+<select id="category">
+    <option>Laptop</option>
+    <option>Mouse</option>
+    <option>Keyboard</option>
+</select>
+
+<textarea id="description" placeholder="Description"></textarea>
+
+<input type="file" id="image">
+
+<button onclick="addProduct()">
+Add Product
+</button>
+
+</div>
+
+<h2>Products</h2>
+
+<div id="products" class="admin-products"></div>
+
+<div class="orders">
+
+<h2>Customer Orders</h2>
+
+<div id="orders"></div>
+
+</div>
+
+</div>
+
+<script type="module" src="js/admin.js"></script>
+
+</body>
+</html>

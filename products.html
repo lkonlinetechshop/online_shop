@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Products</title>
+<link rel="stylesheet" href="product.css">
+
+<meta
+name="description"
+content="Buy CNC Machine, CNC Parts, Electronic accessories at the best prices in Sri Lanka.">
+
+<meta
+name="keywords"
+content="CNC machine sri lanka, CNC parts, Electronics, Tech accessories">
+
+<meta
+name="author"
+content="Tech Store Sri Lanka">
+
+<meta property="og:title"
+      content="Tech Store Sri Lanka">
+
+<meta property="og:description"
+      content="CNC Machine, CNC Parts, Electronic accessories.">
+
+<meta property="og:image"
+      content="images/logo.png">
+
+<meta property="og:url"
+      content="https://yourdomain.com">
+
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<link rel="icon"
+      href="images/logo.png"
+      type="image/png">
+</head>
+<body>
+
+<header>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Open Menu">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <div class="logo">
+        <img src="images/logo.png" alt="Tech Store Logo">
+        <h2>Tech Store</h2>
+    </div>
+
+<nav id="nav-menu">
+
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="contact.html">Contact</a>
+
+        <a href="signin.html" id="signin-link">
+            Sign In
+        </a>
+
+        <span id="user-status"></span>
+
+        <button id="logout-btn" style="display:none;">
+            Logout
+        </button>
+
+        <a href="admin.html" id="admin-link" style="display:none;">
+            Admin
+        </a>
+    </nav>
+<div class="cart-icon">
+        <a href="cart.html">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="cart-count">0</span>
+        </a>
+    </div>
+</header>
+<main>
+<section class="hero">
+
+<h1>Gaming PCs & Accessories</h1>
+
+<p>Best Prices in Sri Lanka</p>
+
+
+
+<div class="search-box">
+
+    <input
+        type="text"
+        id="search"
+        placeholder="Search products..."
+        aria-label="Search products">
+
+    <button>
+        <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+
+</div>
+
+<div class="filters">
+
+    <button onclick="filterProducts('All')">
+        All
+    </button>
+
+    <button onclick="filterProducts('Laptop')">
+        Laptops
+    </button>
+
+    <button onclick="filterProducts('Mouse')">
+        Mouse
+    </button>
+
+    <button onclick="filterProducts('Keyboard')">
+        Keyboards
+    </button>
+
+</div>
+</section>
+
+<section class="products">
+
+    <div class="card"
+     data-id="1"
+     data-category="Laptop">
+
+    <span class="discount">-10%</span>
+
+    <a href="product-details.html?id=1">
+        <img src="images/laptop.jpg"
+     alt="Laptop"
+     loading="lazy">
+    </a>
+
+<span class="category">
+Laptop
+</span>
+    <h3>Gaming Laptop</h3>
+
+    <div class="rating">
+
+★★★★★
+
+    </div>
+
+    <p class="price">
+
+        <del>Rs.389,000</del>
+
+        <strong>Rs.354,500</strong>
+
+    </p>
+
+    <span class="stock">
+        In Stock
+    </span>
+
+        <button
+    class="add-cart"
+    data-id="1"
+    data-name="Gaming Laptop"
+    data-price="350000"
+    data-image="images/laptop.jpg">
+    Add to Cart
+</button>
+    </div>
+
+
+
+
+<div class="card"
+     data-id="3"
+     data-category="Keyboard">
+
+    <span class="discount">-10%</span>
+
+    <a href="product-details.html?id=3">
+        <img src="images/keyboard.jpg"
+     alt="Keyboard"
+     loading="lazy">
+    </a>
+
+<span class="category">
+Keyboard
+</span>
+    <h3>Gaming Keyboard</h3>
+
+    <div class="rating">
+
+★★★★★
+
+    </div>
+
+    <p class="price">
+
+        <del>Rs.5,000</del>
+
+        <strong>Rs.4,500</strong>
+
+    </p>
+
+    <span class="stock">
+        In Stock
+    </span>
+
+
+        <button
+    class="add-cart"
+    data-id="3"
+    data-name="Gaming Keyboard"
+    data-price="4500"
+    data-image="images/keyboard.jpg">
+    Add to Cart
+</button>
+    </div>
+
+<div class="card"
+     data-id="2"
+     data-category="Mouse">
+
+    <span class="discount">-15%</span>
+
+    <a href="product-details.html?id=2">
+        <img src="images/Mouse.jpg"
+     alt="Gaming Mouse"
+     loading="lazy">
+    </a>
+
+<span class="category">
+Mouse
+</span>
+    <h3>Gaming Mouse</h3>
+
+    <div class="rating">
+        ★★★★★
+    </div>
+
+    <p class="price">
+        <del>Rs.10,000</del>
+        <strong>Rs.8,500</strong>
+    </p>
+
+    <span class="stock">
+        In Stock
+    </span>
+<button
+    class="add-cart"
+    data-id="2"
+    data-name="Gaming Mouse"
+    data-price="8500"
+    data-image="images/Mouse.jpg">
+    Add to Cart
+</button>
+
+</div>
+</section>
+
+</main>
+
+
+<button id="topBtn">
+    ↑
+</button>
+
+<a
+href="https://wa.me/94741580481"
+class="whatsapp-btn"
+target="_blank"
+rel="noopener noreferrer">
+
+<i class="fa-brands fa-whatsapp"></i>
+
+</a>
+
+<footer>
+
+    <div class="footer-links">
+
+        <a href="about.html">About</a>
+
+        <a href="privacy.html">Privacy Policy</a>
+
+        <a href="terms.html">Terms & Conditions</a>
+
+        <a href="contact.html">Contact</a>
+
+    </div>
+
+    <p>&copy; 2026 Tech Store Sri Lanka. All Rights Reserved.</p>
+
+</footer>
+
+
+<script src="js/menu.js"></script>
+
+<script src="js/indexcart.js"></script>
+<script src="js/filterproduct.js"></script>
+
+<script src="js/search.js"></script>
+<script src="js/app.js"></script>
+<script src="js/auth.js"></script>
+
+</body>
+</html>

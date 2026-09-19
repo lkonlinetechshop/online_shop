@@ -1,10 +1,67 @@
 
 const products = [
 
-    // ==========================================
-    // PRODUCT 11 - BIT WITH SIZE OPTIONS
-    // ==========================================
+    {
+        id: 12,
 
+        name: "Ball Nose Double Flute Spiral Bit",
+
+        category: "CNC parts",
+
+        image: "images/ballnosedouble.jpg",
+
+        oldPrice: 880,
+        price: 800,
+
+        discount: "10%",
+        rating: "★★★★★",
+        stock: "In Stock",
+
+        description:
+            "Ball Nose Double Flute Spiral Bit",
+
+        options: [
+            {
+                size: "3.175x12mm",
+                price: 800
+            },
+            {
+                size: "3.175x22mm",
+                price: 950
+            },
+            {
+                size: "4x22mm",
+                price: 1350
+            },
+            {
+                size: "4x32mm",
+                price: 1650
+            },
+              {
+                size: "6x22mm",
+                price: 2100
+            },
+            {
+                size: "6x32mm",
+                price: 3200
+            },
+            {
+                size: "6x62mm",
+                price: 5000
+            },
+            {
+                size: "8x32mm",
+                price: 4600
+            },
+            {
+                size: "8x50mm",
+                price: 5750
+            }
+        ]
+    },
+
+
+    
     {
         id: 11,
 
@@ -35,35 +92,35 @@ const products = [
             },
             {
                 size: "4x22mm",
-                price: 950
-            },
-            {
-                size: "4x32mm",
-                price: 1000
-            },
-            {
-                size: "6x32mm",
-                price: 1100
-            },
-            {
-                size: "6x62mm",
-                price: 1200
-            },
-            {
-                size: "8x32mm",
-                price: 1300
-            },
-            {
-                size: "8x42mm",
                 price: 1400
             },
             {
+                size: "4x32mm",
+                price: 1700
+            },
+            {
+                size: "6x32mm",
+                price: 2900
+            },
+            {
+                size: "6x62mm",
+                price: 4700
+            },
+            {
+                size: "8x32mm",
+                price: 4500
+            },
+            {
+                size: "8x42mm",
+                price: 5100
+            },
+            {
                 size: "8x50mm",
-                price: 1500
+                price: 5700
             },
             {
                 size: "12x100mm",
-                price: 1800
+                price: 24500
             }
         ]
     },

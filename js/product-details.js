@@ -12,8 +12,8 @@ const products = [
         image: "images/richauto-a18-4-axis-dsp-cnc-controller.jpg",
         size: "",
 
-        oldPrice: 215500,
-        price: 21000,
+        oldPrice: 220500,
+        price: 210000,
 
         discount: "5%",
         rating: "★★★★★",

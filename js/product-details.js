@@ -8,8 +8,9 @@ const products = [
 
     image: "images/flatnosesingle.jpg",
 
-   
-price: 850
+oldPrice:1200,
+
+price:984,
    
 
     discount: "10%",

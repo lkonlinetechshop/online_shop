@@ -462,6 +462,393 @@ ${product.description}
 </button>
 
         </div>
+```javascript
+// ========================================
+// GET PRODUCT ID FROM URL
+// ========================================
+
+const urlParams = new URLSearchParams(window.location.search);
+const id = Number(urlParams.get("id"));
+
+// Find product
+const product = products.find(p => p.id === id);
+
+const container = document.getElementById("product-details");
+
+
+// ========================================
+// DISPLAY PRODUCT
+// ========================================
+
+if (product) {
+
+    container.innerHTML = `
+
+    <div class="product-details">
+
+        <!-- PRODUCT IMAGE -->
+        <div class="product-image">
+            <img
+                src="${product.image}"
+                alt="${product.name}"
+            >
+        </div>
+
+
+        <!-- PRODUCT INFORMATION -->
+        <div class="product-info">
+
+            <span class="discount">
+                -${product.discount}
+            </span>
+
+            <h1>
+                ${product.name}
+            </h1>
+
+            <p class="category">
+                ${product.category}
+            </p>
+
+            <div class="rating">
+                ${product.rating}
+            </div>
+
+
+            <!-- PRICE -->
+            <p class="price">
+                <strong id="product-price">
+                    Rs.${product.price.toLocaleString()}
+                </strong>
+            </p>
+
+
+            <!-- STOCK -->
+            <span class="stock">
+                ${product.stock}
+            </span>
+
+
+            <!-- DESCRIPTION -->
+            <p class="product-description">
+                ${product.description}
+            </p>
+
+
+            <!-- PRODUCT OPTIONS -->
+            <div class="product-options">
+
+
+                <!-- BIT SIZE -->
+                ${
+                    product.bitSizes
+                        ? `
+                    <div class="option-group">
+
+                        <label class="option-title">
+                            Bit Size
+                        </label>
+
+                        <div class="bit-sizes">
+
+                            ${product.bitSizes.map((item, index) => `
+
+                                <label class="bit-option">
+
+                                    <input
+                                        type="radio"
+                                        name="bitSize"
+                                        value="${item.size}"
+                                        data-price="${item.price}"
+                                        ${index === 0 ? "checked" : ""}
+                                        onchange="changeBitPrice(this)"
+                                    >
+
+                                    <span>
+                                        ${item.size}
+                                    </span>
+
+                                    <small>
+                                        Rs.${item.price.toLocaleString()}
+                                    </small>
+
+                                </label>
+
+                            `).join("")}
+
+                        </div>
+
+                    </div>
+                    `
+                        : ""
+                }
+
+
+                <!-- QUANTITY -->
+                <div class="option-group">
+
+                    <label class="option-title">
+                        Quantity
+                    </label>
+
+                    <div class="quantity-box">
+
+                        <button
+                            type="button"
+                            onclick="changeQty(-1)"
+                        >
+                            −
+                        </button>
+
+                        <input
+                            id="qty"
+                            type="number"
+                            value="1"
+                            min="1"
+                            readonly
+                        >
+
+                        <button
+                            type="button"
+                            onclick="changeQty(1)"
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ADD TO CART -->
+            <button
+                type="button"
+                class="add-cart buy-btn"
+                onclick="addToCart()"
+            >
+                <i class="fa-solid fa-cart-shopping"></i>
+                Add To Cart
+            </button>
+
+        </div>
+
+    </div>
+
+    `;
+
+}
+else {
+
+    container.innerHTML = `
+        <h2>Product Not Found</h2>
+    `;
+
+}
+
+
+// ========================================
+// CHANGE PRICE WHEN BIT SIZE IS SELECTED
+// ========================================
+
+function changeBitPrice(selectedBit) {
+
+    const newPrice = Number(selectedBit.dataset.price);
+
+    const priceElement =
+        document.getElementById("product-price");
+
+    if (!priceElement) {
+        return;
+    }
+
+    priceElement.textContent =
+        "Rs." + newPrice.toLocaleString();
+
+    console.log("Selected Bit Size:", selectedBit.value);
+    console.log("New Price:", newPrice);
+}
+
+
+// ========================================
+// CHANGE QUANTITY
+// ========================================
+
+function changeQty(value) {
+
+    const qtyInput =
+        document.getElementById("qty");
+
+    if (!qtyInput) {
+        console.log("Quantity input not found!");
+        return;
+    }
+
+    let currentQty =
+        parseInt(qtyInput.value) || 1;
+
+    currentQty += value;
+
+    // Minimum quantity = 1
+    if (currentQty < 1) {
+        currentQty = 1;
+    }
+
+    qtyInput.value = currentQty;
+
+    console.log("Quantity:", currentQty);
+}
+
+
+// ========================================
+// ADD TO CART
+// ========================================
+
+function addToCart() {
+
+    if (!product) {
+        return;
+    }
+
+
+    // ------------------------------------
+    // GET QUANTITY
+    // ------------------------------------
+
+    const qtyInput =
+        document.getElementById("qty");
+
+    const quantity =
+        parseInt(qtyInput.value) || 1;
+
+
+    // ------------------------------------
+    // GET SELECTED BIT SIZE
+    // ------------------------------------
+
+    const selectedBit =
+        document.querySelector(
+            'input[name="bitSize"]:checked'
+        );
+
+
+    // ------------------------------------
+    // DEFAULT PRODUCT PRICE
+    // ------------------------------------
+
+    let selectedPrice =
+        product.price;
+
+    let selectedSize =
+        null;
+
+
+    // ------------------------------------
+    // IF BIT SIZE EXISTS
+    // ------------------------------------
+
+    if (selectedBit) {
+
+        selectedSize =
+            selectedBit.value;
+
+        selectedPrice =
+            Number(selectedBit.dataset.price);
+
+    }
+
+
+    // ------------------------------------
+    // GET EXISTING CART
+    // ------------------------------------
+
+    let cart =
+        JSON.parse(
+            localStorage.getItem("cart")
+        ) || [];
+
+
+    // ------------------------------------
+    // CHECK SAME PRODUCT + SAME SIZE
+    // ------------------------------------
+
+    const existingProduct =
+        cart.find(item =>
+            item.id === product.id &&
+            item.bitSize === selectedSize
+        );
+
+
+    // ------------------------------------
+    // UPDATE EXISTING PRODUCT
+    // ------------------------------------
+
+    if (existingProduct) {
+
+        existingProduct.quantity += quantity;
+
+    }
+
+    // ------------------------------------
+    // ADD NEW PRODUCT
+    // ------------------------------------
+
+    else {
+
+        cart.push({
+
+            id: product.id,
+
+            name: product.name,
+
+            price: selectedPrice,
+
+            image: product.image,
+
+            quantity: quantity,
+
+            bitSize: selectedSize
+
+        });
+
+    }
+
+
+    // ------------------------------------
+    // SAVE CART
+    // ------------------------------------
+
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+
+
+    // ------------------------------------
+    // CONFIRMATION
+    // ------------------------------------
+
+    alert(
+        product.name +
+        "\nBit Size: " +
+        (selectedSize || "Standard") +
+        "\nPrice: Rs." +
+        selectedPrice.toLocaleString() +
+        "\nQuantity: " +
+        quantity +
+        "\n\nAdded to cart!"
+    );
+
+
+    // ------------------------------------
+    // GO TO HOME PAGE
+    // ------------------------------------
+
+    window.location.href =
+        "index.html";
+}
+```
 
     </div>
 
@@ -560,6 +947,16 @@ function addToCart() {
          const qtyInput = document.getElementById("qty"); 
          const quantity = parseInt(qtyInput.value) || 1; 
          console.log("Adding quantity:", quantity); 
+    // Selected bit size 
+    const selectedBit = document.querySelector( 
+        'input[name="bitSize"]:checked' ); 
+    // Selected price
+    let selectedPrice = product.price; 
+    let selectedSize = null; 
+    if (selectedBit) {
+        selectedSize = selectedBit.value; 
+        selectedPrice = Number( 
+            selectedBit.dataset.price );
           window.location.href = "index.html";
          // Get existing cart 
          let cart = JSON.parse( 
@@ -575,9 +972,10 @@ function addToCart() {
             cart.push({ 
                 id: product.id,
                  name: product.name, 
-                 price: product.price, 
+                price: selectedPrice, 
                  image: product.image, 
                  quantity: quantity 
+                bitSize: selectedSize
                 }); 
             } 
             // Save cart 
@@ -587,8 +985,11 @@ function addToCart() {
                 ); 
                 alert( 
                     product.name + 
-                    " x " + 
-                    quantity + 
-                    " added to cart!" 
-                ); 
+                    "\nBit Size: " + 
+                    (selectedSize || "Standard") + 
+                    "\nPrice: Rs." + selectedPrice.toLocaleString() + 
+                    "\nQuantity: " + quantity + 
+                    "\n\nAdded to cart!" 
+                );
+    window.location.href = "index.html";
             }

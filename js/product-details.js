@@ -449,10 +449,17 @@ ${product.description}
             </button>
 
             <button
-                type="button"
-                onclick="changeQty(1)">
-                +
-            </button>
+    type="button"
+    class="add-cart buy-btn"
+    onclick="addToCart()">
+
+    <i class="fa-solid fa-cart-shopping"></i>
+    <a href="index.html">
+    </a>
+
+    Add To Cart
+
+</button>
 
         </div>
 

@@ -2,6 +2,27 @@
 const products = [
 
 
+        {
+        id: 14,
+
+        name: "2.2kW 220V Rituo VFD Inverter Variable Frequency Drive",
+
+        category: "CNC parts",
+
+        image: "images/2kw-220v-rituo-vfd-inverter-variable-frequency-drive.jpg",
+        size: "",
+
+        oldPrice: 46200,
+        price: 44000,
+
+        discount: "5%",
+        rating: "★★★★★",
+        stock: "In Stock",
+
+        description:
+            "2.2kW 220V Rituo VFD Inverter — A reliable variable frequency drive for controlling the speed and performance of 220V AC motors. Ideal for CNC machines, pumps, fans, and other industrial equipment, with adjustable motor speed and smooth operation."
+    },
+
     {
         id: 13,
 

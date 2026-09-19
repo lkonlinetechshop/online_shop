@@ -1,5 +1,40 @@
 const products = [
+{
+    id: 11,
 
+    name: "767 Flat Nose Single Flute Spiral Bit",
+
+    category: "CNC parts",
+
+    image: "images/767.jpg",
+
+    oldPrice: 2500,
+
+    price: 2200,
+
+    discount: "12%",
+
+    rating: "★★★★★",
+
+    stock: "In Stock",
+
+    bitSizes: [
+        "3.175x12mm",
+        "3.175x22mm",
+        "4x22mm",
+        "4x32mm",
+        "6x32mm",
+        "6x62mm",
+        "8x32mm",
+        "8x42mm",
+        "8x50mm",
+        "12x100mm"
+    ],
+
+    description:
+        "767 Flat Nose Single Flute Spiral Bit suitable for CNC engraving and cutting applications."
+},
+    
 {
 id:10,
 
@@ -275,14 +310,17 @@ container.innerHTML = `
 <div class="product-details">
 
 
+
 <div>
 
-<img src="${product.image}">
+<img src="${product.image}"
+    alt="${product.name}"
+>
 
 </div>
 
 
-
+<!-- Product Information -->
 <div class="product-info">
 
 
@@ -351,34 +389,87 @@ ${product.description}
 
 </p>
 
+ <!-- PRODUCT OPTIONS -->
+
+<div class="product-options">
+
+    <!-- Quantity -->
+
+    <div class="option-group">
+
+        <label class="option-title">
+            Quantity
+        </label>
+
+        <div class="quantity-box">
+
+            <input
+                id="qty"
+                type="number"
+                value="1"
+                min="1"
+                readonly
+            >
+
+            <button
+                type="button"
+                onclick="changeQty(-1)">
+                −
+            </button>
+
+            <button
+                type="button"
+                onclick="changeQty(1)">
+                +
+            </button>
+
+        </div>
+
+    </div>
 
 
-<div class="quantity-box">
+    <!-- Bit Size -->
 
-    <button
-        type="button"
-        onclick="changeQty(-1)">
-        -
-    </button>
+    ${
+        product.bitSizes
+        ?
+        `
+        <div class="option-group">
 
+            <label class="option-title">
+                Bit Size
+            </label>
 
-    <input
-        id="qty"
-        type="number"
-        value="1"
-        min="1"
-        readonly
-    >
+            <div class="bit-sizes">
 
+                ${product.bitSizes.map((size, index) => `
+                    
+                    <label>
 
-    <button
-        type="button"
-        onclick="changeQty(1)">
-        +
-    </button>
+                        <input
+                            type="radio"
+                            name="bitSize"
+                            value="${size}"
+                            ${index === 0 ? "checked" : ""}
+                        >
+
+                        ${size}
+
+                    </label>
+
+                `).join("")}
+
+            </div>
+
+        </div>
+        `
+        :
+        ""
+    }
 
 </div>
 
+ <!-- ADD TO CART -->
 
 <button
     type="button"

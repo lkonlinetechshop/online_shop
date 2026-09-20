@@ -679,7 +679,7 @@ Responsive
 .products{
 
 grid-template-columns:repeat(2,1fr);
-
+padding:50px 20px;
 }
 
 }
@@ -688,7 +688,7 @@ grid-template-columns:repeat(2,1fr);
 
 .products{
 
-grid-template-columns:1fr;
+grid-template-columns:repeat(2,1fr);
 
 padding:50px 20px;
 
@@ -1492,12 +1492,24 @@ grid-template-columns:1fr;
     }
 
    .hero {
-        padding: 40px 20px;
-        text-align: center;
+        height: 70vh;
+    background: linear-gradient(
+        rgba(15,23,42,0.8),
+        rgba(15,23,42,0.8)
+    ),
+    url("images/hero.jpg") center/cover no-repeat;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    text-align: center;
+    padding: 20px;
     }
-
+ 
     .hero h1 {
-        font-size: 32px;
+        font-size: 28px;
         line-height: 1.3;
     }
 

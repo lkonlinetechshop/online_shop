@@ -1,23 +1,23 @@
-function filterProducts(category){
+function filterProducts(category) {
 
-    const cards =
-    document.querySelectorAll(".card");
+    const cards = document.querySelectorAll(".card");
 
     cards.forEach(card => {
 
-        if(
+        if (
             category === "All" ||
             card.dataset.category === category
-        ){
+        ) {
             card.style.display = "block";
-        }else{
+        } else {
             card.style.display = "none";
         }
 
-     // Move down to products
-    document.getElementById("products").scrollIntoView({
-        behavior: "smooth"
-        
     });
 
+    // Scroll to products
+    document.getElementById("product-list").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
 }

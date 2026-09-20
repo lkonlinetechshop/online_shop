@@ -3,7 +3,7 @@ const searchButton = document.getElementById("search-btn");
 const productList = document.getElementById("product-list");
 
 
-// Filter products
+// Filter products while typing
 function filterProducts() {
 
     const value = searchInput.value.trim().toLowerCase();
@@ -23,11 +23,7 @@ function filterProducts() {
 }
 
 
-// While typing → filter only
-searchInput.addEventListener("input", filterProducts);
-
-
-// Click Search → filter + scroll
+// Click Search → filter + scroll + clear
 searchButton.addEventListener("click", function() {
 
     filterProducts();
@@ -37,10 +33,13 @@ searchButton.addEventListener("click", function() {
         block: "start"
     });
 
+    // Clear search box
+    searchInput.value = "";
+
 });
 
 
-// Press Enter → filter + scroll
+// Press Enter → filter + scroll + clear
 searchInput.addEventListener("keydown", function(event) {
 
     if (event.key === "Enter") {
@@ -54,6 +53,13 @@ searchInput.addEventListener("keydown", function(event) {
             block: "start"
         });
 
+        // Clear search box
+        searchInput.value = "";
+
     }
 
 });
+
+
+// Filter while typing — no scrolling
+searchInput.addEventListener("input", filterProducts);

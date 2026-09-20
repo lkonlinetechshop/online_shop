@@ -1,8 +1,12 @@
-function searchProducts() {
+const searchInput = document.getElementById("search");
+const searchButton = document.getElementById("search-btn");
+const productList = document.getElementById("product-list");
 
-    const searchInput = document.getElementById("search");
+
+// Filter products
+function filterProducts() {
+
     const value = searchInput.value.trim().toLowerCase();
-
     const cards = document.querySelectorAll(".card");
 
     cards.forEach(card => {
@@ -16,25 +20,40 @@ function searchProducts() {
         }
 
     });
-
-    // Move to product list after search
-    document.getElementById("product-list").scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-    });
 }
 
 
-// Click Search button
-document.getElementById("search-btn").addEventListener("click", searchProducts);
+// While typing → filter only
+searchInput.addEventListener("input", filterProducts);
 
 
-// Press Enter inside search box
-document.getElementById("search").addEventListener("keydown", function(event) {
+// Click Search → filter + scroll
+searchButton.addEventListener("click", function() {
+
+    filterProducts();
+
+    productList.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+});
+
+
+// Press Enter → filter + scroll
+searchInput.addEventListener("keydown", function(event) {
 
     if (event.key === "Enter") {
+
         event.preventDefault();
-        searchProducts();
+
+        filterProducts();
+
+        productList.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
     }
 
 });

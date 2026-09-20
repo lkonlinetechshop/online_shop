@@ -3,8 +3,8 @@ const searchButton = document.getElementById("search-btn");
 const productList = document.getElementById("product-list");
 
 
-// Filter products while typing
-function filterProducts() {
+// Search products while typing
+function searchProducts() {
 
     const value = searchInput.value.trim().toLowerCase();
     const cards = document.querySelectorAll(".card");
@@ -26,7 +26,7 @@ function filterProducts() {
 // Click Search → filter + scroll + clear
 searchButton.addEventListener("click", function() {
 
-    filterProducts();
+    searchProducts();
 
     productList.scrollIntoView({
         behavior: "smooth",
@@ -46,7 +46,7 @@ searchInput.addEventListener("keydown", function(event) {
 
         event.preventDefault();
 
-        filterProducts();
+        searchProducts();
 
         productList.scrollIntoView({
             behavior: "smooth",

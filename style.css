@@ -261,11 +261,13 @@ Hero
 
 .hero h1{
 
-    font-size:58px;
+    font-size:32px;
 
     margin-bottom:20px;
 
-    font-weight:700;
+    color:#b3bcf2;
+
+    font-weight:600;
 
 }
 

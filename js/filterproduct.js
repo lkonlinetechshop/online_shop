@@ -14,6 +14,10 @@ function filterProducts(category){
             card.style.display = "none";
         }
 
+     // Move down to products
+    document.getElementById("products").scrollIntoView({
+        behavior: "smooth"
+        
     });
 
 }

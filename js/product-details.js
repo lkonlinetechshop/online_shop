@@ -418,8 +418,8 @@ const products = [
         image: "images/smartstringhopper.jpg",
         size: "",
 
-        oldPrice: 77700,
-        price: 74000,
+        oldPrice: 82950,
+        price: 79000,
 
         discount: "5%",
         rating: "★★★★★",

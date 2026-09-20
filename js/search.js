@@ -61,5 +61,5 @@ searchInput.addEventListener("keydown", function(event) {
 });
 
 
-// Filter while typing — no scrolling
-searchInput.addEventListener("input", filterProducts);
+// Search while typing — no scrolling
+searchInput.addEventListener("input", searchProducts);

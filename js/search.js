@@ -17,12 +17,12 @@ function searchProducts() {
 
     });
 
-    if (value !== "") {
-        document.getElementById("product-list").scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
-    }
+    // Move to product list after clicking Search
+    document.getElementById("product-list").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
 }
 
+// Search when button is clicked
 document.getElementById("search-btn").addEventListener("click", searchProducts);

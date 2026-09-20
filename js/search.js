@@ -25,4 +25,4 @@ function searchProducts() {
     }
 }
 
-document.getElementById("search").addEventListener("keyup", searchProducts);
+document.getElementById("search-btn").addEventListener("click", searchProducts);

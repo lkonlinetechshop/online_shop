@@ -417,6 +417,7 @@ Category Filters
     background:#38bdf8;
 
     color:#111827;
+  transform: translateY(-20px);
 
 }
 
@@ -467,7 +468,7 @@ width: 90%;
 max-width: 1200px;
 margin: 50px auto;
 display: grid;
-grid-template-columns: repeat(3, 1fr);
+grid-template-columns: repeat(4, 1fr);
 gap: 30px;
 }
 

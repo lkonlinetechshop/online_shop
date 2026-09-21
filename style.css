@@ -101,13 +101,32 @@ header{
 
 }
 
-.logo h2{
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
-    color:#38bdf8;
+.logo-text h2 {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    font-size: 52px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #064f85;
+}
 
-    font-size:24px;
+.logo-text h2 span {
+    color: #18b9d0;
+}
 
-    font-weight:600;
+.logo-text h5 {
+    margin: 8px 0 0;
+    font-family: Arial, sans-serif;
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #62666a;
 }
 
 .logo a{

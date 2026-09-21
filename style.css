@@ -97,12 +97,12 @@ header{
     margin: 0;
     font-size: 22px;
     font-weight: 800;
-    color: #ffffff;
+    color: #2286d4;
     letter-spacing: 0.5px;
 }
 
 .logo h2 span {
-    color: #18b9d0;
+    color: #1491a3;
 }
 
 .logo h5 {
@@ -110,7 +110,7 @@ header{
     font-size: 8px;
     font-weight: 600;
     letter-spacing: 0.8px;
-    color: #9ca3af;
+    color: #e1e4e8;
 }
 .logo a{
 

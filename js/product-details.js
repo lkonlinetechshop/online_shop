@@ -10,6 +10,8 @@ const products = [
         category: "CNC parts",
 
         image: "images/2kw-220v-rituo-vfd-inverter-variable-frequency-drive.jpg",
+        manualPdf: "manuals/2.2kw-220v-rituo-vfd-manual.pdf",
+        
         size: "",
 
         oldPrice: 46200,
@@ -560,9 +562,46 @@ if (product) {
 
                 <p class="product-description">
 
-                    ${product.description}
+    ${product.description}
 
-                </p>
+</p>
+
+
+<!-- PRODUCT MANUAL -->
+
+${
+    product.manualPdf
+    ?
+    `
+    <div class="product-manual">
+
+        <h3>Product Manual</h3>
+
+        <p>
+            Download the user manual for installation,
+            wiring, parameter settings, operation,
+            and troubleshooting.
+        </p>
+
+        <a
+            href="${product.manualPdf}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="manual-btn"
+        >
+
+            <i class="fa-solid fa-file-pdf"></i>
+
+            View / Download Manual
+
+        </a>
+
+    </div>
+    `
+    :
+    ""
+}
+
 
 
                 <!-- PRODUCT OPTIONS -->

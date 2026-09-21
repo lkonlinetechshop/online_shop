@@ -11,7 +11,7 @@ const products = [
 
         image: "images/2kw-220v-rituo-vfd-inverter-variable-frequency-drive.jpg",
         manualPdf: "manuals/2.2kw-220v-rituo-vfd-manual.pdf",
-        manualPdf: "DB620 Manual.pdf",
+        manualPdf: "manuals/DB620 Manual.pdf",
         
         size: "",
 

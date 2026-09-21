@@ -343,6 +343,7 @@ const products = [
         category: "CNC parts",
 
         image: "images/cloned_richauto_a11.jpg",
+        manualPdf1: "manuals/DSP-0501-Manual.pdf",
         size: "",
 
         oldPrice: 67200,

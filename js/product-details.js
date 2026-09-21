@@ -571,7 +571,7 @@ if (product) {
 <!-- PRODUCT MANUAL -->
 
 ${
-    product.manualPdf
+    product.manualPdf1
     ?
     `
     <div class="product-manual">
@@ -588,6 +588,20 @@ ${
             View / Download Manual
 
         </a>
+    </div>
+    `
+    :
+    ""
+}
+
+<!-- PRODUCT MANUAL -->
+
+${
+    product.manualPdf2
+    ?
+    `
+    <div class="product-manual">
+
         <a
             href="${product.manualPdf2}"
             target="_blank"
@@ -600,7 +614,6 @@ ${
             View / Download Manual
 
         </a>
-
     </div>
     `
     :

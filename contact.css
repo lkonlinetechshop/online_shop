@@ -79,6 +79,7 @@ header{
 
 /* Logo */
 
+
 .logo {
     display: flex;
     align-items: center;
@@ -92,43 +93,34 @@ header{
     border-radius: 50%;
 }
 
-/* Company name */
+
 .logo h2 {
     margin: 0;
     font-size: 22px;
     font-weight: 800;
-    color: #ffffff;
+    color: #2286d4;
     letter-spacing: 0.5px;
 }
 
 .logo h2 span {
-    color: #18b9d0;
+    color: #1491a3;
 }
 
-/* Tagline */
 .logo h5 {
     margin: 3px 0 0;
     font-size: 8px;
     font-weight: 600;
     letter-spacing: 0.8px;
-    color: #9ca3af;
+    color: #e1e4e8;
+}
+.logo a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: inherit;
+    text-decoration: none;
 }
 
-.logo a{
-
-    color:white;
-
-    text-decoration:none;
-
-    padding:10px 16px;
-
-    border-radius:8px;
-
-    transition:.3s;
-
-    font-weight:500;
-
-}
 
 
 

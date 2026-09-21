@@ -575,14 +575,6 @@ ${
     `
     <div class="product-manual">
 
-        <h3>Product Manual</h3>
-
-        <p>
-            Download the user manual for installation,
-            wiring, parameter settings, operation,
-            and troubleshooting.
-        </p>
-
         <a
             href="${product.manualPdf}"
             target="_blank"

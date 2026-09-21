@@ -12,6 +12,7 @@ const products = [
         image: "images/2kw-220v-rituo-vfd-inverter-variable-frequency-drive.jpg",
         manualPdf1: "manuals/2.2kw-220v-rituo-vfd-manual.pdf",
         manualPdf2: "manuals/DB620 Manual.pdf",
+                
         
         size: "",
 
@@ -289,6 +290,7 @@ const products = [
         category: "CNC parts",
 
         image: "images/RichAuto_A11E.jpg",
+        manualPdf1: "manuals/DSP-A11-Manual.pdf",
         size: "",
 
         oldPrice: 126500,

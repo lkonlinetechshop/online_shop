@@ -1755,10 +1755,12 @@ header{
     }
 }
 
+
 .manual-btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    margin-bottom: 10px;
     padding: 10px 16px;
     background: #d32f2f;
     color: white;

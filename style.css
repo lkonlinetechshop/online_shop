@@ -112,21 +112,14 @@ header{
     letter-spacing: 0.8px;
     color: #e1e4e8;
 }
-.logo a{
-
-    color:white;
-
-    text-decoration:none;
-
-    padding:10px 16px;
-
-    border-radius:8px;
-
-    transition:.3s;
-
-    font-weight:500;
-
+.logo a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: inherit;
+    text-decoration: none;
 }
+
 
 
 /*=========================================

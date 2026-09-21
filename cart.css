@@ -74,52 +74,48 @@ header{
 
 /* Logo */
 
-.logo{
 
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.logo img{
-
-    width:55px;
-
-    height:55px;
-
-    object-fit:cover;
-
-    border-radius:50%;
-
+.logo img {
+    width: 55px;
+    height: 55px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
-.logo h2{
 
-    color:#38bdf8;
-
-    font-size:28px;
-
-    font-weight:700;
-
+.logo h2 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 800;
+    color: #2286d4;
+    letter-spacing: 0.5px;
 }
-.logo a{
 
-    color:white;
-
-    text-decoration:none;
-
-    padding:10px 16px;
-
-    border-radius:8px;
-
-    transition:.3s;
-
-    font-weight:500;
-
+.logo h2 span {
+    color: #1491a3;
 }
+
+.logo h5 {
+    margin: 3px 0 0;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    color: #e1e4e8;
+}
+.logo a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: inherit;
+    text-decoration: none;
+}
+
 /*=========================================
 Navigation
 =========================================*/

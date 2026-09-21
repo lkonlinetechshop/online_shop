@@ -35,6 +35,8 @@ const products = [
         category: "CNC parts",
 
         image: "images/richauto-a18-4-axis-dsp-cnc-controller.jpg",
+        manualPdf1: "manuals/DSP-A18-Operation-Manual.pdf",
+        manualPdf2: "manuals/DSP-A18-Manual.pdf",
         size: "",
 
         oldPrice: 220500,

@@ -88,8 +88,10 @@ header{
 .logo img {
     width: 55px;
     height: 55px;
-    object-fit: contain;
+    object-fit: cover;
+    border-radius: 50%;
 }
+
 
 .logo h2 {
     margin: 0;

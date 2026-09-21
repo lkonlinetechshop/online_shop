@@ -1755,25 +1755,6 @@ header{
     }
 }
 
-.product-manual {
-    margin-top: 20px;
-    padding: 18px;
-    background: #f7f7f7;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-}
-
-.product-manual h3 {
-    margin: 0 0 8px;
-    font-size: 18px;
-}
-
-.product-manual p {
-    margin-bottom: 15px;
-    color: #555;
-    line-height: 1.5;
-}
-
 .manual-btn {
     display: inline-flex;
     align-items: center;

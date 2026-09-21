@@ -10,8 +10,8 @@ const products = [
         category: "CNC parts",
 
         image: "images/2kw-220v-rituo-vfd-inverter-variable-frequency-drive.jpg",
-        manualPdf: "manuals/2.2kw-220v-rituo-vfd-manual.pdf",
-        manualPdf: "manuals/DB620 Manual.pdf",
+        manualPdf1: "manuals/2.2kw-220v-rituo-vfd-manual.pdf",
+        manualPdf2: "manuals/DB620 Manual.pdf",
         
         size: "",
 
@@ -577,7 +577,19 @@ ${
     <div class="product-manual">
 
         <a
-            href="${product.manualPdf}"
+            href="${product.manualPdf1}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="manual-btn"
+        >
+
+            <i class="fa-solid fa-file-pdf"></i>
+
+            View / Download Manual
+
+        </a>
+        <a
+            href="${product.manualPdf2}"
             target="_blank"
             rel="noopener noreferrer"
             class="manual-btn"

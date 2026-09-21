@@ -1496,6 +1496,23 @@ grid-template-columns:1fr;
         padding:15px;
     }
 
+   .logo {
+        gap: 12px;
+    }
+
+    .logo img {
+        width: 120px;
+    }
+
+    .logo-text h2 {
+        font-size: 28px;
+    }
+
+    .logo-text h5 {
+        font-size: 11px;
+        letter-spacing: 0.5px;
+    }
+
     nav{
         width:100%;
         display:flex;
@@ -1625,13 +1642,20 @@ grid-template-columns:1fr;
         font-size:15px;
     }
 
-    .logo img{
-        width:45px;
-        height:45px;
+     .logo {
+        gap: 8px;
     }
 
-    .logo h2{
-        font-size:20px;
+    .logo img {
+        width: 80px;
+    }
+
+    .logo-text h2 {
+        font-size: 20px;
+    }
+
+    .logo-text h5 {
+        font-size: 8px;
     }
 
     .hero h1{

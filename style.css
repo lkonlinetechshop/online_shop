@@ -79,56 +79,35 @@ header{
 
 /* Logo */
 
-.logo{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-}
-
-.logo img{
-
-    width:55px;
-
-    height:55px;
-
-    object-fit:cover;
-
-    border-radius:50%;
-
-}
-
-.logo-text {
+.logo {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 
-.logo-text h2 {
+.logo img {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+}
+
+.logo h2 {
     margin: 0;
-    font-family: Arial, sans-serif;
-    font-size: 52px;
+    font-size: 22px;
     font-weight: 800;
-    letter-spacing: 1px;
-    color: #064f85;
+    color: #07518a;
 }
 
-.logo-text h2 span {
+.logo h2 span {
     color: #18b9d0;
 }
 
-.logo-text h5 {
-    margin: 8px 0 0;
-    font-family: Arial, sans-serif;
-    font-size: 21px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    color: #62666a;
+.logo h5 {
+    margin: 2px 0 0;
+    font-size: 8px;
+    letter-spacing: 0.5px;
+    color: #666;
 }
-
 .logo a{
 
     color:white;

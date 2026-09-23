@@ -440,15 +440,41 @@ const products = [
 ];
 
 
+
 // ==========================================
-// GET PRODUCT ID FROM URL
+// CREATE URL SLUG
+// ==========================================
+
+function createSlug(name) {
+
+    return name
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9\s-]/g, "")
+        .replace(/\s+/g, "-")
+        .replace(/-+/g, "-");
+
+}
+
+
+
+// ==========================================
+// GET PRODUCT FROM URL
 // ==========================================
 
 const urlParams =
-    new URLSearchParams(window.location.search);
+    new URLSearchParams(
+        window.location.search
+    );
 
-const id =
-    Number(urlParams.get("id"));
+
+const productSlug =
+    urlParams.get("product");
+
+
+// Debug
+console.log("Product slug:", productSlug);
+
 
 
 // ==========================================
@@ -456,7 +482,16 @@ const id =
 // ==========================================
 
 const product =
-    products.find(p => p.id === id);
+    products.find(function(p) {
+
+        return createSlug(p.name) === productSlug;
+
+    });
+
+
+
+console.log("Product:", product);
+
 
 
 // ==========================================
@@ -464,7 +499,10 @@ const product =
 // ==========================================
 
 const container =
-    document.getElementById("product-details");
+    document.getElementById(
+        "product-details"
+    );
+
 
 
 // ==========================================
@@ -473,30 +511,39 @@ const container =
 
 if (product) {
 
-    // --------------------------------------
-    // Initial price
-    // --------------------------------------
+
+    // ======================================
+    // INITIAL PRICE
+    // ======================================
 
     let initialPrice =
         product.price;
+
 
     if (
         product.options &&
         product.options.length > 0
     ) {
+
         initialPrice =
             product.options[0].price;
+
     }
 
+
+
+    // ======================================
+    // PRODUCT HTML
+    // ======================================
 
     container.innerHTML = `
 
         <div class="product-details">
 
 
-            <!-- PRODUCT IMAGE -->
+            <!-- IMAGE -->
 
-            <div>
+            <div class="product-image">
 
                 <img
                     src="${product.image}"
@@ -506,7 +553,8 @@ if (product) {
             </div>
 
 
-            <!-- PRODUCT INFORMATION -->
+
+            <!-- INFORMATION -->
 
             <div class="product-info">
 
@@ -539,9 +587,10 @@ if (product) {
                 </div>
 
 
+
                 <!-- PRICE -->
 
-                <p class="price">
+                <div class="price">
 
                     <del>
 
@@ -556,8 +605,11 @@ if (product) {
 
                     </strong>
 
-                </p>
+                </div>
 
+
+
+                <!-- STOCK -->
 
                 <span class="stock">
 
@@ -566,202 +618,217 @@ if (product) {
                 </span>
 
 
+
+                <!-- DESCRIPTION -->
+
                 <p class="product-description">
 
-    ${product.description}
+                    ${product.description}
 
-</p>
-
-
-<!-- PRODUCT MANUAL -->
-
-${
-    product.manualPdf1
-    ?
-    `
-    <div class="product-manual">
-
-        <a
-            href="${product.manualPdf1}"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="manual-btn"
-        >
-
-            <i class="fa-solid fa-file-pdf"></i>
-
-            View / Download Manual
-
-        </a>
-    </div>
-    `
-    :
-    ""
-}
-
-<!-- PRODUCT MANUAL -->
-
-${
-    product.manualPdf2
-    ?
-    `
-    <div class="product-manual">
-
-        <a
-            href="${product.manualPdf2}"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="manual-btn"
-        >
-
-            <i class="fa-solid fa-file-pdf"></i>
-
-            View / Download Manual
-
-        </a>
-    </div>
-    `
-    :
-    ""
-}
+                </p>
 
 
 
-                <!-- PRODUCT OPTIONS -->
+                <!-- MANUAL 1 -->
 
-                <div class="product-options">
+                ${
+                    product.manualPdf1
+                    ?
+                    `
+                    <div class="product-manual">
+
+                        <a
+                            href="${product.manualPdf1}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="manual-btn"
+                        >
+
+                            <i class="fa-solid fa-file-pdf"></i>
+
+                            View / Download Manual
+
+                        </a>
+
+                    </div>
+                    `
+                    :
+                    ""
+                }
 
 
-                    <!-- QUANTITY -->
 
-                    <div class="quantity-section">
+                <!-- MANUAL 2 -->
+
+                ${
+                    product.manualPdf2
+                    ?
+                    `
+                    <div class="product-manual">
+
+                        <a
+                            href="${product.manualPdf2}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="manual-btn"
+                        >
+
+                            <i class="fa-solid fa-file-pdf"></i>
+
+                            View / Download Manual
+
+                        </a>
+
+                    </div>
+                    `
+                    :
+                    ""
+                }
+
+
+
+                <!-- OPTIONS -->
+
+                ${
+                    product.options &&
+                    product.options.length > 0
+                    ?
+
+                    `
+
+                    <div class="bit-size-section">
 
                         <label>
 
-                            Quantity
+                            Bit Size
 
                         </label>
 
 
-                        <div class="quantity-box">
+                        <div id="bitSizes">
 
+                            ${
+                                product.options
+                                    .map(
+                                        function(option, index) {
 
-                            <button
-                                type="button"
-                                id="minusBtn">
+                                            return `
 
-                                -
-
-                            </button>
-
-
-                            <input
-                                type="text"
-                                id="quantity"
-                                value="1"
-                                readonly
-                            >
-
-
-                            <button
-                                type="button"
-                                id="plusBtn">
-
-                                +
-
-                            </button>
-
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- BIT SIZE -->
-
-                    ${
-                        product.options &&
-                        product.options.length > 0
-                        ?
-                        `
-
-                        <div class="bit-size-section">
-
-                            <label>
-
-                                Bit Size
-
-                            </label>
-
-
-                            <div id="bitSizes">
-
-                                ${
-                                    product.options
-                                        .map(
-                                            (option, index) => `
-
-                                        <label class="size-option">
-
-                                            <input
-                                                type="radio"
-                                                name="bitSize"
-                                                value="${option.size}"
-                                                data-price="${option.price}"
-                                                ${
-                                                    index === 0
-                                                    ? "checked"
-                                                    : ""
-                                                }
+                                            <label
+                                                class="size-option"
                                             >
 
-                                            <span>
+                                                <input
+                                                    type="radio"
+                                                    name="bitSize"
+                                                    value="${option.size}"
+                                                    data-price="${option.price}"
 
-                                                ${option.size}
+                                                    ${
+                                                        index === 0
+                                                        ? "checked"
+                                                        : ""
+                                                    }
+                                                >
 
-                                            </span>
+                                                <span>
 
-                                        </label>
+                                                    ${option.size}
 
-                                    `
-                                        )
-                                        .join("")
-                                }
+                                                </span>
 
-                            </div>
+                                            </label>
+
+                                            `;
+
+                                        }
+                                    )
+                                    .join("")
+                            }
 
                         </div>
 
-                        `
-                        :
-                        ""
-                    }
-
-
-                    <!-- SELECTED PRICE -->
-
-                    <div class="selected-price">
-
-                        Rs.
-
-                        <span id="selectedPrice">
-
-                            ${initialPrice.toLocaleString()}
-
-                        </span>
-
                     </div>
 
+                    `
+
+                    :
+
+                    ""
+
+                }
+
+
+
+                <!-- QUANTITY -->
+
+                <div class="quantity-section">
+
+                    <label>
+
+                        Quantity
+
+                    </label>
+
+
+                    <div class="quantity-box">
+
+                        <button
+                            type="button"
+                            id="minusBtn"
+                        >
+
+                            -
+
+                        </button>
+
+
+                        <input
+                            type="text"
+                            id="quantity"
+                            value="1"
+                            readonly
+                        >
+
+
+                        <button
+                            type="button"
+                            id="plusBtn"
+                        >
+
+                            +
+
+                        </button>
+
+                    </div>
 
                 </div>
 
 
-                <!-- ADD TO CART -->
+
+                <!-- SELECTED PRICE -->
+
+                <div class="selected-price">
+
+                    Rs.
+
+                    <span id="selectedPrice">
+
+                        ${initialPrice.toLocaleString()}
+
+                    </span>
+
+                </div>
+
+
+
+                <!-- ADD CART -->
 
                 <button
                     type="button"
                     class="add-cart buy-btn"
-                    id="addCartBtn">
+                    id="addCartBtn"
+                >
 
                     <i class="fa-solid fa-cart-shopping"></i>
 
@@ -777,10 +844,29 @@ ${
     `;
 
 }
+
 else {
 
-    container.innerHTML =
-        "<h2>Product Not Found</h2>";
+
+    container.innerHTML = `
+
+        <div class="product-not-found">
+
+            <h2>
+                Product Not Found
+            </h2>
+
+            <p>
+                The product you are looking for does not exist.
+            </p>
+
+            <a href="products.html">
+                Back To Products
+            </a>
+
+        </div>
+
+    `;
 
 }
 

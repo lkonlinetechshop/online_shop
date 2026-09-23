@@ -38,7 +38,7 @@ const products = [
         id: 13,
 
         name: "RichAuto A18 4 Axis DSP CNC Controller",
-        slug = "RichAuto A18 4 Axis DSP CNC Controller";
+        
         category: "CNC parts",
 
         image: "images/richauto-a18-4-axis-dsp-cnc-controller.jpg",
@@ -454,8 +454,8 @@ const products = [
 const urlParams =
     new URLSearchParams(window.location.search);
 
-const slug = urlParams.get("product");
-
+const id =
+    Number(urlParams.get("id"));
 
 // ==========================================
 // FIND PRODUCT

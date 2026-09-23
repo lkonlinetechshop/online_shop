@@ -1,10 +1,6 @@
 
 
 
-
-
-
-
 const products = [
 
 
@@ -12,7 +8,7 @@ const products = [
         id: 14,
 
         name: "2.2kW 220V Rituo VFD Inverter Variable Frequency Drive",
-        slug: "2.2kW 220V Rituo VFD Inverter Variable Frequency Drive",
+     
 
         category: "CNC parts",
 

@@ -12,6 +12,7 @@ const products = [
         id: 14,
 
         name: "2.2kW 220V Rituo VFD Inverter Variable Frequency Drive",
+        slug = "2.2kW 220V Rituo VFD Inverter Variable Frequency Drive";
 
         category: "CNC parts",
 
@@ -37,7 +38,7 @@ const products = [
         id: 13,
 
         name: "RichAuto A18 4 Axis DSP CNC Controller",
-
+        slug = "RichAuto A18 4 Axis DSP CNC Controller";
         category: "CNC parts",
 
         image: "images/richauto-a18-4-axis-dsp-cnc-controller.jpg",
@@ -453,8 +454,7 @@ const products = [
 const urlParams =
     new URLSearchParams(window.location.search);
 
-const id =
-    Number(urlParams.get("id"));
+const slug = urlParams.get("product");
 
 
 // ==========================================

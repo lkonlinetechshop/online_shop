@@ -49,7 +49,7 @@ const products = [
         stock: "In Stock",
 
         description:
-            "24V 10A Power Supply SMPS (Aluminum Cover - with Fan)."
+            "24V 10A Power Supply SMPS with aluminum cover and cooling fan, suitable for CNC machines and electronic applications."
     },
         
 

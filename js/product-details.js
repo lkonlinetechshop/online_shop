@@ -471,7 +471,7 @@ const products = [
     {
         id: 6,
 
-        name: "Smart String Hopper Making machine (800pcs per hour)Without Compressure",
+        name: "Smart String Hopper Making machine",
 
         category: "Machineries",
 

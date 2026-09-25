@@ -492,6 +492,23 @@ const products = [
 ];
 
 
+
+// ==========================================
+// CREATE URL SLUG
+// ==========================================
+
+function createSlug(name) {
+
+    return name
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9\s-]/g, "")
+        .replace(/\s+/g, "-")
+        .replace(/-+/g, "-");
+
+}
+
+
 // ==========================================
 // GET PRODUCT ID FROM URL
 // ==========================================
@@ -499,15 +516,29 @@ const products = [
 const urlParams =
     new URLSearchParams(window.location.search);
 
-const id =
-    Number(urlParams.get("id"));
+const productSlug =
+    urlParams.get("product");
+
+// Debug
+console.log("Product slug:", productSlug);
+
+
 
 // ==========================================
 // FIND PRODUCT
 // ==========================================
 
 const product =
-    products.find(p => p.id === id);
+    products.find(function(p) {
+
+        return createSlug(p.name) === productSlug;
+
+    });
+
+
+
+console.log("Product:", product);
+
 
 
 // ==========================================
@@ -515,7 +546,11 @@ const product =
 // ==========================================
 
 const container =
-    document.getElementById("product-details");
+    document.getElementById(
+        "product-details"
+    );
+
+
 
 
 // ==========================================

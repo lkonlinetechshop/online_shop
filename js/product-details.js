@@ -313,7 +313,7 @@ const products = [
     {
         id: 7,
 
-        name: "Logitech G102 USB Wired Gaming Mouse 8000 DPI For PC/Mac Computer and Laptop",
+        name: "Logitech G102 USB Wired Gaming Mouse",
 
         category: "Pc",
 

@@ -4,6 +4,32 @@
 const products = [
 
 
+
+
+        {
+        id: 17,
+
+        name: "CW ChuangWei CWD860H",
+     
+
+        category: "CNC parts",
+
+        image: "images/cw-chuangwei-cwd860h-stepper-motor-driver-18-80vac-72a.jpg",           
+        
+        size: "",
+
+        oldPrice: 19440,
+        price: 18000,
+
+        discount: "8%",
+        rating: "★★★★★",
+        stock: "In Stock",
+
+        description:
+            "CW ChuangWei CWD860H Stepper Motor Driver 18-80VAC 7.2A"
+    },
+        
+
         {
         id: 16,
 

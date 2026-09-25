@@ -4,7 +4,29 @@
 const products = [
 
 
+        {
+        id: 18,
 
+        name: "TB6600 Stepper Motor Driver 4A 42VDC",
+     
+
+        category: "CNC parts",
+
+        image: "images/tb6600-stepper-motor-driver-4a-42vdc.jpg",           
+        
+        size: "",
+
+        oldPrice: 2350,
+        price: 2050,
+
+        discount: "15%",
+        rating: "★★★★★",
+        stock: "In Stock",
+
+        description:
+            "TB6600 Stepper Motor Driver 4A 42VDC"
+    },
+        
 
         {
         id: 17,

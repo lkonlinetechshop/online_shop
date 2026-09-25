@@ -536,7 +536,7 @@ const product =
     });
 
 
-
+console.log("Product slug:", productSlug);
 console.log("Product:", product);
 
 

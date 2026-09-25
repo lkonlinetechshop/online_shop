@@ -519,8 +519,7 @@ const urlParams =
 const productSlug =
     urlParams.get("product");
 
-// Debug
-console.log("Product slug:", productSlug);
+
 
 
 

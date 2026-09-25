@@ -5,6 +5,55 @@ const products = [
 
 
         {
+        id: 16,
+
+        name: "24V 10A Power Supply SMPS (Aluminum Cover)",
+     
+
+        category: "CNC parts",
+
+        image: "images/24v-10a-power-supply-smps-aluminum-cover.jpg",           
+        
+        size: "",
+
+        oldPrice: 3656,
+        price: 3550,
+
+        discount: "3%",
+        rating: "★★★★★",
+        stock: "In Stock",
+
+        description:
+            "24V 10A Power Supply SMPS (Aluminum Cover)"
+    },
+        
+
+        {
+        id: 15,
+
+        name: "24V 10A Power Supply SMPS (Aluminum Cover - with Fan",
+     
+
+        category: "CNC parts",
+
+        image: "images/24v-10a-power-supply-smps-aluminum-cover-with-fan.jpg",
+     
+        
+        size: "",
+
+        oldPrice: 3876,
+        price: 3800,
+
+        discount: "2%",
+        rating: "★★★★★",
+        stock: "In Stock",
+
+        description:
+            "24V 10A Power Supply SMPS (Aluminum Cover - with Fan)."
+    },
+        
+
+        {
         id: 14,
 
         name: "2.2kW 220V Rituo VFD Inverter Variable Frequency Drive",

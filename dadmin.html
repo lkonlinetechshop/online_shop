@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - CNC 3D Designs</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<div class="admin-wrapper">
+
+    <header class="admin-header">
+        <div>
+            <p class="small-title">ADMIN PANEL</p>
+            <h1>CNC 3D Design Manager</h1>
+        </div>
+        <a href="index.html">← View Website</a>
+    </header>
+
+    <section id="login-box" class="panel login-panel">
+        <h2>Admin Login</h2>
+        <p>Demo password: <strong>1234</strong></p>
+
+        <input type="password" id="admin-password" placeholder="Enter password">
+        <button id="login-btn">Login</button>
+
+        <p id="login-message" class="message"></p>
+    </section>
+
+    <section id="admin-panel" class="hidden">
+
+        <div class="panel">
+            <h2>Upload New CNC Design</h2>
+            <p class="help">
+                Choose a preview image and your CNC design file.
+                Supported examples: STL, STP, STEP, OBJ, DXF, 3MF.
+            </p>
+
+            <form id="upload-form">
+
+                <label>Design Title</label>
+                <input type="text" id="title" required placeholder="Example: CNC Gear Wheel">
+
+                <label>Description</label>
+                <textarea id="description" required
+                    placeholder="Write a short description"></textarea>
+
+                <label>Category</label>
+                <select id="category">
+                    <option>Mechanical</option>
+                    <option>Engraving</option>
+                    <option>Furniture</option>
+                    <option>Decorative</option>
+                    <option>Other</option>
+                </select>
+
+                <label>Preview Image</label>
+                <input type="file" id="image-file" accept="image/*" required>
+
+                <label>CNC Design File</label>
+                <input
+                    type="file"
+                    id="design-file"
+                    accept=".stl,.step,.stp,.obj,.dxf,.3mf,.iges,.igs,.zip"
+                    required
+                >
+
+                <button class="upload-btn" type="submit">
+                    Upload Design
+                </button>
+
+                <p id="upload-message" class="message"></p>
+            </form>
+        </div>
+
+        <div class="panel">
+            <div class="list-heading">
+                <h2>Uploaded Designs</h2>
+                <button id="clear-btn" class="danger-btn">Delete All Uploaded</button>
+            </div>
+
+            <div id="admin-list"></div>
+        </div>
+
+    </section>
+</div>
+
+<script src="admin.js"></script>
+</body>
+</html>

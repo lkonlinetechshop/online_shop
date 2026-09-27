@@ -81,7 +81,7 @@ async function deleteAllDesigns() {
 
 loginBtn.addEventListener("click", () => {
     // DEMO ONLY. Do not use this password system for a real public website.
-    if (passwordInput.value === "1234") {
+    if (passwordInput.value === "$Techstore1997") {
         loginBox.classList.add("hidden");
         adminPanel.classList.remove("hidden");
         loadAdminList();

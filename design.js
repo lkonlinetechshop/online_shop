@@ -86,9 +86,28 @@ function createCard(design) {
     card.className = "design-card";
 
     const image = document.createElement("img");
-    image.className = "design-image";
-    image.src = design.image || makePlaceholder("CNC Design");
-    image.alt = design.title;
+
+image.className = "design-image";
+
+if (typeof design.image === "string") {
+
+    image.src = design.image;
+
+}
+else if (design.image instanceof Blob) {
+
+    image.src =
+        URL.createObjectURL(design.image);
+
+}
+else {
+
+    image.src =
+        makePlaceholder("CNC Design");
+
+}
+
+image.alt = design.title;
 
     const info = document.createElement("div");
     info.className = "design-info";

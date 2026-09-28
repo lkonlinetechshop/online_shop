@@ -12,30 +12,30 @@ const designs = [
         category: "2D Design",
         fileType: "ART",
         fileName: "gift_hart.art",
-        image: "2ddesign/gift_hart.jpg",
-        file: "2ddesign/gift_hart.art"
+        image: "design/2ddesign/gift_hart.jpg",
+        file: "design/2ddesign/gift_hart.art"
     },
 
     {
         id: "2",
-        title: "CNC Gear Wheel",
-        description: "Precision gear wheel design for CNC machining.",
-        category: "Mechanical",
-        fileType: "STL",
-        fileName: "cnc-gear-wheel.stl",
-        image: "images/cnc-gear.jpg",
-        file: "designs/cnc-gear-wheel.stl"
+        title: "Gift Heart Design",
+        description: "2D heart gift design for CNC engraving.",
+        category: "2D Design",
+        fileType: "ART",
+        fileName: "gift_hart.art",
+        image: "design/2ddesign/gift_hart.jpg",
+        file: "design/2ddesign/gift_hart.art"
     },
 
     {
         id: "3",
-        title: "CNC Name Plate",
-        description: "Decorative name plate for CNC engraving.",
-        category: "Engraving",
-        fileType: "DXF",
-        fileName: "name-plate.dxf",
-        image: "images/name-plate.jpg",
-        file: "designs/name-plate.dxf"
+        title: "Gift Heart Design",
+        description: "2D heart gift design for CNC engraving.",
+        category: "2D Design",
+        fileType: "ART",
+        fileName: "gift_hart.art",
+        image: "design/2ddesign/gift_hart.jpg",
+        file: "design/2ddesign/gift_hart.art"
     }
 
 ];

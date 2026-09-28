@@ -23,7 +23,7 @@ const designs = [
         category: "2D Design",
         fileType: "ART",
         fileName: "gift_hart.art",
-        image: "design/2ddesign/gift_hart.jpg",
+        image: "https://drive.google.com/file/d/19lzMW6nhTdi-ALauADbFCxpG54NyyKnt/view?usp=sharing",
         file: "design/2ddesign/gift_hart.art"
     },
 

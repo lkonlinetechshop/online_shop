@@ -23,13 +23,13 @@ const sampleDesigns = [
         sample: true
     },
     {
-        id: "sample-3",
-        title: "Machine Bracket",
-        description: "3D bracket model for machining and fabrication.",
-        category: "Mechanical",
-        fileType: "STEP",
-        fileName: "machine-bracket.step",
-        image: makePlaceholder("Bracket"),
+        id: "1",
+        title: "Gift Hart design",
+        description: "2D gift design.",
+        category: "2D design",
+        fileType: "Art",
+        fileName: "2ddesign/gift_hart.art",
+        image: "2ddesign/gift_hart.jpg",
         sample: true
     }
 ];

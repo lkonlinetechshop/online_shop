@@ -369,7 +369,7 @@ footer p{
 }
 
 @media (max-width: 650px) {
-    .header {
+    header {
         height: auto;
         padding: 16px 20px;
         gap: 15px;

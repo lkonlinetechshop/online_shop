@@ -1,4 +1,4 @@
-```javascript
+
 // ========================================
 // MANUAL CNC DESIGNS
 // ========================================
@@ -259,4 +259,4 @@ document.addEventListener(
     "DOMContentLoaded",
     displayDesigns
 );
-```
+

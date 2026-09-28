@@ -1,194 +1,262 @@
-const DB_NAME = "cnc3dDesignDB";
-const STORE_NAME = "designs";
+```javascript
+// ========================================
+// MANUAL CNC DESIGNS
+// ========================================
 
-const sampleDesigns = [
+const designs = [
+
     {
-        id: "sample-1",
+        id: "1",
+        title: "Gift Heart Design",
+        description: "2D heart gift design for CNC engraving.",
+        category: "2D Design",
+        fileType: "ART",
+        fileName: "gift_hart.art",
+        image: "2ddesign/gift_hart.jpg",
+        file: "2ddesign/gift_hart.art"
+    },
+
+    {
+        id: "2",
         title: "CNC Gear Wheel",
-        description: "Precision gear model suitable for CNC machining projects.",
+        description: "Precision gear wheel design for CNC machining.",
         category: "Mechanical",
         fileType: "STL",
         fileName: "cnc-gear-wheel.stl",
-        image: makePlaceholder("CNC Gear"),
-        sample: true
+        image: "images/cnc-gear.jpg",
+        file: "designs/cnc-gear-wheel.stl"
     },
+
     {
-        id: "sample-2",
+        id: "3",
         title: "CNC Name Plate",
-        description: "Decorative name plate design for CNC engraving.",
+        description: "Decorative name plate for CNC engraving.",
         category: "Engraving",
         fileType: "DXF",
         fileName: "name-plate.dxf",
-        image: makePlaceholder("Name Plate"),
-        sample: true
-    },
-    {
-        id: "1",
-        title: "Gift Hart design",
-        description: "2D gift design.",
-        category: "2D design",
-        fileType: "Art",
-        fileName: "2ddesign/gift_hart.art",
-        image: "2ddesign/gift_hart.jpg",
-        sample: true
+        image: "images/name-plate.jpg",
+        file: "designs/name-plate.dxf"
     }
+
 ];
 
-function makePlaceholder(text) {
-    const svg = `
-        <svg xmlns="http://www.w3.org/2000/svg" width="800" height="500">
-            <rect width="100%" height="100%" fill="#dbeafe"/>
-            <text x="50%" y="50%" dominant-baseline="middle"
-                  text-anchor="middle" font-family="Arial"
-                  font-size="52" font-weight="bold" fill="#0369a1">
-                ${text}
-            </text>
-        </svg>`;
-    return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg);
-}
 
-function openDB() {
-    return new Promise((resolve, reject) => {
-        const request = indexedDB.open(DB_NAME, 1);
-
-        request.onupgradeneeded = () => {
-            const db = request.result;
-            if (!db.objectStoreNames.contains(STORE_NAME)) {
-                db.createObjectStore(STORE_NAME, { keyPath: "id" });
-            }
-        };
-
-        request.onsuccess = () => resolve(request.result);
-        request.onerror = () => reject(request.error);
-    });
-}
-
-async function getUploadedDesigns() {
-    const db = await openDB();
-
-    return new Promise((resolve, reject) => {
-        const transaction = db.transaction(STORE_NAME, "readonly");
-        const store = transaction.objectStore(STORE_NAME);
-        const request = store.getAll();
-
-        request.onsuccess = () => resolve(request.result || []);
-        request.onerror = () => reject(request.error);
-    });
-}
-
-async function getAllDesigns() {
-    const uploaded = await getUploadedDesigns();
-    return [...uploaded, ...sampleDesigns];
-}
+// ========================================
+// CREATE DESIGN CARD
+// ========================================
 
 function createCard(design) {
+
     const card = document.createElement("article");
     card.className = "design-card";
 
+
+    // IMAGE
     const image = document.createElement("img");
 
-image.className = "design-image";
-
-if (typeof design.image === "string") {
+    image.className = "design-image";
 
     image.src = design.image;
 
-}
-else if (design.image instanceof Blob) {
+    image.alt = design.title;
 
-    image.src =
-        URL.createObjectURL(design.image);
+    image.onerror = function () {
+        this.src = "images/default-design.jpg";
+    };
 
-}
-else {
 
-    image.src =
-        makePlaceholder("CNC Design");
-
-}
-
-image.alt = design.title;
-
+    // INFO
     const info = document.createElement("div");
+
     info.className = "design-info";
 
+
+    // TITLE
     const title = document.createElement("h3");
+
     title.textContent = design.title;
 
-    const description = document.createElement("p");
-    description.className = "description";
-    description.textContent = design.description || "CNC 3D design file.";
 
+    // DESCRIPTION
+    const description = document.createElement("p");
+
+    description.className = "description";
+
+    description.textContent =
+        design.description || "CNC design file.";
+
+
+    // META
     const meta = document.createElement("div");
+
     meta.className = "meta";
 
-    const type = document.createElement("span");
-    type.className = "badge";
-    type.textContent = design.fileType || "FILE";
 
+    // FILE TYPE
+    const type = document.createElement("span");
+
+    type.className = "badge";
+
+    type.textContent = design.fileType;
+
+
+    // CATEGORY
     const category = document.createElement("span");
+
     category.className = "badge";
-    category.textContent = design.category || "CNC";
+
+    category.textContent = design.category;
+
 
     meta.append(type, category);
 
+
+    // DOWNLOAD BUTTON
     const button = document.createElement("button");
+
     button.className = "download-btn";
+
     button.textContent = "⬇ Download Design";
 
-    button.addEventListener("click", () => downloadDesign(design));
 
-    info.append(title, description, meta, button);
-    card.append(image, info);
+    button.addEventListener("click", function () {
+
+        downloadDesign(design);
+
+    });
+
+
+    // ADD EVERYTHING
+    info.append(
+        title,
+        description,
+        meta,
+        button
+    );
+
+    card.append(
+        image,
+        info
+    );
+
 
     return card;
 }
 
+
+// ========================================
+// DOWNLOAD DESIGN
+// ========================================
+
 function downloadDesign(design) {
-    if (!design.fileBlob) {
-        alert(
-            "This is a sample design card. Upload a real STL, DXF, STEP, OBJ or other file from the Admin page to enable downloading."
-        );
+
+    if (!design.file) {
+
+        alert("Design file not available.");
+
         return;
+
     }
 
-    const url = URL.createObjectURL(design.fileBlob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = design.fileName || "cnc-design";
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
 
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    const link = document.createElement("a");
+
+    link.href = design.file;
+
+    link.download = design.fileName;
+
+    document.body.appendChild(link);
+
+    link.click();
+
+    link.remove();
+
 }
 
-async function displayDesigns() {
-    const grid = document.getElementById("design-grid");
-    const empty = document.getElementById("empty-message");
-    const search = document.getElementById("search");
 
-    const designs = await getAllDesigns();
+// ========================================
+// DISPLAY DESIGNS
+// ========================================
+
+function displayDesigns() {
+
+    const grid =
+        document.getElementById("design-grid");
+
+    const empty =
+        document.getElementById("empty-message");
+
+    const search =
+        document.getElementById("search");
+
 
     function render() {
-        const query = search.value.trim().toLowerCase();
+
+        const query =
+            search.value.trim().toLowerCase();
+
+
         grid.innerHTML = "";
 
-        const filtered = designs.filter(d =>
-            (d.title || "").toLowerCase().includes(query) ||
-            (d.category || "").toLowerCase().includes(query) ||
-            (d.fileType || "").toLowerCase().includes(query)
-        );
 
-        empty.style.display = filtered.length ? "none" : "block";
+        const filtered =
+            designs.filter(function (design) {
 
-        filtered.forEach(design => {
-            grid.appendChild(createCard(design));
+                return (
+
+                    design.title
+                        .toLowerCase()
+                        .includes(query)
+
+                    ||
+
+                    design.category
+                        .toLowerCase()
+                        .includes(query)
+
+                    ||
+
+                    design.fileType
+                        .toLowerCase()
+                        .includes(query)
+
+                );
+
+            });
+
+
+        empty.style.display =
+            filtered.length ? "none" : "block";
+
+
+        filtered.forEach(function (design) {
+
+            grid.appendChild(
+                createCard(design)
+            );
+
         });
+
     }
 
-    search.addEventListener("input", render);
+
+    search.addEventListener(
+        "input",
+        render
+    );
+
+
     render();
+
 }
 
-document.addEventListener("DOMContentLoaded", displayDesigns);
+
+// ========================================
+// START
+// ========================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    displayDesigns
+);
+```

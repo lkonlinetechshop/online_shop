@@ -520,7 +520,7 @@ footer p{
    TABLET
 ======================================== */
 
-@media (max-width: 900px) {
+@media (max-width: 950px) {
 
     .contact-section {
         padding: 60px 4%;
@@ -638,20 +638,6 @@ footer p{
 ======================================== */
 
 @media (max-width: 400px) {
-
-    .logo img {
-        width: 45px;
-        height: 45px;
-    }
-
-    .logo h2 {
-        font-size: 18px;
-    }
-
-    .logo h5 {
-        font-size: 7px;
-    }
-
 
 
     .contact-info h1 {

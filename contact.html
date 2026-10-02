@@ -43,34 +43,44 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
 <header>
 
+    <button class="menu-toggle" id="menu-toggle" aria-label="Open Menu">
+        <i class="fa-solid fa-bars"></i>
+    </button>
 
-<div class="logo">
-    <a href="index.html">
-        <img src="images/logo.png" alt="LankaCNC Logo">
+   <div class="logo">
+    <img src="images/logo.png" alt="LankaCNC Logo">
 
-        <div>
-            <h2>LANKACNC<span>.lk</span></h2>
-            <h5>PRECISION ENGINEERING SOLUTIONS</h5>
-        </div>
-    </a>
+    <div>
+        <h2>LANKACNC<span>.lk</span></h2>
+        <h5>PRECISION ENGINEERING SOLUTIONS</h5>
+    </div>
 </div>
+    
 
-    <nav>
+    <nav id="nav-menu">
+
         <a href="index.html">Home</a>
+        
         <a href="index.html">Products</a>
+        
+        
         <a href="contact.html">Contact</a>
 
-        <a href="signin.html" id="signin-link">Sign In</a>
+        <a href="signin.html" id="signin-link">
+            Sign In
+        </a>
 
         <span id="user-status"></span>
 
         <button id="logout-btn" style="display:none;">
             Logout
         </button>
+
+        <a href="admin.html" id="admin-link" style="display:none;">
+            Admin
+        </a>
     </nav>
-
-
-    </header>
+</header>
 
 
 
@@ -427,7 +437,7 @@ ${message}`;
 
     </script>
 
-
+<script src="js/menu.js"></script>
 <script src="js/signin.js"></script>
 <script src="js/auth.js"></script>
 

@@ -546,31 +546,9 @@ footer p{
 @media (max-width: 700px) {
 
     header {
-        padding: 15px 20px;
-
-        flex-direction: column;
-
-        gap: 15px;
+        height: 75px;
+        padding: 0 18px;
     }
-
-
-   .logo {
-        gap: 8px;
-    }
-
-    .logo img {
-        width: 45px;
-        height: 45px;
-    }
-
-    .logo h2 {
-        font-size: 18px;
-    }
-
-    .logo h5 {
-        font-size: 7px;
-    }
-
 
     .menu-toggle {
         display: block;

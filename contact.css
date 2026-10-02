@@ -522,18 +522,6 @@ footer p{
 
 @media (max-width: 900px) {
 
-    header {
-        padding: 15px 4%;
-    }
-
-    nav {
-        gap: 15px;
-    }
-
-    nav a {
-        font-size: 14px;
-    }
-
     .contact-section {
         padding: 60px 4%;
     }
@@ -555,7 +543,7 @@ footer p{
    MOBILE
 ======================================== */
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
 
     header {
         padding: 15px 20px;
@@ -584,20 +572,33 @@ footer p{
     }
 
 
-    nav {
+    .menu-toggle {
+        display: block;
+    }
+
+    .main-nav {
+        position: absolute;
+        top: 75px;
+        left: 0;
         width: 100%;
-
-        justify-content: center;
-
-        flex-wrap: wrap;
-
-        gap: 12px;
+        padding: 15px 20px;
+        background: #111827;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        z-index: 1000;
     }
 
-
-    nav a {
-        font-size: 13px;
+    .main-nav.active {
+        display: flex;
     }
+
+    .main-nav a {
+        padding: 13px 5px;
+        border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
 
 
     #user-status {
@@ -673,15 +674,6 @@ footer p{
         font-size: 7px;
     }
 
-
-    nav {
-        gap: 8px;
-    }
-
-
-    nav a {
-        font-size: 12px;
-    }
 
 
     .contact-info h1 {

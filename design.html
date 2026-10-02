@@ -1,132 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CNC Design - LANKACNC.LK</title>
-
-    <link rel="stylesheet" href="design.css">
-
-    <meta
-name="description"
-content="Buy CNC Machine, CNC Parts, Electronic accessories at the best prices in Sri Lanka.">
-
-<meta
-name="keywords"
-content="CNC machine sri lanka, CNC parts, Electronics, Tech accessories">
-
-<meta
-name="author"
-content="LANKACNC.LK Sri Lanka">
-
-<meta property="og:title"
-      content="LANKACNC.LK Sri Lanka">
-
-<meta property="og:description"
-      content="CNC Machine, CNC Parts, Electronic accessories.">
-
-<meta property="og:image"
-      content="https://www.lankacnc.lk/images/logo.png">
-
-<meta property="og:url"
-      content="https://www.lankacnc.lk">
-
-    <link
-rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    
+    <meta name="description" content="LANKACNC CNC Design Library - Download CNC-ready designs for engraving and cutting.">
+    <title>CNC Design Library | LANKACNC.lk</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header class="header">
-
-
-<div class="logo">
-    <a href="index.html">
-        <img src="images/logo.png" alt="LankaCNC Logo">
-
-        <div>
-            <h2>LANKACNC<span>.lk</span></h2>
-            <h5>PRECISION ENGINEERING SOLUTIONS</h5>
-        </div>
+<header class="site-header">
+    <a href="#" class="brand">
+        <img src="images/logo.png" alt="LANKACNC.lk Logo">
     </a>
-</div>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="index.html">Products</a>
-        <a href="contact.html">Contact</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+        ☰
+    </button>
 
-        <a href="signin.html" id="signin-link">Sign In</a>
-
-        <span id="user-status"></span>
-
-        <button id="logout-btn" style="display:none;">
-            Logout
-        </button>
-		
+    <nav class="main-nav" id="mainNav">
+        <a href="#">Home</a>
+        <a href="#">Products</a>
+        <a href="#">Contact</a>
+        <a href="#">Sign In</a>
     </nav>
+</header>
 
+<div class="header-strip"></div>
 
-    </header>
+<main class="library-page">
 
-<section class="hero">
-    <div class="hero-content">
-        <p class="small-title">DIGITAL CNC DESIGN LIBRARY</p>
-        <h1>Download <span>2D & 3D CNC Designs</span></h1>
-        <p>
-            Browse CNC-ready 3D models, STL files, DXF files and other
-            digital designs for your projects.
-        </p>
-        <a href="#designs" class="hero-btn">Browse Designs</a>
-    </div>
-</section>
+    <section class="library-heading">
+        <div>
+            <p class="eyebrow">OUR LIBRARY</p>
+            <h1>Latest CNC Designs</h1>
+        </div>
 
-<main>
-    <section class="section" id="designs">
-        <div class="section-heading">
-            <div>
-                <p class="small-title">OUR LIBRARY</p>
-                <h2>Latest CNC Designs</h2>
+        <div class="search-box">
+            <input type="search" id="searchInput" placeholder="Search designs..." autocomplete="off">
+        </div>
+    </section>
+
+    <section class="design-grid" id="designGrid">
+
+        <article class="design-card"
+                 data-title="Gift Heart Design"
+                 data-description="2D heart gift design for CNC engraving."
+                 data-tags="art 2d design heart gift" data-file-type="ART">
+
+            <div class="design-image">
+                <img src="https://drive.google.com/thumbnail?id=14VpEslvXvgTKUeAJrWTdrGt02HjquLyi&sz=w1200" alt="Gift Heart Design">
             </div>
 
-            <input
-                type="search"
-                id="search"
-                placeholder="Search designs..."
-                aria-label="Search designs"
-            >
-        </div>
+            <div class="design-content">
+                <h2>Gift Heart Design</h2>
+                <p>2D heart gift design for CNC engraving.</p>
 
-        <div id="design-grid" class="design-grid"></div>
-        <p id="empty-message" class="empty-message">No designs found.</p>
+                <div class="tags">
+                     <span class="file-type-badge" data-file-badge>ART</span>
+                     <span>2D Design</span>
+                 </div>
+
+                <a class="download-btn" href="https://drive.google.com/uc?export=download&id=1pKnn0gEm8oYn9zhrX1DqlbvRZn6D9IL7">
+                    ↓ Download Design
+                </a>
+            </div>
+        </article>
+
+        <article class="design-card"
+                 data-title="Floral CNC Design"
+                 data-description="Decorative floral design suitable for CNC engraving."
+                 data-tags="art floral 2d design" data-file-type="ART">
+
+            <div class="design-image">
+                <img src="https://drive.google.com/thumbnail?id=14VpEslvXvgTKUeAJrWTdrGt02HjquLyi&sz=w1200" alt="Gift Heart Design">
+            </div>
+
+            <div class="design-content">
+                <h2>Floral CNC Design</h2>
+                <p>Decorative floral design suitable for CNC engraving.</p>
+
+                <div class="tags">
+                     <span class="file-type-badge" data-file-badge>ART</span>
+                     <span>2D Design</span>
+                 </div>
+
+                 <a class="download-btn" href="https://drive.google.com/uc?export=download&id=1pKnn0gEm8oYn9zhrX1DqlbvRZn6D9IL7">
+                    ↓ Download Design
+                </a>
+            </div>
+        </article>
+
+        <article class="design-card"
+                 data-title="Decorative Wall Design"
+                 data-description="CNC-ready decorative pattern for wall panels."
+                 data-tags="wall panel decorative 2d design" data-file-type="STL">
+
+            <div class="design-image">
+                <img src="https://drive.google.com/thumbnail?id=14VpEslvXvgTKUeAJrWTdrGt02HjquLyi&sz=w1200" alt="Gift Heart Design">
+            </div>
+
+            <div class="design-content">
+                <h2>Decorative Wall Design</h2>
+                <p>CNC-ready decorative pattern for wall panels.</p>
+
+                <div class="tags">
+                     <span class="file-type-badge" data-file-badge>STL</span>
+                     <span>2D Design</span>
+                 </div>
+
+                <a class="download-btn" href="https://drive.google.com/uc?export=download&id=1zMRJe81rq-Fo04ffTXgtTM0ndQxEAwim">
+                    ↓ Download Design
+                </a>
+            </div>
+        </article>
+
     </section>
+
+    <div class="no-results" id="noResults">
+        <h2>No designs found</h2>
+        <p>Try another search term.</p>
+    </div>
 
 </main>
 
-    <!-- ==============================
-         FOOTER
-    =============================== -->
-
-<footer>
-
-    <div class="footer-links">
-
-        <a href="about.html">About</a>
-
-        <a href="privacy.html">Privacy Policy</a>
-
-        <a href="terms.html">Terms & Conditions</a>
-
-        <a href="contact.html">Contact</a>
-
-    </div>
-
-    <p>&copy; 2026 LANKACNC.LK Sri Lanka. All Rights Reserved.</p>
-
+<footer class="site-footer">
+    <p>© 2026 LANKACNC.lk — Precision Engineering Solutions</p>
 </footer>
 
-<script src="js/design.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

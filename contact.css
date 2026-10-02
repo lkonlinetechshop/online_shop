@@ -695,3 +695,29 @@ footer p{
 
 }
 
+/* ===========================
+   AMAZON STYLE MOBILE HEADER
+=========================== */
+
+header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    position:sticky;
+    top:0;
+    background:#111827;
+    padding:15px 20px;
+    z-index:999;
+}
+
+.menu-toggle{
+    display:none;
+    background:none;
+    border:none;
+    color:white;
+    font-size:28px;
+    cursor:pointer;
+}
+
+
+

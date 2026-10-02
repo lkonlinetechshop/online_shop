@@ -154,15 +154,6 @@ nav a:hover{
 
 }
 
-
-
-.admin-link {
-    background: #111827;
-    color: white !important;
-    padding: 10px 16px;
-    border-radius: 8px;
-}
-
 .hero {
     min-height: 460px;
     padding: 70px 20px;
@@ -237,18 +228,66 @@ nav a:hover{
     font-size: 34px;
 }
 
-#search {
-    width: 280px;
-    padding: 13px 15px;
-    border: 1px solid #d1d5db;
-    border-radius: 9px;
-    outline: none;
-    background: white;
+
+/* =========================
+   PAGE
+========================= */
+
+.library-page {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 68px 24px 70px;
 }
 
-#search:focus {
-    border-color: #0ea5e9;
+.library-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 35px;
 }
+
+.eyebrow {
+    color: #079ee5;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.library-heading h1 {
+    color: #102744;
+    font-size: 34px;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.search-box {
+    width: 280px;
+}
+
+.search-box input {
+    width: 100%;
+    height: 43px;
+    padding: 0 15px;
+    border: 1px solid #ccd3dc;
+    border-radius: 9px;
+    background: white;
+    outline: none;
+    color: #1e293b;
+    font-family: inherit;
+    font-size: 13px;
+    transition: .25s ease;
+}
+
+.search-box input:focus {
+    border-color: #38bdf8;
+    box-shadow: 0 0 0 3px rgba(56,189,248,.12);
+}
+
+/* =========================
+   CARDS
+========================= */
 
 .design-grid {
     display: grid;
@@ -257,79 +296,102 @@ nav a:hover{
 }
 
 .design-card {
-    background: white;
-    border-radius: 16px;
     overflow: hidden;
-    border: 1px solid #e5e7eb;
-    box-shadow: 0 8px 25px rgba(15, 23, 42, .06);
-    transition: .2s;
+    background: #fff;
+    border: 1px solid #e0e4e9;
+    border-radius: 16px;
+    box-shadow: 0 9px 25px rgba(15, 23, 42, .06);
+    transition: transform .25s ease, box-shadow .25s ease;
 }
 
 .design-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(15, 23, 42, .12);
+    box-shadow: 0 16px 35px rgba(15, 23, 42, .11);
 }
 
 .design-image {
-    width: 100%;
-    height: 230px;
-    object-fit: cover;
+    height: 232px;
     background: #e5e7eb;
+    overflow: hidden;
 }
 
-.design-info {
-    padding: 20px;
+.design-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform .4s ease;
 }
 
-.design-info h3 {
-    font-size: 20px;
-    margin-bottom: 8px;
+.design-card:hover .design-image img {
+    transform: scale(1.04);
 }
 
-.description {
-    color: #6b7280;
-    font-size: 14px;
-    line-height: 1.5;
-    min-height: 42px;
+.design-content {
+    padding: 21px 20px 20px;
 }
 
-.meta {
+.design-content h2 {
+    color: #071c39;
+    font-size: 19px;
+    line-height: 1.35;
+    margin-bottom: 7px;
+}
+
+.design-content p {
+    min-height: 44px;
+    color: #58708d;
+    font-size: 13px;
+    line-height: 1.65;
+}
+
+.tags {
     display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin: 15px 0;
+    gap: 7px;
+    margin: 14px 0;
 }
 
-.badge {
-    padding: 6px 9px;
+.tags span {
+    padding: 5px 10px;
+    border-radius: 5px;
     background: #e0f2fe;
-    color: #0369a1;
-    border-radius: 6px;
-    font-size: 12px;
-    font-weight: 700;
+    color: #0278b6;
+    font-size: 11px;
+    font-weight: 600;
 }
 
 .download-btn {
-    display: block;
-    width: 100%;
-    padding: 12px;
-    border: 0;
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 8px;
     background: #111827;
     color: white;
-    font-weight: 700;
-    cursor: pointer;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    transition: .25s ease;
 }
 
 .download-btn:hover {
     background: #0ea5e9;
+    transform: translateY(-1px);
 }
 
-.empty-message {
+.no-results {
     display: none;
     text-align: center;
-    color: #6b7280;
-    padding: 40px;
+    padding: 60px 20px;
+}
+
+.no-results h2 {
+    color: #102744;
+    margin-bottom: 5px;
+}
+
+.no-results p {
+    color: #64748b;
 }
 /*=========================================
 FOOTER
@@ -362,44 +424,95 @@ footer p{
 
 
 
-@media (max-width: 850px) {
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 950px) {
+    .site-header {
+        padding: 0 4%;
+    }
+
+    .main-nav {
+        gap: 25px;
+    }
+
     .design-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (max-width: 650px) {
-    .header {
-        height: auto;
-        padding: 16px 20px;
-        gap: 15px;
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    .site-header {
+        height: 75px;
+        padding: 0 18px;
+    }
+
+    .brand img {
+        width: 190px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .main-nav {
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        padding: 15px 20px;
+        background: #111827;
+        display: none;
         flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        z-index: 1000;
     }
 
-    nav {
-        gap: 14px;
-        flex-wrap: wrap;
-        justify-content: center;
+    .main-nav.active {
+        display: flex;
     }
 
-    .hero {
-        min-height: 420px;
+    .main-nav a {
+        padding: 13px 5px;
+        border-bottom: 1px solid rgba(255,255,255,.08);
     }
 
-    .section-heading {
+    .header-strip {
+        height: 35px;
+    }
+
+    .library-page {
+        padding: 45px 15px 55px;
+    }
+
+    .library-heading {
         align-items: stretch;
         flex-direction: column;
+        gap: 20px;
+        margin-bottom: 25px;
     }
 
-    #search {
+    .library-heading h1 {
+        font-size: 28px;
+    }
+
+    .search-box {
         width: 100%;
     }
 
     .design-grid {
         grid-template-columns: 1fr;
+        gap: 18px;
     }
 
     .design-image {
-        height: 240px;
+        height: 220px;
     }
 }

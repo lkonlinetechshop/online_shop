@@ -250,7 +250,7 @@ nav a:hover{
 }
 
 .eyebrow {
-    color: #f2f8fa;
+    color: #26ad38;
     font-size: 14px;
     font-weight: 800;
     letter-spacing: 2px;
@@ -350,7 +350,7 @@ transition: 0.3s ease;
 
 .design-content p {
     min-height: 44px;
-    color: #ebf1f7;
+    color: #c8ccc8;
     font-size: 13px;
     line-height: 1.65;
 }
@@ -364,7 +364,7 @@ transition: 0.3s ease;
 .tags span {
     padding: 5px 10px;
     border-radius: 5px;
-    background: #9fb5c4;
+    background: #f5faf6;
     color: #0278b6;
     font-size: 11px;
     font-weight: 600;

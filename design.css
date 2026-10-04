@@ -250,7 +250,7 @@ nav a:hover{
 }
 
 .eyebrow {
-    color: #079ee5;
+    color: #f2f8fa;
     font-size: 14px;
     font-weight: 800;
     letter-spacing: 2px;
@@ -258,7 +258,7 @@ nav a:hover{
 }
 
 .library-heading h1 {
-    color: #102744;
+    color: white;
     font-size: 34px;
     line-height: 1.2;
     font-weight: 700;
@@ -292,7 +292,7 @@ nav a:hover{
 ========================= */
 
 .design-grid {
-    width: 90%;
+width: 90%;
 max-width: 1200px;
 margin: 50px auto;
 display: grid;
@@ -342,7 +342,7 @@ transition: 0.3s ease;
 }
 
 .design-content h2 {
-    color: #071c39;
+    color: white;
     font-size: 19px;
     line-height: 1.35;
     margin-bottom: 7px;
@@ -350,7 +350,7 @@ transition: 0.3s ease;
 
 .design-content p {
     min-height: 44px;
-    color: #58708d;
+    color: #ebf1f7;
     font-size: 13px;
     line-height: 1.65;
 }
@@ -364,7 +364,7 @@ transition: 0.3s ease;
 .tags span {
     padding: 5px 10px;
     border-radius: 5px;
-    background: #e0f2fe;
+    background: #9fb5c4;
     color: #0278b6;
     font-size: 11px;
     font-weight: 600;

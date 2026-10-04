@@ -214,6 +214,7 @@ nav a:hover{
     max-width: 1200px;
     margin: auto;
     padding: 70px 20px;
+    background: #111827;
 }
 
 .section-heading {
@@ -237,6 +238,7 @@ nav a:hover{
     max-width: 1400px;
     margin: 0 auto;
     padding: 68px 24px 70px;
+    background: #38bdf8;
 }
 
 .library-heading {
@@ -374,8 +376,8 @@ transition: 0.3s ease;
     align-items: center;
     justify-content: center;
     border-radius: 8px;
-    background: #111827;
-    color: white;
+    background: #38bdf8;
+    color: #111827;
     text-decoration: none;
     font-size: 13px;
     font-weight: 600;

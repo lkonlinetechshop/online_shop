@@ -6,7 +6,7 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: #f5f7fa;
+    background: #0f172a;
     color: #172033;
 }
 /*=========================================
@@ -214,7 +214,7 @@ nav a:hover{
     max-width: 1200px;
     margin: auto;
     padding: 70px 20px;
-    background: #111827;
+    background: #0f172a;
 }
 
 .section-heading {
@@ -238,7 +238,7 @@ nav a:hover{
     max-width: 1400px;
     margin: 0 auto;
     padding: 68px 24px 70px;
-    background: #38bdf8;
+   
 }
 
 .library-heading {
@@ -301,7 +301,7 @@ gap: 30px;
 }
 
 .design-card {
-    position: relative;
+position: relative;
 background: #111827;
 border: 1px solid #1f2937;
 border-radius: 15px;

@@ -322,6 +322,7 @@ box-shadow: 0 15px 35px rgba(56, 189, 248, 0.15);
     height: 232px;
     background: #e5e7eb;
     overflow: hidden;
+    border-radius: 10px;
 }
 
 .design-image img {

@@ -123,7 +123,7 @@ fileBadges.forEach(function (badge) {
 
 
 // ==========================================
-// DOWNLOAD BUTTON
+// DOWNLOAD BUTTON - SIGN IN REQUIRED
 // ==========================================
 
 const downloadButtons =
@@ -131,17 +131,51 @@ const downloadButtons =
 
 downloadButtons.forEach(function (button) {
 
-    button.addEventListener("click", function () {
+    button.addEventListener("click", function (e) {
+
+        // Check existing login session
+        const sessionToken =
+            localStorage.getItem("sessionToken");
+
+        const user =
+            localStorage.getItem("user");
+
+        // ==========================================
+        // NOT SIGNED IN
+        // ==========================================
+
+        if (!sessionToken || !user) {
+
+            e.preventDefault();
+
+            // Remember the current design page
+            localStorage.setItem(
+                "downloadReturnUrl",
+                window.location.href
+            );
+
+            alert("Please sign in to download designs.");
+
+            // Go to sign-in page
+            window.location.href = "signin.html";
+
+            return;
+        }
+
+        // ==========================================
+        // SIGNED IN
+        // ==========================================
 
         console.log(
             "Downloading design:",
             button.getAttribute("href")
         );
 
+        // Do NOT prevent the default action.
+        // The download will continue normally.
     });
 
 });
-
 
 // ==========================================
 // CLOSE MOBILE MENU WHEN LINK IS CLICKED

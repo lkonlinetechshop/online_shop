@@ -12,7 +12,10 @@
 
     <form id="signin-form" novalidate>
         <input type="email" id="email" placeholder="Email Address" autocomplete="email" required>
-        <input type="password" id="password" placeholder="Password" autocomplete="current-password" required>
+        <div class="password-wrapper" style="position:relative;">
+            <input type="password" id="password" placeholder="Password" autocomplete="current-password" required style="width:100%;box-sizing:border-box;padding-right:45px;">
+            <button type="button" id="togglePassword" aria-label="Show password" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);border:0;background:transparent;cursor:pointer;font-size:18px;padding:4px;">👁️</button>
+        </div>
 
         <a href="forgot-password.html" class="forgot-link">Forgot Password?</a>
 
@@ -28,5 +31,6 @@
 <script src="js/auth-api.js"></script>
 <script src="js/signin.js"></script>
 <script src="js/auth.js"></script>
+<script>document.getElementById("togglePassword").addEventListener("click",function(){const p=document.getElementById("password"),h=p.type==="password";p.type=h?"text":"password";this.textContent=h?"🙈":"👁️";this.setAttribute("aria-label",h?"Hide password":"Show password");});</script>
 </body>
 </html>

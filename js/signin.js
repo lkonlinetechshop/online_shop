@@ -107,12 +107,17 @@ form.addEventListener(
 
             if (!result.success) {
 
-                alert(
-                    result.message
-                );
+            alert("Invalid Email or Password");
 
-                return;
-            }
+            // Clear email and password
+            document.getElementById("email").value = "";
+            document.getElementById("password").value = "";
+
+            // Put cursor back in email field
+            document.getElementById("email").focus();
+
+            return;
+        }
 
 
             // Save login status
@@ -155,6 +160,10 @@ form.addEventListener(
             alert(
                 "Could not connect to the server. Please try again."
             );
+             document.getElementById("email").value = "";
+             document.getElementById("password").value = "";
+
+             document.getElementById("email").focus();
         }
 
     }

@@ -2,58 +2,37 @@ const form = document.getElementById("signin-form");
 
 if (form) {
     form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+        e.preventDefault();
 
-    const email = emailInput.value.trim();
-    const password = passwordInput.value;
+        const email = document.getElementById("email").value.trim().toLowerCase();
+        const password = document.getElementById("password").value;
+        const button = form.querySelector("button[type='submit']");
 
-    if (!email || !password) {
-        alert("Please enter your email and password.");
-        return;
-    }
-
-    // Show loading
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = `
-        <span class="login-spinner"></span>
-        Signing In...
-    `;
-
-    try {
-        const result = await authRequest("signin", {
-            email: email,
-            password: password
-        });
-
-        if (!result.success) {
-            alert(result.message || "Sign in failed.");
+        if (!email || !password) {
+            alert("Please enter your email and password.");
             return;
         }
 
-        // Save session
-        saveSession(result.sessionToken);
+        button.disabled = true;
 
-        if (result.user) {
-            localStorage.setItem(
-                "user",
-                JSON.stringify(result.user)
-            );
+        try {
+            const result = await authRequest("signin", { email, password });
+
+            if (!result.success) {
+                alert(result.message || "Invalid email or password.");
+                document.getElementById("password").value = "";
+                document.getElementById("password").focus();
+                return;
+            }
+
+            saveSession(result.sessionToken);
+            localStorage.setItem("user", JSON.stringify(result.user));
+            window.location.href = "index.html";
+        } catch (error) {
+            console.error(error);
+            alert("Could not connect to the authentication server. Please try again.");
+        } finally {
+            button.disabled = false;
         }
-
-        // Login successful
-        window.location.href = "index.html";
-
-    } catch (error) {
-
-        console.error("Sign in error:", error);
-
-        alert("Unable to connect to the server. Please try again.");
-
-    } finally {
-
-        // If page is not redirected, restore button
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = "Sign In";
-    }
-});
+    });
 }

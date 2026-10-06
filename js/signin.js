@@ -33,7 +33,23 @@ if (form) {
 
             saveSession(result.sessionToken);
             localStorage.setItem("user", JSON.stringify(result.user));
+
+            // Check if user was trying to download a design
+            const returnUrl =
+            localStorage.getItem("downloadReturnUrl");
+
+            if (returnUrl) {
+
+            localStorage.removeItem("downloadReturnUrl");
+
+            window.location.href = returnUrl;
+
+            } else {
+
             window.location.href = "index.html";
+
+            }
+
         } catch (error) {
             console.error(error);
             alert("Could not connect to the authentication server. Please try again.");

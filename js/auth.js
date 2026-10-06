@@ -1,43 +1,111 @@
-const isLoggedIn = localStorage.getItem("loggedIn");
+const isLoggedIn =
+    localStorage.getItem("loggedIn");
+
 
 const userStatus =
-document.getElementById("user-status");
+    document.getElementById(
+        "user-status"
+    );
+
 
 const logoutBtn =
-document.getElementById("logout-btn");
+    document.getElementById(
+        "logout-btn"
+    );
 
-if(isLoggedIn === "true"){
-
-    const user =
-    JSON.parse(localStorage.getItem("user"));
-
-    userStatus.textContent =
-    `Welcome, ${user.name}`;
-
-    logoutBtn.style.display = "flex";
-    
-
-}
 
 const signinLink =
-document.getElementById("signin-link");
+    document.getElementById(
+        "signin-link"
+    );
 
-if(isLoggedIn === "true"){
 
-    signinLink.style.display = "none";
+/**
+ * Check logged-in user
+ */
+if (
+    isLoggedIn === "true"
+) {
+
+    const savedUser =
+        localStorage.getItem("user");
+
+
+    if (savedUser) {
+
+        try {
+
+            const user =
+                JSON.parse(
+                    savedUser
+                );
+
+
+            if (userStatus) {
+
+                userStatus.textContent =
+                    `Welcome, ${user.name}`;
+
+            }
+
+
+            if (logoutBtn) {
+
+                logoutBtn.style.display =
+                    "flex";
+
+            }
+
+
+            if (signinLink) {
+
+                signinLink.style.display =
+                    "none";
+
+            }
+
+        } catch (error) {
+
+            console.error(
+                "Could not read user data:",
+                error
+            );
+
+        }
+
+    }
 
 }
 
-if(logoutBtn){
 
-    logoutBtn.addEventListener("click", function(){
+/**
+ * Logout
+ */
+if (logoutBtn) {
 
-        localStorage.removeItem("loggedIn");
+    logoutBtn.addEventListener(
+        "click",
+        function () {
 
-        alert("Logged Out");
+            localStorage.removeItem(
+                "loggedIn"
+            );
 
-        window.location.href = "index.html";
 
-    });
+            localStorage.removeItem(
+                "user"
+            );
+
+
+            alert(
+                "Logged Out"
+            );
+
+
+            window.location.href =
+                "index.html";
+
+        }
+    );
 
 }

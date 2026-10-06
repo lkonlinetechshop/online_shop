@@ -14,7 +14,7 @@ body {
     padding: 20px;
 }
 
-.signin-container {
+.auth-container {
     background: #1e293b;
     padding: 40px;
     border-radius: 15px;
@@ -23,12 +23,12 @@ body {
     text-align: center;
 }
 
-.signin-container h2 {
+.auth-container h2 {
     color: white;
     margin-bottom: 15px;
 }
 
-.signin-container .description {
+.auth-container .description {
     color: #cbd5e1;
     margin-bottom: 25px;
     line-height: 1.5;

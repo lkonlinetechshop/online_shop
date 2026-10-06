@@ -2,7 +2,7 @@
 // IMPORTANT: Deploy Google Apps Script as a Web App and put the /exec URL here.
 const AUTH_API_URL =
     "https://script.google.com/macros/s/AKfycbwul7Xxmm9M_JhZ9twGC7dD1LX28gbWxuAUrmaObPt0xakXjdVMjVCYkqFfWvkyrtUK/exec";
-
+ 
 async function authRequest(action, data = {}) {
     const response = await fetch(AUTH_API_URL, {
         method: "POST",

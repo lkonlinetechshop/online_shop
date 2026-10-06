@@ -13,7 +13,13 @@ if (form) {
             return;
         }
 
+         // Start loading
         button.disabled = true;
+        button.dataset.originalText = button.innerHTML;
+        button.innerHTML = `
+            <span class="login-spinner"></span>
+            <span>Signing In...</span>
+        `;
 
         try {
             const result = await authRequest("signin", { email, password });

@@ -4,60 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up - LANKACNC.LK</title>
-
     <link rel="stylesheet" href="signup.css">
 </head>
 <body>
-
 <div class="signup-container">
-
     <h2>Create Account</h2>
 
-    <form id="signup-form">
-
-        <input
-            type="text"
-            id="name"
-            placeholder="Full Name"
-            required
-        >
-
-        <input
-            type="email"
-            id="email"
-            placeholder="Email Address"
-            required
-        >
-
-        <input
-            type="password"
-            id="password"
-            placeholder="Password"
-            required
-        >
-
-        <input
-            type="password"
-            id="confirmPassword"
-            placeholder="Confirm Password"
-            required
-        >
-
-        <button type="submit">
-            Sign Up
-        </button>
-
+    <form id="signup-form" novalidate>
+        <input type="text" id="name" placeholder="Full Name" autocomplete="name" maxlength="100" required>
+        <input type="email" id="email" placeholder="Email Address" autocomplete="email" required>
+        <input type="password" id="password" placeholder="Password" autocomplete="new-password" minlength="8" required>
+        <input type="password" id="confirmPassword" placeholder="Confirm Password" autocomplete="new-password" minlength="8" required>
+        <button type="submit">Sign Up</button>
     </form>
 
     <p>
         Already have an account?
         <a href="signin.html">Sign In</a>
     </p>
-
 </div>
 
+<script src="js/auth-api.js"></script>
 <script src="js/signup.js"></script>
 <script src="js/auth.js"></script>
-
 </body>
 </html>

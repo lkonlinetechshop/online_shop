@@ -4,54 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In - LANKACNC.LK</title>
-
     <link rel="stylesheet" href="signin.css">
 </head>
 <body>
-
 <div class="signin-container">
-
     <h2>Sign In</h2>
 
-    <form id="signin-form">
+    <form id="signin-form" novalidate>
+        <input type="email" id="email" placeholder="Email Address" autocomplete="email" required>
+        <input type="password" id="password" placeholder="Password" autocomplete="current-password" required>
 
-    <input
-        type="email"
-        id="email"
-        placeholder="Email Address"
-        required
-    >
+        <a href="forgot-password.html" class="forgot-link">Forgot Password?</a>
 
-    <input
-        type="password"
-        id="password"
-        placeholder="Password"
-        required
-    >
-        <a
-    href="forgot-password.html"
-    style="
-        display:block;
-        text-align:right;
-        margin-top:8px;
-        color:#4d7cff;
-        text-decoration:none;
-    "
->
-    Forgot Password?
-</a>
+        <button type="submit">Sign In</button>
+    </form>
 
-    <button type="submit">
-        Sign In
-    </button>
-
-</form>
     <p>
         Don't have an account?
         <a href="signup.html">Register</a>
     </p>
-
 </div>
+
+<script src="js/auth-api.js"></script>
 <script src="js/signin.js"></script>
 <script src="js/auth.js"></script>
 </body>

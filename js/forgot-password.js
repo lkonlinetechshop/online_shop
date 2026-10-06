@@ -7,7 +7,6 @@ const form =
     );
 
 
-
 form.addEventListener(
     "submit",
     async function(e) {

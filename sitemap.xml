@@ -1,153 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <!-- Homepage -->
     <url>
         <loc>https://www.lankacnc.lk/</loc>
-        <changefreq>weekly</changefreq>
-        <priority>1.0</priority>
     </url>
-    <url>
-        <loc>https://www.lankacnc.lk/index.html#product-list</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
+
+    <!-- Main pages -->
     <url>
         <loc>https://www.lankacnc.lk/contact.html</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
     </url>
+
     <url>
         <loc>https://www.lankacnc.lk/about.html</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
     </url>
+
     <url>
         <loc>https://www.lankacnc.lk/privacy.html</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
     </url>
+
     <url>
         <loc>https://www.lankacnc.lk/terms.html</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
     </url>
 
- <url>
+    <url>
         <loc>https://www.lankacnc.lk/design.html</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
     </url>
 
-    
+    <!-- Products -->
     <url>
         <loc>https://www.lankacnc.lk/product-details.html?product=smart-string-hopper-making-machine</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
     </url>
 
     <url>
         <loc>https://www.lankacnc.lk/product-details.html?product=arduino-uno-normal-development-board-with-usb-cable</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
     </url>
-    
+
     <url>
         <loc>https://www.lankacnc.lk/product-details.html?product=arduino-uno-original-development-board-with-usb-cable</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
     </url>
+
     <url>
         <loc>https://www.lankacnc.lk/product-details.html?product=4-axis-cnc-breakout-board-for-mach3</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
     </url>
+
     <url>
         <loc>https://www.lankacnc.lk/product-details.html?product=cloned-richauto-a11-3-axis-0501-dsp-cnc-controller</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
     </url>
-    <url>
-        <loc>https://www.lankacnc.lk/manuals/DSP-0501-Manual.pdf</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
+
     <url>
         <loc>https://www.lankacnc.lk/product-details.html?product=richauto-a11e-3-axis-cnc-controller</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
     </url>
-    <url>
-        <loc>https://www.lankacnc.lk/manuals/DSP-A11-Manual.pdf</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
+
     <url>
         <loc>https://www.lankacnc.lk/product-details.html?product=logitech-g102-usb-wired-gaming-mouse</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
     </url>
+
     <url>
         <loc>https://www.lankacnc.lk/product-details.html?product=windows-10-activation-key</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
     </url>
+
     <url>
         <loc>https://www.lankacnc.lk/product-details.html?product=windows-11-activation-key</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
     </url>
+
     <url>
         <loc>https://www.lankacnc.lk/product-details.html?product=windows-7-activation-key</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
     </url>
+
     <url>
         <loc>https://www.lankacnc.lk/product-details.html?product=flat-nose-single-flute-spiral-bit</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
     </url>
+
     <url>
         <loc>https://www.lankacnc.lk/product-details.html?product=ball-nose-double-flute-spiral-bit</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
     </url>
+
     <url>
         <loc>https://www.lankacnc.lk/product-details.html?product=richauto-a18-4-axis-dsp-cnc-controller</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
     </url>
-    <url>
-        <loc>https://www.lankacnc.lk/manuals/DSP-A18-Operation-Manual.pdf</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.lankacnc.lk/manuals/DSP-A18-Manual.pdf</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
+
     <url>
         <loc>https://www.lankacnc.lk/product-details.html?product=22kw-220v-rituo-vfd-inverter-variable-frequency-drive</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
     </url>
-    <url>
-        <loc>https://www.lankacnc.lk/manuals/2.2kw-220v-rituo-vfd-manual.pdf</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.lankacnc.lk/manuals/DB620%20Manual.pdf</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
+
     <url>
         <loc>https://www.lankacnc.lk/product-details.html?product=24v-10a-power-supply-smps-aluminum-cover-with-fan</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
     </url>
+
     <url>
         <loc>https://www.lankacnc.lk/product-details.html?product=24v-10a-power-supply-smps-aluminum-cover</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
     </url>
+
+    <!-- Manuals -->
+    <url>
+        <loc>https://www.lankacnc.lk/manuals/DSP-0501-Manual.pdf</loc>
+    </url>
+
+    <url>
+        <loc>https://www.lankacnc.lk/manuals/DSP-A11-Manual.pdf</loc>
+    </url>
+
+    <url>
+        <loc>https://www.lankacnc.lk/manuals/DSP-A18-Operation-Manual.pdf</loc>
+    </url>
+
+    <url>
+        <loc>https://www.lankacnc.lk/manuals/DSP-A18-Manual.pdf</loc>
+    </url>
+
+    <url>
+        <loc>https://www.lankacnc.lk/manuals/2.2kw-220v-rituo-vfd-manual.pdf</loc>
+    </url>
+
+    <url>
+        <loc>https://www.lankacnc.lk/manuals/DB620%20Manual.pdf</loc>
+    </url>
+
 </urlset>

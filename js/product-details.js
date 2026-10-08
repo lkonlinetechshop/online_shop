@@ -626,6 +626,303 @@ const container =
 // ==========================================
 
 if (product) {
+ // ==========================================
+    // SEO - DYNAMIC PRODUCT TITLE
+    // ==========================================
+
+    document.title =
+        product.name + " | LankaCNC.LK";
+
+
+    // ==========================================
+    // SEO - CANONICAL URL
+    // ==========================================
+
+    const canonicalUrl =
+        window.location.origin +
+        window.location.pathname +
+        "?product=" +
+        encodeURIComponent(
+            createSlug(product.name)
+        );
+
+
+    let canonical =
+        document.querySelector(
+            'link[rel="canonical"]'
+        );
+
+
+    if (!canonical) {
+
+        canonical =
+            document.createElement("link");
+
+        canonical.rel = "canonical";
+
+        document.head.appendChild(
+            canonical
+        );
+
+    }
+
+
+    canonical.href =
+        canonicalUrl;
+
+
+    // ==========================================
+    // SEO - META DESCRIPTION
+    // ==========================================
+
+    let metaDescription =
+        document.querySelector(
+            'meta[name="description"]'
+        );
+
+
+    if (!metaDescription) {
+
+        metaDescription =
+            document.createElement("meta");
+
+        metaDescription.name =
+            "description";
+
+        document.head.appendChild(
+            metaDescription
+        );
+
+    }
+
+
+    metaDescription.content =
+        product.name +
+        " - Buy from LankaCNC.LK. " +
+        product.description;
+
+
+    // ==========================================
+    // OPEN GRAPH TITLE
+    // ==========================================
+
+    let ogTitle =
+        document.querySelector(
+            'meta[property="og:title"]'
+        );
+
+
+    if (!ogTitle) {
+
+        ogTitle =
+            document.createElement("meta");
+
+        ogTitle.setAttribute(
+            "property",
+            "og:title"
+        );
+
+        document.head.appendChild(
+            ogTitle
+        );
+
+    }
+
+
+    ogTitle.content =
+        product.name +
+        " | LankaCNC.LK";
+
+
+    // ==========================================
+    // OPEN GRAPH DESCRIPTION
+    // ==========================================
+
+    let ogDescription =
+        document.querySelector(
+            'meta[property="og:description"]'
+        );
+
+
+    if (!ogDescription) {
+
+        ogDescription =
+            document.createElement("meta");
+
+        ogDescription.setAttribute(
+            "property",
+            "og:description"
+        );
+
+        document.head.appendChild(
+            ogDescription
+        );
+
+    }
+
+
+    ogDescription.content =
+        product.description;
+
+
+    // ==========================================
+    // OPEN GRAPH IMAGE
+    // ==========================================
+
+    let ogImage =
+        document.querySelector(
+            'meta[property="og:image"]'
+        );
+
+
+    if (!ogImage) {
+
+        ogImage =
+            document.createElement("meta");
+
+        ogImage.setAttribute(
+            "property",
+            "og:image"
+        );
+
+        document.head.appendChild(
+            ogImage
+        );
+
+    }
+
+
+    ogImage.content =
+        new URL(
+            product.image,
+            window.location.href
+        ).href;
+
+
+    // ==========================================
+    // OPEN GRAPH URL
+    // ==========================================
+
+    let ogUrl =
+        document.querySelector(
+            'meta[property="og:url"]'
+        );
+
+
+    if (!ogUrl) {
+
+        ogUrl =
+            document.createElement("meta");
+
+        ogUrl.setAttribute(
+            "property",
+            "og:url"
+        );
+
+        document.head.appendChild(
+            ogUrl
+        );
+
+    }
+
+
+    ogUrl.content =
+        canonicalUrl;
+
+
+    // ==========================================
+    // PRODUCT STRUCTURED DATA
+    // ==========================================
+
+    const productSchema = {
+
+        "@context": "https://schema.org",
+
+        "@type": "Product",
+
+        "name": product.name,
+
+        "image": [
+            new URL(
+                product.image,
+                window.location.href
+            ).href
+        ],
+
+        "description":
+            product.description,
+
+        "category":
+            product.category,
+
+        "brand": {
+
+            "@type": "Brand",
+
+            "name": "LankaCNC"
+
+        },
+
+        "offers": {
+
+            "@type": "Offer",
+
+            "url": canonicalUrl,
+
+            "priceCurrency": "LKR",
+
+            "price":
+                product.price.toString(),
+
+            "availability":
+                product.stock === "In Stock"
+                    ? "https://schema.org/InStock"
+                    : "https://schema.org/OutOfStock",
+
+            "seller": {
+
+                "@type": "Organization",
+
+                "name": "LankaCNC"
+
+            }
+
+        }
+
+    };
+
+
+    let schemaScript =
+        document.getElementById(
+            "product-schema"
+        );
+
+
+    if (!schemaScript) {
+
+        schemaScript =
+            document.createElement(
+                "script"
+            );
+
+        schemaScript.type =
+            "application/ld+json";
+
+        schemaScript.id =
+            "product-schema";
+
+        document.head.appendChild(
+            schemaScript
+        );
+
+    }
+
+
+    schemaScript.textContent =
+        JSON.stringify(
+            productSchema
+        );
+
 
     // --------------------------------------
     // Initial price

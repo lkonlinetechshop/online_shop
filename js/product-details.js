@@ -100,7 +100,7 @@ const products = [
         {
         id: 15,
 
-        name: "24V 10A Power Supply SMPS (Aluminum Cover - with Fan",
+        name: "24V 10A Power Supply SMPS (Aluminum Cover - with Fan)",
      
 
         category: "CNC parts",
@@ -1571,21 +1571,27 @@ function updateCartCount(){
 
     let count = 0;
 
+    const cart =
+        JSON.parse(
+            localStorage.getItem("cart")
+        ) || [];
 
-    cart.forEach(item=>{
+
+    cart.forEach(item => {
 
         count += item.quantity;
 
     });
 
 
-    let cartCount =
-    document.querySelector(".cart-count");
+    const cartCount =
+        document.querySelector(".cart-count");
 
 
-    if(cartCount){
+    if (cartCount) {
 
-        cartCount.innerHTML=count;
+        cartCount.textContent =
+            count;
 
     }
 

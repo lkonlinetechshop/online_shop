@@ -101,6 +101,42 @@ if (designGrid) {
     }
 
 
+    const tagFilter = document.getElementById("tagFilter");
+const fileTypeFilter = document.getElementById("fileTypeFilter");
+
+function filterDesigns() {
+
+    const selectedTag = tagFilter.value.toLowerCase();
+    const selectedFileType = fileTypeFilter.value.toLowerCase();
+
+    const cards = document.querySelectorAll(".design-card");
+
+    cards.forEach(card => {
+
+        const tags = (card.dataset.tags || "").toLowerCase();
+        const fileType = (card.dataset.fileType || "").toLowerCase();
+
+        const tagMatch =
+            selectedTag === "all" ||
+            tags === selectedTag;
+
+        const fileTypeMatch =
+            selectedFileType === "all" ||
+            fileType === selectedFileType;
+
+        if (tagMatch && fileTypeMatch) {
+            card.style.display = "";
+        } else {
+            card.style.display = "none";
+        }
+
+    });
+}
+
+tagFilter.addEventListener("change", filterDesigns);
+fileTypeFilter.addEventListener("change", filterDesigns);
+    
+
     // ==========================================
     // CREATE PAGE NUMBER BUTTON
     // ==========================================

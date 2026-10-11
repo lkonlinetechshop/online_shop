@@ -230,6 +230,210 @@ nav a:hover{
 }
 
 
+
+/* =========================================
+   DESIGN FILTERS
+   ========================================= */
+
+.filter-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 25px auto;
+    padding: 0 15px;
+    flex-wrap: wrap;
+}
+
+.filter-box select {
+    min-width: 180px;
+    padding: 12px 40px 12px 15px;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    color: #333;
+    background-color: #fff;
+
+    border: 1px solid #ccc;
+    border-radius: 8px;
+
+    cursor: pointer;
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+.filter-box select:hover {
+    border-color: #777;
+}
+
+.filter-box select:focus {
+    border-color: #333;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
+}
+
+.filter-box select:active {
+    transform: scale(0.98);
+}
+
+
+/* =========================================
+   DESIGN CARD FILTER ANIMATION
+   ========================================= */
+
+.design-card {
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+}
+
+.design-card.filter-hidden {
+    display: none !important;
+}
+
+
+/* =========================================
+   NO RESULTS
+   ========================================= */
+
+.no-results {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.no-results h2 {
+    margin-bottom: 10px;
+}
+
+.no-results p {
+    margin: 0;
+    color: #777;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    .filter-box {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .filter-box select {
+        width: 100%;
+        max-width: 350px;
+    }
+}/* =========================================
+   DESIGN FILTERS
+   ========================================= */
+
+.filter-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 25px auto;
+    padding: 0 15px;
+    flex-wrap: wrap;
+}
+
+.filter-box select {
+    min-width: 180px;
+    padding: 12px 40px 12px 15px;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    color: #333;
+    background-color: #fff;
+
+    border: 1px solid #ccc;
+    border-radius: 8px;
+
+    cursor: pointer;
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+.filter-box select:hover {
+    border-color: #777;
+}
+
+.filter-box select:focus {
+    border-color: #333;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
+}
+
+.filter-box select:active {
+    transform: scale(0.98);
+}
+
+
+/* =========================================
+   DESIGN CARD FILTER ANIMATION
+   ========================================= */
+
+.design-card {
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+}
+
+.design-card.filter-hidden {
+    display: none !important;
+}
+
+
+/* =========================================
+   NO RESULTS
+   ========================================= */
+
+.no-results {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.no-results h2 {
+    margin-bottom: 10px;
+}
+
+.no-results p {
+    margin: 0;
+    color: #777;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    .filter-box {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .filter-box select {
+        width: 100%;
+        max-width: 350px;
+    }
+}
+
+
 /* =========================
    PAGE
 ========================= */

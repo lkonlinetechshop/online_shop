@@ -421,7 +421,7 @@ const products = [
 
         discount: "10%",
         rating: "★★★★★",
-        stock: "In Stock",
+        stock: "Out of Stock",
 
         description:
             "For RichAuto A11 CNC Controller A11S A11E A11C 3 Axis Motion Controller Remote for CNC Engraving Cutting English Suitable for 3 axis."

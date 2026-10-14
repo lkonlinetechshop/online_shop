@@ -1487,7 +1487,7 @@ function addToCart() {
         );
 
 
-   ```js
+  
 const quantity =
     parseInt(
         quantityInput.value
@@ -1520,7 +1520,7 @@ if (quantity > availableStock) {
 
     return;
 }
-```
+
 
 
     // --------------------------------------
@@ -1593,12 +1593,31 @@ if (quantity > availableStock) {
     // UPDATE EXISTING PRODUCT
     // --------------------------------------
 
-    if (existingProduct) {
 
-        existingProduct.quantity +=
-            quantity;
+if (existingProduct) {
 
+    const newQuantity =
+        existingProduct.quantity + quantity;
+
+    if (newQuantity > availableStock) {
+
+        alert(
+            "Only " +
+            availableStock +
+            " item(s) are available. " +
+            "You already have " +
+            existingProduct.quantity +
+            " in your cart."
+        );
+
+        return;
     }
+
+    existingProduct.quantity =
+        newQuantity;
+
+}
+
 
 
     // --------------------------------------

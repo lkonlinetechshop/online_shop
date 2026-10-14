@@ -862,18 +862,15 @@ const container =
 // DISPLAY PRODUCT
 // ==========================================
 
-if (product) {
- // ==========================================
-    // SEO - DYNAMIC PRODUCT TITLE
+function renderProductDetails(product, container) {
+
+    // ==========================================
+    // SEO
     // ==========================================
 
     document.title =
         product.name + " | LankaCNC.LK";
 
-
-    // ==========================================
-    // SEO - CANONICAL URL
-    // ==========================================
 
     const canonicalUrl =
         window.location.origin +
@@ -884,305 +881,46 @@ if (product) {
         );
 
 
-    let canonical =
+    const canonical =
         document.querySelector(
             'link[rel="canonical"]'
         );
 
 
-    if (!canonical) {
+    if (canonical) {
 
-        canonical =
-            document.createElement("link");
-
-        canonical.rel = "canonical";
-
-        document.head.appendChild(
-            canonical
-        );
+        canonical.href =
+            canonicalUrl;
 
     }
 
 
-    canonical.href =
-        canonicalUrl;
-
-
     // ==========================================
-    // SEO - META DESCRIPTION
+    // INITIAL PRICE
     // ==========================================
-
-    let metaDescription =
-        document.querySelector(
-            'meta[name="description"]'
-        );
-
-
-    if (!metaDescription) {
-
-        metaDescription =
-            document.createElement("meta");
-
-        metaDescription.name =
-            "description";
-
-        document.head.appendChild(
-            metaDescription
-        );
-
-    }
-
-
-    metaDescription.content =
-        product.name +
-        " - Buy from LankaCNC.LK. " +
-        product.description;
-
-
-    // ==========================================
-    // OPEN GRAPH TITLE
-    // ==========================================
-
-    let ogTitle =
-        document.querySelector(
-            'meta[property="og:title"]'
-        );
-
-
-    if (!ogTitle) {
-
-        ogTitle =
-            document.createElement("meta");
-
-        ogTitle.setAttribute(
-            "property",
-            "og:title"
-        );
-
-        document.head.appendChild(
-            ogTitle
-        );
-
-    }
-
-
-    ogTitle.content =
-        product.name +
-        " | LankaCNC.LK";
-
-
-    // ==========================================
-    // OPEN GRAPH DESCRIPTION
-    // ==========================================
-
-    let ogDescription =
-        document.querySelector(
-            'meta[property="og:description"]'
-        );
-
-
-    if (!ogDescription) {
-
-        ogDescription =
-            document.createElement("meta");
-
-        ogDescription.setAttribute(
-            "property",
-            "og:description"
-        );
-
-        document.head.appendChild(
-            ogDescription
-        );
-
-    }
-
-
-    ogDescription.content =
-        product.description;
-
-
-    // ==========================================
-    // OPEN GRAPH IMAGE
-    // ==========================================
-
-    let ogImage =
-        document.querySelector(
-            'meta[property="og:image"]'
-        );
-
-
-    if (!ogImage) {
-
-        ogImage =
-            document.createElement("meta");
-
-        ogImage.setAttribute(
-            "property",
-            "og:image"
-        );
-
-        document.head.appendChild(
-            ogImage
-        );
-
-    }
-
-
-    ogImage.content =
-        new URL(
-            product.image,
-            window.location.href
-        ).href;
-
-
-    // ==========================================
-    // OPEN GRAPH URL
-    // ==========================================
-
-    let ogUrl =
-        document.querySelector(
-            'meta[property="og:url"]'
-        );
-
-
-    if (!ogUrl) {
-
-        ogUrl =
-            document.createElement("meta");
-
-        ogUrl.setAttribute(
-            "property",
-            "og:url"
-        );
-
-        document.head.appendChild(
-            ogUrl
-        );
-
-    }
-
-
-    ogUrl.content =
-        canonicalUrl;
-
-
-    // ==========================================
-    // PRODUCT STRUCTURED DATA
-    // ==========================================
-
-    const productSchema = {
-
-        "@context": "https://schema.org",
-
-        "@type": "Product",
-
-        "name": product.name,
-
-        "image": [
-            new URL(
-                product.image,
-                window.location.href
-            ).href
-        ],
-
-        "description":
-            product.description,
-
-        "category":
-            product.category,
-
-        "brand": {
-
-            "@type": "Brand",
-
-            "name": "LankaCNC"
-
-        },
-
-        "offers": {
-
-            "@type": "Offer",
-
-            "url": canonicalUrl,
-
-            "priceCurrency": "LKR",
-
-            "price":
-                product.price.toString(),
-
-            "availability":
-                product.stock === "In Stock"
-                    ? "https://schema.org/InStock"
-                    : "https://schema.org/OutOfStock",
-
-            "seller": {
-
-                "@type": "Organization",
-
-                "name": "LankaCNC"
-
-            }
-
-        }
-
-    };
-
-
-    let schemaScript =
-        document.getElementById(
-            "product-schema"
-        );
-
-
-    if (!schemaScript) {
-
-        schemaScript =
-            document.createElement(
-                "script"
-            );
-
-        schemaScript.type =
-            "application/ld+json";
-
-        schemaScript.id =
-            "product-schema";
-
-        document.head.appendChild(
-            schemaScript
-        );
-
-    }
-
-
-    schemaScript.textContent =
-        JSON.stringify(
-            productSchema
-        );
-
-
-    // --------------------------------------
-    // Initial price
-    // --------------------------------------
 
     let initialPrice =
         product.price;
+
 
     if (
         product.options &&
         product.options.length > 0
     ) {
+
         initialPrice =
             product.options[0].price;
+
     }
 
+
+    // ==========================================
+    // DISPLAY PRODUCT
+    // ==========================================
 
     container.innerHTML = `
 
         <div class="product-details">
-
-
-            <!-- PRODUCT IMAGE -->
 
             <div>
 
@@ -1194,200 +932,123 @@ if (product) {
             </div>
 
 
-            <!-- PRODUCT INFORMATION -->
-
             <div class="product-info">
 
-
                 <span class="discount">
-
                     -${product.discount}
-
                 </span>
 
 
                 <h1>
-
                     ${product.name}
-
                 </h1>
 
 
                 <p class="category">
-
                     ${product.category}
-
                 </p>
 
 
                 <div class="rating">
-
                     ${product.rating}
-
                 </div>
 
-
-                <!-- PRICE -->
 
                 <p class="price">
 
                     <del>
-
                         Rs.${product.oldPrice.toLocaleString()}
-
                     </del>
 
-
                     <strong id="currentPrice">
-
                         Rs.${initialPrice.toLocaleString()}
-
                     </strong>
 
                 </p>
 
 
                 <span class="stock">
-
                     ${product.stock}
-
                 </span>
 
 
                 <p class="product-description">
-
-    ${product.description}
-
-</p>
+                    ${product.description}
+                </p>
 
 
-<!-- PRODUCT MANUAL -->
+                ${
+                    product.manualPdf1
+                    ?
+                    `
+                    <div class="product-manual">
 
-${
-    product.manualPdf1
-    ?
-    `
-    <div class="product-manual">
+                        <a
+                            href="${product.manualPdf1}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="manual-btn"
+                        >
 
-        <a
-            href="${product.manualPdf1}"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="manual-btn"
-        >
+                            <i class="fa-solid fa-file-pdf"></i>
 
-            <i class="fa-solid fa-file-pdf"></i>
+                            View / Download Manual
 
-            View / Download Manual
-
-        </a>
-    </div>
-    `
-    :
-    ""
-}
-
-<!-- PRODUCT MANUAL -->
-
-${
-    product.manualPdf2
-    ?
-    `
-    <div class="product-manual">
-
-        <a
-            href="${product.manualPdf2}"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="manual-btn"
-        >
-
-            <i class="fa-solid fa-file-pdf"></i>
-
-            View / Download Manual
-
-        </a>
-    </div>
-    `
-    :
-    ""
-}
-
-
-
-                <!-- PRODUCT OPTIONS -->
-
-                <div class="product-options">
-
-
-                    <!-- QUANTITY -->
-
-                    <div class="quantity-section">
-
-                        <label>
-
-                            Quantity
-
-                        </label>
-
-
-                        <div class="quantity-box">
-
-
-                            <button
-                                type="button"
-                                id="minusBtn">
-
-                                -
-
-                            </button>
-
-
-                            <input
-                                type="text"
-                                id="quantity"
-                                value="1"
-                                readonly
-                            >
-
-
-                            <button
-                                type="button"
-                                id="plusBtn">
-
-                                +
-
-                            </button>
-
-
-                        </div>
+                        </a>
 
                     </div>
+                    `
+                    :
+                    ""
+                }
 
 
-                    <!-- BIT SIZE -->
+                ${
+                    product.manualPdf2
+                    ?
+                    `
+                    <div class="product-manual">
 
-                    ${
-                        product.options &&
-                        product.options.length > 0
-                        ?
-                        `
+                        <a
+                            href="${product.manualPdf2}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="manual-btn"
+                        >
 
-                        <div class="bit-size-section">
+                            <i class="fa-solid fa-file-pdf"></i>
 
-                            <label>
+                            View / Download Manual
 
-                                Bit Size
+                        </a>
 
-                            </label>
+                    </div>
+                    `
+                    :
+                    ""
+                }
 
 
-                            <div id="bitSizes">
+                <!-- OPTIONS -->
 
-                                ${
-                                    product.options
-                                        .map(
-                                            (option, index) => `
+                ${
+                    product.options &&
+                    product.options.length > 0
+                    ?
+                    `
+
+                    <div class="bit-size-section">
+
+                        <label>
+                            Bit Size
+                        </label>
+
+                        <div id="bitSizes">
+
+                            ${
+                                product.options
+                                    .map(
+                                        (option, index) => `
 
                                         <label class="size-option">
 
@@ -1404,62 +1065,93 @@ ${
                                             >
 
                                             <span>
-
                                                 ${option.size}
-
                                             </span>
 
                                         </label>
 
                                     `
-                                        )
-                                        .join("")
-                                }
-
-                            </div>
+                                    )
+                                    .join("")
+                            }
 
                         </div>
 
-                        `
-                        :
-                        ""
-                    }
+                    </div>
+
+                    `
+                    :
+                    ""
+                }
 
 
-                    <!-- SELECTED PRICE -->
+                <!-- QUANTITY -->
 
-                    <div class="selected-price">
+                <div class="quantity-section">
 
-                        Rs.
+                    <label>
+                        Quantity
+                    </label>
 
-                        <span id="selectedPrice">
+                    <div class="quantity-box">
 
-                            ${initialPrice.toLocaleString()}
+                        <button
+                            type="button"
+                            id="minusBtn"
+                        >
+                            -
+                        </button>
 
-                        </span>
+                        <input
+                            type="text"
+                            id="quantity"
+                            value="1"
+                            readonly
+                        >
+
+                        <button
+                            type="button"
+                            id="plusBtn"
+                        >
+                            +
+                        </button>
 
                     </div>
 
+                </div>
+
+
+                <!-- SELECTED PRICE -->
+
+                <div class="selected-price">
+
+                    Rs.
+
+                    <span id="selectedPrice">
+                        ${initialPrice.toLocaleString()}
+                    </span>
 
                 </div>
 
 
                 <!-- ADD TO CART -->
 
-               <button
-                      type="button"
-                      class="add-cart buy-btn"
-                      id="addCartBtn"
-                      ${product.stockQuantity <= 0 ? "disabled" : ""}>
+                <button
+                    type="button"
+                    class="add-cart buy-btn"
+                    id="addCartBtn"
+                    ${product.stockQuantity <= 0 ? "disabled" : ""}
+                >
 
-                      <i class="fa-solid fa-cart-shopping"></i>
+                    <i class="fa-solid fa-cart-shopping"></i>
 
-                      ${product.stockQuantity <= 0
-                          ? "Out of Stock"
-                          : "Add To Cart"}
+                    ${
+                        product.stockQuantity <= 0
+                        ? "Out of Stock"
+                        : "Add To Cart"
+                    }
 
-         </button>
-
+                </button>
 
             </div>
 
@@ -1467,179 +1159,197 @@ ${
 
     `;
 
-}
-else {
 
-    container.innerHTML =
-        "<h2>Product Not Found</h2>";
+    // ==========================================
+    // SIZE PRICE CHANGE
+    // ==========================================
 
-}
-
-
-// ==========================================
-// SIZE INPUTS
-// ==========================================
-
-const sizeInputs =
-    document.querySelectorAll(
-        'input[name="bitSize"]'
-    );
+    const sizeInputs =
+        document.querySelectorAll(
+            'input[name="bitSize"]'
+        );
 
 
-const selectedPriceElement =
-    document.getElementById(
-        "selectedPrice"
-    );
+    const selectedPriceElement =
+        document.getElementById(
+            "selectedPrice"
+        );
 
 
-const currentPriceElement =
-    document.getElementById(
-        "currentPrice"
-    );
+    const currentPriceElement =
+        document.getElementById(
+            "currentPrice"
+        );
 
 
-// ==========================================
-// SIZE PRICE CHANGE
-// ==========================================
+    sizeInputs.forEach(function(input) {
 
-sizeInputs.forEach(function(input) {
+        input.addEventListener(
+            "change",
+            function() {
 
-    input.addEventListener(
-        "change",
-        function() {
-
-            const price =
-                Number(this.dataset.price);
+                const price =
+                    Number(
+                        this.dataset.price
+                    );
 
 
-            if (selectedPriceElement) {
+                if (selectedPriceElement) {
 
-                selectedPriceElement.textContent =
-                    price.toLocaleString();
+                    selectedPriceElement.textContent =
+                        price.toLocaleString();
 
-            }
+                }
 
 
-            if (currentPriceElement) {
+                if (currentPriceElement) {
 
-                currentPriceElement.textContent =
-                    "Rs." +
-                    price.toLocaleString();
+                    currentPriceElement.textContent =
+                        "Rs." +
+                        price.toLocaleString();
+
+                }
 
             }
-
-        }
-    );
-
-});
-
-
-// ==========================================
-// QUANTITY
-// ==========================================
-
-const quantityInput =
-    document.getElementById(
-        "quantity"
-    );
-
-
-const plusBtn =
-    document.getElementById(
-        "plusBtn"
-    );
-
-
-const minusBtn =
-    document.getElementById(
-        "minusBtn"
-    );
-
-
-if (plusBtn) {
-
-    plusBtn.addEventListener("click", function() {
-
-        let quantity =
-            parseInt(quantityInput.value) || 1;
-
-        const availableStock =
-            Number(product.stockQuantity) || 0;
-
-        if (availableStock <= 0) {
-            return;
-        }
-
-        if (quantity < availableStock) {
-            quantity++;
-        } else {
-            alert(
-                "Only " +
-                availableStock +
-                " item(s) available."
-            );
-        }
-
-        quantityInput.value = quantity;
+        );
 
     });
 
-}
+
+    // ==========================================
+    // QUANTITY
+    // ==========================================
+
+    const quantityInput =
+        document.getElementById(
+            "quantity"
+        );
 
 
-if (minusBtn) {
-
-    minusBtn.addEventListener(
-        "click",
-        function() {
-
-            let quantity =
-                parseInt(
-                    quantityInput.value
-                ) || 1;
+    const plusBtn =
+        document.getElementById(
+            "plusBtn"
+        );
 
 
-            if (quantity > 1) {
+    const minusBtn =
+        document.getElementById(
+            "minusBtn"
+        );
 
-                quantity--;
+
+    if (plusBtn) {
+
+        plusBtn.addEventListener(
+            "click",
+            function() {
+
+                let quantity =
+                    parseInt(
+                        quantityInput.value
+                    ) || 1;
+
+
+                const availableStock =
+                    Number(
+                        product.stockQuantity
+                    ) || 0;
+
+
+                if (
+                    availableStock <= 0
+                ) {
+
+                    return;
+
+                }
+
+
+                if (
+                    quantity <
+                    availableStock
+                ) {
+
+                    quantity++;
+
+                } else {
+
+                    alert(
+                        "Only " +
+                        availableStock +
+                        " item(s) available."
+                    );
+
+                }
+
+
+                quantityInput.value =
+                    quantity;
 
             }
+        );
+
+    }
 
 
-            quantityInput.value =
-                quantity;
+    if (minusBtn) {
 
-        }
-    );
+        minusBtn.addEventListener(
+            "click",
+            function() {
+
+                let quantity =
+                    parseInt(
+                        quantityInput.value
+                    ) || 1;
+
+
+                if (quantity > 1) {
+
+                    quantity--;
+
+                }
+
+
+                quantityInput.value =
+                    quantity;
+
+            }
+        );
+
+    }
+
+
+    // ==========================================
+    // ADD TO CART
+    // ==========================================
+
+    const addCartBtn =
+        document.getElementById(
+            "addCartBtn"
+        );
+
+
+    if (addCartBtn) {
+
+        addCartBtn.addEventListener(
+            "click",
+            function() {
+
+                addToCart(product);
+
+            }
+        );
+
+    }
 
 }
-
-
-// ==========================================
-// ADD TO CART
-// ==========================================
-
-const addCartBtn =
-    document.getElementById(
-        "addCartBtn"
-    );
-
-
-if (addCartBtn) {
-
-    addCartBtn.addEventListener(
-        "click",
-        addToCart
-    );
-
-}
-
 
 // ==========================================
 // ADD TO CART FUNCTION
 // ==========================================
 
-function addToCart() {
+function addToCart(product) {
 
     if (!product) {
 

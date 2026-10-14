@@ -1721,6 +1721,7 @@ function updateCartCount(){
 
 
 document.addEventListener("DOMContentLoaded", () => {
+        
           updateCartCount();  
           initializeProductDetails();
       

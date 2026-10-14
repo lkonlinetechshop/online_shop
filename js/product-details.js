@@ -560,7 +560,35 @@ const products = [
 
 ];
 
+const STOCK_API_URL = "https://script.google.com/macros/s/AKfycbxYkRyLnMCvU9aecBTwUy62smFCrg6uvuFXnHvFZxYAG4svSwZl-dI-Ox-4sbzM3XLb/exec";
 
+let stockData = new Map();
+
+async function loadStockData() {
+    try {
+        const response = await fetch(STOCK_API_URL);
+
+        if (!response.ok) {
+            throw new Error("Failed to load stock data");
+        }
+
+        const data = await response.json();
+
+        stockData.clear();
+
+        data.forEach(item => {
+            const productId = String(item.id);
+            const stock = Number(item.stock) || 0;
+
+            stockData.set(productId, stock);
+        });
+
+        console.log("Stock data loaded:", data);
+
+    } catch (error) {
+        console.error("Stock loading error:", error);
+    }
+}
 
 // ==========================================
 // CREATE URL SLUG

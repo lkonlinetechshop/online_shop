@@ -560,35 +560,89 @@ const products = [
 
 ];
 
-const STOCK_API_URL = "https://script.google.com/macros/s/AKfycbxYkRyLnMCvU9aecBTwUy62smFCrg6uvuFXnHvFZxYAG4svSwZl-dI-Ox-4sbzM3XLb/exec";
+// ==========================================
+// GOOGLE SHEET STOCK API
+// ==========================================
+
+const STOCK_API_URL =
+    "https://script.google.com/macros/s/AKfycbxYkRyLnMCvU9aecBTwUy62smFCrg6uvuFXnHvFZxYAG4svSwZl-dI-Ox-4sbzM3XLb/exec";
 
 let stockData = new Map();
 
+
+// ==========================================
+// LOAD STOCK DATA
+// ==========================================
+
 async function loadStockData() {
+
     try {
-        const response = await fetch(STOCK_API_URL);
+
+        const response =
+            await fetch(STOCK_API_URL);
 
         if (!response.ok) {
-            throw new Error("Failed to load stock data");
+
+            throw new Error(
+                "Stock API HTTP error: " +
+                response.status
+            );
+
         }
 
-        const data = await response.json();
+        const data =
+            await response.json();
+
+        console.log(
+            "Google Sheet stock:",
+            data
+        );
+
+        if (!Array.isArray(data)) {
+
+            throw new Error(
+                "Stock API did not return an array."
+            );
+
+        }
 
         stockData.clear();
 
         data.forEach(item => {
-            const productId = String(item.id);
-            const stock = Number(item.stock) || 0;
 
-            stockData.set(productId, stock);
+            const productId =
+                String(item.id).trim();
+
+            const stock =
+                Number(item.stock) || 0;
+
+            stockData.set(
+                productId,
+                stock
+            );
+
         });
 
-        console.log("Stock data loaded:", data);
+        console.log(
+            "Stock map:",
+            stockData
+        );
+
+        return true;
 
     } catch (error) {
-        console.error("Stock loading error:", error);
+
+        console.error(
+            "Stock loading error:",
+            error
+        );
+
+        return false;
+
     }
+
 }
+
 
 // ==========================================
 // CREATE URL SLUG
@@ -607,69 +661,190 @@ function createSlug(name) {
 
 
 // ==========================================
-// GET PRODUCT ID FROM URL
+// INITIALIZE PRODUCT DETAILS
 // ==========================================
 
 async function initializeProductDetails() {
 
-    // Load Google Sheet stock first
-    await loadStockData();
+    console.log(
+        "Initializing product details..."
+    );
 
-    // Get product slug
-    const urlParams = new URLSearchParams(window.location.search);
-    const productSlug = urlParams.get("product");
 
-    // Find product
-    const product = products.find(function(p) {
-        return createSlug(p.name) === productSlug;
-    });
+    // ======================================
+    // GET PRODUCT FROM URL
+    // ======================================
 
-    console.log("Product slug:", productSlug);
-    console.log("Product:", product);
+    const urlParams =
+        new URLSearchParams(
+            window.location.search
+        );
 
-    if (!product) {
-        const container = document.getElementById("product-details");
+    const productSlug =
+        urlParams.get("product");
 
-        if (container) {
-            container.innerHTML = "<h2>Product Not Found</h2>";
-        }
+
+    console.log(
+        "Product slug:",
+        productSlug
+    );
+
+
+    // ======================================
+    // PRODUCT CONTAINER
+    // ======================================
+
+    const container =
+        document.getElementById(
+            "product-details"
+        );
+
+
+    if (!container) {
+
+        console.error(
+            "ERROR: #product-details not found."
+        );
 
         return;
+
     }
 
-    // ==============================
-    // GET STOCK FROM GOOGLE SHEET
-    // ==============================
 
-    const currentStock = stockData.get(
-        String(product.id)
+    // ======================================
+    // CHECK URL
+    // ======================================
+
+    if (!productSlug) {
+
+        container.innerHTML = `
+            <div class="product-error">
+                <h2>Product Not Found</h2>
+                <p>
+                    No product was specified in the URL.
+                </p>
+                <a href="index.html">
+                    Back to Products
+                </a>
+            </div>
+        `;
+
+        console.error(
+            "No ?product= parameter found in URL."
+        );
+
+        return;
+
+    }
+
+
+    // ======================================
+    // FIND PRODUCT
+    // ======================================
+
+    const product =
+        products.find(function(p) {
+
+            return (
+                createSlug(p.name) ===
+                productSlug
+            );
+
+        });
+
+
+    console.log(
+        "Found product:",
+        product
     );
+
+
+    // ======================================
+    // PRODUCT NOT FOUND
+    // ======================================
+
+    if (!product) {
+
+        container.innerHTML = `
+            <div class="product-error">
+
+                <h2>
+                    Product Not Found
+                </h2>
+
+                <p>
+                    The requested product does not exist.
+                </p>
+
+                <a href="index.html">
+                    Back to Products
+                </a>
+
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    // ======================================
+    // DEFAULT STOCK
+    // ======================================
+
+    product.stockQuantity = 0;
+
+    product.stock = "Out of Stock";
+
+
+    // ======================================
+    // LOAD GOOGLE SHEET STOCK
+    // ======================================
+
+    await loadStockData();
+
+
+    // ======================================
+    // GET STOCK
+    // ======================================
+
+    const currentStock =
+        stockData.get(
+            String(product.id)
+        );
+
 
     if (currentStock !== undefined) {
 
-        product.stockQuantity = currentStock;
+        product.stockQuantity =
+            currentStock;
 
         product.stock =
             currentStock > 0
                 ? "In Stock"
                 : "Out of Stock";
 
-    } else {
-
-        // If product is not found in Google Sheet
-        product.stockQuantity = 0;
-        product.stock = "Out of Stock";
-
     }
 
+
     console.log(
-        "Product ID:",
+        "Final product stock:",
         product.id,
-        "Stock:",
         product.stockQuantity,
         product.stock
     );
 
+
+    // ======================================
+    // NOW RENDER PRODUCT
+    // ======================================
+
+    renderProductDetails(
+        product,
+        container
+    );
+
+}
 
 // ==========================================
 // PRODUCT CONTAINER

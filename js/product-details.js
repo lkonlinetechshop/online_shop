@@ -612,51 +612,63 @@ function createSlug(name) {
 
 async function initializeProductDetails() {
 
+    // Load Google Sheet stock first
     await loadStockData();
 
+    // Get product slug
     const urlParams = new URLSearchParams(window.location.search);
     const productSlug = urlParams.get("product");
 
-    const product = products.find(
-        p => createSlug(p.name) === productSlug
-    );
+    // Find product
+    const product = products.find(function(p) {
+        return createSlug(p.name) === productSlug;
+    });
+
+    console.log("Product slug:", productSlug);
+    console.log("Product:", product);
 
     if (!product) {
-        console.error("Product not found");
+        const container = document.getElementById("product-details");
+
+        if (container) {
+            container.innerHTML = "<h2>Product Not Found</h2>";
+        }
+
         return;
     }
 
-    // Get stock from Google Sheet
-    const currentStock = stockData.get(String(product.id));
+    // ==============================
+    // GET STOCK FROM GOOGLE SHEET
+    // ==============================
+
+    const currentStock = stockData.get(
+        String(product.id)
+    );
 
     if (currentStock !== undefined) {
-        product.stock = currentStock > 0
-            ? "In Stock"
-            : "Out of Stock";
 
         product.stockQuantity = currentStock;
+
+        product.stock =
+            currentStock > 0
+                ? "In Stock"
+                : "Out of Stock";
+
+    } else {
+
+        // If product is not found in Google Sheet
+        product.stockQuantity = 0;
+        product.stock = "Out of Stock";
+
     }
 
-    // Continue your existing product rendering code here
-}
-
-
-
-// ==========================================
-// FIND PRODUCT
-// ==========================================
-
-const product =
-    products.find(function(p) {
-
-        return createSlug(p.name) === productSlug;
-
-    });
-
-
-console.log("Product slug:", productSlug);
-console.log("Product:", product);
-
+    console.log(
+        "Product ID:",
+        product.id,
+        "Stock:",
+        product.stockQuantity,
+        product.stock
+    );
 
 
 // ==========================================

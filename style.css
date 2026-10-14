@@ -1292,7 +1292,24 @@ font-size:30px;
 
 }
 
+.product-stock {
+    display: inline-block;
+    margin: 8px 0;
+    font-weight: 600;
+}
 
+.product-stock.in-stock {
+    color: #16a34a;
+}
+
+.product-stock.out-of-stock {
+    color: #dc2626;
+}
+
+.product-add-cart:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
 
 .product-description{
 

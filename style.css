@@ -603,7 +603,24 @@ background: #ef4444;
 .stock.low {
 background: #f59e0b;
 }
+.stock {
+    display: inline-block;
+    margin: 8px 0;
+    font-weight: 600;
+}
 
+.stock.in-stock {
+    color: #16a34a;
+}
+
+.stock.out-of-stock {
+    color: #dc2626;
+}
+
+.add-cart:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
 /* =========================================================
 ADD TO CART BUTTON
 ========================================================= */

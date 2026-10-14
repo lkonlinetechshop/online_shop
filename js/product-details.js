@@ -1271,16 +1271,19 @@ ${
 
                 <!-- ADD TO CART -->
 
-                <button
-                    type="button"
-                    class="add-cart buy-btn"
-                    id="addCartBtn">
+               <button
+                      type="button"
+                      class="add-cart buy-btn"
+                      id="addCartBtn"
+                      ${product.stockQuantity <= 0 ? "disabled" : ""}>
 
-                    <i class="fa-solid fa-cart-shopping"></i>
+                      <i class="fa-solid fa-cart-shopping"></i>
 
-                    Add To Cart
+                      ${product.stockQuantity <= 0
+                          ? "Out of Stock"
+                          : "Add To Cart"}
 
-                </button>
+         </button>
 
 
             </div>

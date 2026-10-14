@@ -1383,24 +1383,31 @@ const minusBtn =
 
 if (plusBtn) {
 
-    plusBtn.addEventListener(
-        "click",
-        function() {
+    plusBtn.addEventListener("click", function() {
 
-            let quantity =
-                parseInt(
-                    quantityInput.value
-                ) || 1;
+        let quantity =
+            parseInt(quantityInput.value) || 1;
 
+        const availableStock =
+            Number(product.stockQuantity) || 0;
 
-            quantity++;
-
-
-            quantityInput.value =
-                quantity;
-
+        if (availableStock <= 0) {
+            return;
         }
-    );
+
+        if (quantity < availableStock) {
+            quantity++;
+        } else {
+            alert(
+                "Only " +
+                availableStock +
+                " item(s) available."
+            );
+        }
+
+        quantityInput.value = quantity;
+
+    });
 
 }
 

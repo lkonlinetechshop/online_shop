@@ -1719,7 +1719,9 @@ function updateCartCount(){
 }
 
 
-updateCartCount();
+
 document.addEventListener("DOMContentLoaded", () => {
-    initializeProductDetails();
+          updateCartCount();  
+          initializeProductDetails();
+      
 });

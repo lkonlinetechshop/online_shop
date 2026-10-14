@@ -421,7 +421,7 @@ const products = [
 
         discount: "10%",
         rating: "★★★★★",
-        stock: "Out of Stock",
+        stock: "In Stock",
 
         description:
             "For RichAuto A11 CNC Controller A11S A11E A11C 3 Axis Motion Controller Remote for CNC Engraving Cutting English Suitable for 3 axis."
@@ -560,88 +560,6 @@ const products = [
 
 ];
 
-// ==========================================
-// GOOGLE SHEET STOCK API
-// ==========================================
-
-const STOCK_API_URL =
-    "https://script.google.com/macros/s/AKfycbxYkRyLnMCvU9aecBTwUy62smFCrg6uvuFXnHvFZxYAG4svSwZl-dI-Ox-4sbzM3XLb/exec";
-
-let stockData = new Map();
-
-
-// ==========================================
-// LOAD STOCK DATA
-// ==========================================
-
-async function loadStockData() {
-
-    try {
-
-        const response =
-            await fetch(STOCK_API_URL);
-
-        if (!response.ok) {
-
-            throw new Error(
-                "Stock API HTTP error: " +
-                response.status
-            );
-
-        }
-
-        const data =
-            await response.json();
-
-        console.log(
-            "Google Sheet stock:",
-            data
-        );
-
-        if (!Array.isArray(data)) {
-
-            throw new Error(
-                "Stock API did not return an array."
-            );
-
-        }
-
-        stockData.clear();
-
-        data.forEach(item => {
-
-            const productId =
-                String(item.id).trim();
-
-            const stock =
-                Number(item.stock) || 0;
-
-            stockData.set(
-                productId,
-                stock
-            );
-
-        });
-
-        console.log(
-            "Stock map:",
-            stockData
-        );
-
-        return true;
-
-    } catch (error) {
-
-        console.error(
-            "Stock loading error:",
-            error
-        );
-
-        return false;
-
-    }
-
-}
 
 
 // ==========================================
@@ -661,190 +579,35 @@ function createSlug(name) {
 
 
 // ==========================================
-// INITIALIZE PRODUCT DETAILS
+// GET PRODUCT ID FROM URL
 // ==========================================
 
-async function initializeProductDetails() {
+const urlParams =
+    new URLSearchParams(window.location.search);
 
-    console.log(
-        "Initializing product details..."
-    );
-
-
-    // ======================================
-    // GET PRODUCT FROM URL
-    // ======================================
-
-    const urlParams =
-        new URLSearchParams(
-            window.location.search
-        );
-
-    const productSlug =
-        urlParams.get("product");
+const productSlug =
+    urlParams.get("product");
 
 
-    console.log(
-        "Product slug:",
-        productSlug
-    );
 
 
-    // ======================================
-    // PRODUCT CONTAINER
-    // ======================================
 
-    const container =
-        document.getElementById(
-            "product-details"
-        );
+// ==========================================
+// FIND PRODUCT
+// ==========================================
 
+const product =
+    products.find(function(p) {
 
-    if (!container) {
+        return createSlug(p.name) === productSlug;
 
-        console.error(
-            "ERROR: #product-details not found."
-        );
-
-        return;
-
-    }
+    });
 
 
-    // ======================================
-    // CHECK URL
-    // ======================================
-
-    if (!productSlug) {
-
-        container.innerHTML = `
-            <div class="product-error">
-                <h2>Product Not Found</h2>
-                <p>
-                    No product was specified in the URL.
-                </p>
-                <a href="index.html">
-                    Back to Products
-                </a>
-            </div>
-        `;
-
-        console.error(
-            "No ?product= parameter found in URL."
-        );
-
-        return;
-
-    }
+console.log("Product slug:", productSlug);
+console.log("Product:", product);
 
 
-    // ======================================
-    // FIND PRODUCT
-    // ======================================
-
-    const product =
-        products.find(function(p) {
-
-            return (
-                createSlug(p.name) ===
-                productSlug
-            );
-
-        });
-
-
-    console.log(
-        "Found product:",
-        product
-    );
-
-
-    // ======================================
-    // PRODUCT NOT FOUND
-    // ======================================
-
-    if (!product) {
-
-        container.innerHTML = `
-            <div class="product-error">
-
-                <h2>
-                    Product Not Found
-                </h2>
-
-                <p>
-                    The requested product does not exist.
-                </p>
-
-                <a href="index.html">
-                    Back to Products
-                </a>
-
-            </div>
-        `;
-
-        return;
-
-    }
-
-
-    // ======================================
-    // DEFAULT STOCK
-    // ======================================
-
-    product.stockQuantity = 0;
-
-    product.stock = "Out of Stock";
-
-
-    // ======================================
-    // LOAD GOOGLE SHEET STOCK
-    // ======================================
-
-    await loadStockData();
-
-
-    // ======================================
-    // GET STOCK
-    // ======================================
-
-    const currentStock =
-        stockData.get(
-            String(product.id)
-        );
-
-
-    if (currentStock !== undefined) {
-
-        product.stockQuantity =
-            currentStock;
-
-        product.stock =
-            currentStock > 0
-                ? "In Stock"
-                : "Out of Stock";
-
-    }
-
-
-    console.log(
-        "Final product stock:",
-        product.id,
-        product.stockQuantity,
-        product.stock
-    );
-
-
-    // ======================================
-    // NOW RENDER PRODUCT
-    // ======================================
-
-    renderProductDetails(
-        product,
-        container
-    );
-
-}
 
 // ==========================================
 // PRODUCT CONTAINER
@@ -862,15 +625,18 @@ const container =
 // DISPLAY PRODUCT
 // ==========================================
 
-function renderProductDetails(product, container) {
-
-    // ==========================================
-    // SEO
+if (product) {
+ // ==========================================
+    // SEO - DYNAMIC PRODUCT TITLE
     // ==========================================
 
     document.title =
         product.name + " | LankaCNC.LK";
 
+
+    // ==========================================
+    // SEO - CANONICAL URL
+    // ==========================================
 
     const canonicalUrl =
         window.location.origin +
@@ -881,46 +647,305 @@ function renderProductDetails(product, container) {
         );
 
 
-    const canonical =
+    let canonical =
         document.querySelector(
             'link[rel="canonical"]'
         );
 
 
-    if (canonical) {
+    if (!canonical) {
 
-        canonical.href =
-            canonicalUrl;
+        canonical =
+            document.createElement("link");
+
+        canonical.rel = "canonical";
+
+        document.head.appendChild(
+            canonical
+        );
 
     }
 
 
+    canonical.href =
+        canonicalUrl;
+
+
     // ==========================================
-    // INITIAL PRICE
+    // SEO - META DESCRIPTION
     // ==========================================
+
+    let metaDescription =
+        document.querySelector(
+            'meta[name="description"]'
+        );
+
+
+    if (!metaDescription) {
+
+        metaDescription =
+            document.createElement("meta");
+
+        metaDescription.name =
+            "description";
+
+        document.head.appendChild(
+            metaDescription
+        );
+
+    }
+
+
+    metaDescription.content =
+        product.name +
+        " - Buy from LankaCNC.LK. " +
+        product.description;
+
+
+    // ==========================================
+    // OPEN GRAPH TITLE
+    // ==========================================
+
+    let ogTitle =
+        document.querySelector(
+            'meta[property="og:title"]'
+        );
+
+
+    if (!ogTitle) {
+
+        ogTitle =
+            document.createElement("meta");
+
+        ogTitle.setAttribute(
+            "property",
+            "og:title"
+        );
+
+        document.head.appendChild(
+            ogTitle
+        );
+
+    }
+
+
+    ogTitle.content =
+        product.name +
+        " | LankaCNC.LK";
+
+
+    // ==========================================
+    // OPEN GRAPH DESCRIPTION
+    // ==========================================
+
+    let ogDescription =
+        document.querySelector(
+            'meta[property="og:description"]'
+        );
+
+
+    if (!ogDescription) {
+
+        ogDescription =
+            document.createElement("meta");
+
+        ogDescription.setAttribute(
+            "property",
+            "og:description"
+        );
+
+        document.head.appendChild(
+            ogDescription
+        );
+
+    }
+
+
+    ogDescription.content =
+        product.description;
+
+
+    // ==========================================
+    // OPEN GRAPH IMAGE
+    // ==========================================
+
+    let ogImage =
+        document.querySelector(
+            'meta[property="og:image"]'
+        );
+
+
+    if (!ogImage) {
+
+        ogImage =
+            document.createElement("meta");
+
+        ogImage.setAttribute(
+            "property",
+            "og:image"
+        );
+
+        document.head.appendChild(
+            ogImage
+        );
+
+    }
+
+
+    ogImage.content =
+        new URL(
+            product.image,
+            window.location.href
+        ).href;
+
+
+    // ==========================================
+    // OPEN GRAPH URL
+    // ==========================================
+
+    let ogUrl =
+        document.querySelector(
+            'meta[property="og:url"]'
+        );
+
+
+    if (!ogUrl) {
+
+        ogUrl =
+            document.createElement("meta");
+
+        ogUrl.setAttribute(
+            "property",
+            "og:url"
+        );
+
+        document.head.appendChild(
+            ogUrl
+        );
+
+    }
+
+
+    ogUrl.content =
+        canonicalUrl;
+
+
+    // ==========================================
+    // PRODUCT STRUCTURED DATA
+    // ==========================================
+
+    const productSchema = {
+
+        "@context": "https://schema.org",
+
+        "@type": "Product",
+
+        "name": product.name,
+
+        "image": [
+            new URL(
+                product.image,
+                window.location.href
+            ).href
+        ],
+
+        "description":
+            product.description,
+
+        "category":
+            product.category,
+
+        "brand": {
+
+            "@type": "Brand",
+
+            "name": "LankaCNC"
+
+        },
+
+        "offers": {
+
+            "@type": "Offer",
+
+            "url": canonicalUrl,
+
+            "priceCurrency": "LKR",
+
+            "price":
+                product.price.toString(),
+
+            "availability":
+                product.stock === "In Stock"
+                    ? "https://schema.org/InStock"
+                    : "https://schema.org/OutOfStock",
+
+            "seller": {
+
+                "@type": "Organization",
+
+                "name": "LankaCNC"
+
+            }
+
+        }
+
+    };
+
+
+    let schemaScript =
+        document.getElementById(
+            "product-schema"
+        );
+
+
+    if (!schemaScript) {
+
+        schemaScript =
+            document.createElement(
+                "script"
+            );
+
+        schemaScript.type =
+            "application/ld+json";
+
+        schemaScript.id =
+            "product-schema";
+
+        document.head.appendChild(
+            schemaScript
+        );
+
+    }
+
+
+    schemaScript.textContent =
+        JSON.stringify(
+            productSchema
+        );
+
+
+    // --------------------------------------
+    // Initial price
+    // --------------------------------------
 
     let initialPrice =
         product.price;
-
 
     if (
         product.options &&
         product.options.length > 0
     ) {
-
         initialPrice =
             product.options[0].price;
-
     }
 
-
-    // ==========================================
-    // DISPLAY PRODUCT
-    // ==========================================
 
     container.innerHTML = `
 
         <div class="product-details">
+
+
+            <!-- PRODUCT IMAGE -->
 
             <div>
 
@@ -932,123 +957,200 @@ function renderProductDetails(product, container) {
             </div>
 
 
+            <!-- PRODUCT INFORMATION -->
+
             <div class="product-info">
 
+
                 <span class="discount">
+
                     -${product.discount}
+
                 </span>
 
 
                 <h1>
+
                     ${product.name}
+
                 </h1>
 
 
                 <p class="category">
+
                     ${product.category}
+
                 </p>
 
 
                 <div class="rating">
+
                     ${product.rating}
+
                 </div>
 
+
+                <!-- PRICE -->
 
                 <p class="price">
 
                     <del>
+
                         Rs.${product.oldPrice.toLocaleString()}
+
                     </del>
 
+
                     <strong id="currentPrice">
+
                         Rs.${initialPrice.toLocaleString()}
+
                     </strong>
 
                 </p>
 
 
                 <span class="stock">
+
                     ${product.stock}
+
                 </span>
 
 
                 <p class="product-description">
-                    ${product.description}
-                </p>
+
+    ${product.description}
+
+</p>
 
 
-                ${
-                    product.manualPdf1
-                    ?
-                    `
-                    <div class="product-manual">
+<!-- PRODUCT MANUAL -->
 
-                        <a
-                            href="${product.manualPdf1}"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="manual-btn"
-                        >
+${
+    product.manualPdf1
+    ?
+    `
+    <div class="product-manual">
 
-                            <i class="fa-solid fa-file-pdf"></i>
+        <a
+            href="${product.manualPdf1}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="manual-btn"
+        >
 
-                            View / Download Manual
+            <i class="fa-solid fa-file-pdf"></i>
 
-                        </a>
+            View / Download Manual
 
-                    </div>
-                    `
-                    :
-                    ""
-                }
+        </a>
+    </div>
+    `
+    :
+    ""
+}
+
+<!-- PRODUCT MANUAL -->
+
+${
+    product.manualPdf2
+    ?
+    `
+    <div class="product-manual">
+
+        <a
+            href="${product.manualPdf2}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="manual-btn"
+        >
+
+            <i class="fa-solid fa-file-pdf"></i>
+
+            View / Download Manual
+
+        </a>
+    </div>
+    `
+    :
+    ""
+}
 
 
-                ${
-                    product.manualPdf2
-                    ?
-                    `
-                    <div class="product-manual">
 
-                        <a
-                            href="${product.manualPdf2}"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="manual-btn"
-                        >
+                <!-- PRODUCT OPTIONS -->
 
-                            <i class="fa-solid fa-file-pdf"></i>
-
-                            View / Download Manual
-
-                        </a>
-
-                    </div>
-                    `
-                    :
-                    ""
-                }
+                <div class="product-options">
 
 
-                <!-- OPTIONS -->
+                    <!-- QUANTITY -->
 
-                ${
-                    product.options &&
-                    product.options.length > 0
-                    ?
-                    `
-
-                    <div class="bit-size-section">
+                    <div class="quantity-section">
 
                         <label>
-                            Bit Size
+
+                            Quantity
+
                         </label>
 
-                        <div id="bitSizes">
 
-                            ${
-                                product.options
-                                    .map(
-                                        (option, index) => `
+                        <div class="quantity-box">
+
+
+                            <button
+                                type="button"
+                                id="minusBtn">
+
+                                -
+
+                            </button>
+
+
+                            <input
+                                type="text"
+                                id="quantity"
+                                value="1"
+                                readonly
+                            >
+
+
+                            <button
+                                type="button"
+                                id="plusBtn">
+
+                                +
+
+                            </button>
+
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- BIT SIZE -->
+
+                    ${
+                        product.options &&
+                        product.options.length > 0
+                        ?
+                        `
+
+                        <div class="bit-size-section">
+
+                            <label>
+
+                                Bit Size
+
+                            </label>
+
+
+                            <div id="bitSizes">
+
+                                ${
+                                    product.options
+                                        .map(
+                                            (option, index) => `
 
                                         <label class="size-option">
 
@@ -1065,71 +1167,42 @@ function renderProductDetails(product, container) {
                                             >
 
                                             <span>
+
                                                 ${option.size}
+
                                             </span>
 
                                         </label>
 
                                     `
-                                    )
-                                    .join("")
-                            }
+                                        )
+                                        .join("")
+                                }
+
+                            </div>
 
                         </div>
 
-                    </div>
-
-                    `
-                    :
-                    ""
-                }
+                        `
+                        :
+                        ""
+                    }
 
 
-                <!-- QUANTITY -->
+                    <!-- SELECTED PRICE -->
 
-                <div class="quantity-section">
+                    <div class="selected-price">
 
-                    <label>
-                        Quantity
-                    </label>
+                        Rs.
 
-                    <div class="quantity-box">
+                        <span id="selectedPrice">
 
-                        <button
-                            type="button"
-                            id="minusBtn"
-                        >
-                            -
-                        </button>
+                            ${initialPrice.toLocaleString()}
 
-                        <input
-                            type="text"
-                            id="quantity"
-                            value="1"
-                            readonly
-                        >
-
-                        <button
-                            type="button"
-                            id="plusBtn"
-                        >
-                            +
-                        </button>
+                        </span>
 
                     </div>
 
-                </div>
-
-
-                <!-- SELECTED PRICE -->
-
-                <div class="selected-price">
-
-                    Rs.
-
-                    <span id="selectedPrice">
-                        ${initialPrice.toLocaleString()}
-                    </span>
 
                 </div>
 
@@ -1139,19 +1212,14 @@ function renderProductDetails(product, container) {
                 <button
                     type="button"
                     class="add-cart buy-btn"
-                    id="addCartBtn"
-                    ${product.stockQuantity <= 0 ? "disabled" : ""}
-                >
+                    id="addCartBtn">
 
                     <i class="fa-solid fa-cart-shopping"></i>
 
-                    ${
-                        product.stockQuantity <= 0
-                        ? "Out of Stock"
-                        : "Add To Cart"
-                    }
+                    Add To Cart
 
                 </button>
+
 
             </div>
 
@@ -1159,197 +1227,172 @@ function renderProductDetails(product, container) {
 
     `;
 
-
-    // ==========================================
-    // SIZE PRICE CHANGE
-    // ==========================================
-
-    const sizeInputs =
-        document.querySelectorAll(
-            'input[name="bitSize"]'
-        );
-
-
-    const selectedPriceElement =
-        document.getElementById(
-            "selectedPrice"
-        );
-
-
-    const currentPriceElement =
-        document.getElementById(
-            "currentPrice"
-        );
-
-
-    sizeInputs.forEach(function(input) {
-
-        input.addEventListener(
-            "change",
-            function() {
-
-                const price =
-                    Number(
-                        this.dataset.price
-                    );
-
-
-                if (selectedPriceElement) {
-
-                    selectedPriceElement.textContent =
-                        price.toLocaleString();
-
-                }
-
-
-                if (currentPriceElement) {
-
-                    currentPriceElement.textContent =
-                        "Rs." +
-                        price.toLocaleString();
-
-                }
-
-            }
-        );
-
-    });
-
-
-    // ==========================================
-    // QUANTITY
-    // ==========================================
-
-    const quantityInput =
-        document.getElementById(
-            "quantity"
-        );
-
-
-    const plusBtn =
-        document.getElementById(
-            "plusBtn"
-        );
-
-
-    const minusBtn =
-        document.getElementById(
-            "minusBtn"
-        );
-
-
-    if (plusBtn) {
-
-        plusBtn.addEventListener(
-            "click",
-            function() {
-
-                let quantity =
-                    parseInt(
-                        quantityInput.value
-                    ) || 1;
-
-
-                const availableStock =
-                    Number(
-                        product.stockQuantity
-                    ) || 0;
-
-
-                if (
-                    availableStock <= 0
-                ) {
-
-                    return;
-
-                }
-
-
-                if (
-                    quantity <
-                    availableStock
-                ) {
-
-                    quantity++;
-
-                } else {
-
-                    alert(
-                        "Only " +
-                        availableStock +
-                        " item(s) available."
-                    );
-
-                }
-
-
-                quantityInput.value =
-                    quantity;
-
-            }
-        );
-
-    }
-
-
-    if (minusBtn) {
-
-        minusBtn.addEventListener(
-            "click",
-            function() {
-
-                let quantity =
-                    parseInt(
-                        quantityInput.value
-                    ) || 1;
-
-
-                if (quantity > 1) {
-
-                    quantity--;
-
-                }
-
-
-                quantityInput.value =
-                    quantity;
-
-            }
-        );
-
-    }
-
-
-    // ==========================================
-    // ADD TO CART
-    // ==========================================
-
-    const addCartBtn =
-        document.getElementById(
-            "addCartBtn"
-        );
-
-
-    if (addCartBtn) {
-
-        addCartBtn.addEventListener(
-            "click",
-            function() {
-
-                addToCart(product);
-
-            }
-        );
-
-    }
+}
+else {
+
+    container.innerHTML =
+        "<h2>Product Not Found</h2>";
 
 }
+
+
+// ==========================================
+// SIZE INPUTS
+// ==========================================
+
+const sizeInputs =
+    document.querySelectorAll(
+        'input[name="bitSize"]'
+    );
+
+
+const selectedPriceElement =
+    document.getElementById(
+        "selectedPrice"
+    );
+
+
+const currentPriceElement =
+    document.getElementById(
+        "currentPrice"
+    );
+
+
+// ==========================================
+// SIZE PRICE CHANGE
+// ==========================================
+
+sizeInputs.forEach(function(input) {
+
+    input.addEventListener(
+        "change",
+        function() {
+
+            const price =
+                Number(this.dataset.price);
+
+
+            if (selectedPriceElement) {
+
+                selectedPriceElement.textContent =
+                    price.toLocaleString();
+
+            }
+
+
+            if (currentPriceElement) {
+
+                currentPriceElement.textContent =
+                    "Rs." +
+                    price.toLocaleString();
+
+            }
+
+        }
+    );
+
+});
+
+
+// ==========================================
+// QUANTITY
+// ==========================================
+
+const quantityInput =
+    document.getElementById(
+        "quantity"
+    );
+
+
+const plusBtn =
+    document.getElementById(
+        "plusBtn"
+    );
+
+
+const minusBtn =
+    document.getElementById(
+        "minusBtn"
+    );
+
+
+if (plusBtn) {
+
+    plusBtn.addEventListener(
+        "click",
+        function() {
+
+            let quantity =
+                parseInt(
+                    quantityInput.value
+                ) || 1;
+
+
+            quantity++;
+
+
+            quantityInput.value =
+                quantity;
+
+        }
+    );
+
+}
+
+
+if (minusBtn) {
+
+    minusBtn.addEventListener(
+        "click",
+        function() {
+
+            let quantity =
+                parseInt(
+                    quantityInput.value
+                ) || 1;
+
+
+            if (quantity > 1) {
+
+                quantity--;
+
+            }
+
+
+            quantityInput.value =
+                quantity;
+
+        }
+    );
+
+}
+
+
+// ==========================================
+// ADD TO CART
+// ==========================================
+
+const addCartBtn =
+    document.getElementById(
+        "addCartBtn"
+    );
+
+
+if (addCartBtn) {
+
+    addCartBtn.addEventListener(
+        "click",
+        addToCart
+    );
+
+}
+
 
 // ==========================================
 // ADD TO CART FUNCTION
 // ==========================================
 
-function addToCart(product) {
+function addToCart() {
 
     if (!product) {
 
@@ -1372,40 +1415,10 @@ function addToCart(product) {
         );
 
 
-  
-const quantity =
-    parseInt(
-        quantityInput.value
-    ) || 1;
-
-
-// --------------------------------------
-// CHECK GOOGLE SHEET STOCK
-// --------------------------------------
-
-const availableStock =
-    Number(product.stockQuantity) || 0;
-
-if (availableStock <= 0) {
-
-    alert("This product is currently out of stock.");
-
-    return;
-}
-
-if (quantity > availableStock) {
-
-    alert(
-        "Only " +
-        availableStock +
-        " item(s) are available."
-    );
-
-    quantityInput.value = availableStock;
-
-    return;
-}
-
+    const quantity =
+        parseInt(
+            quantityInput.value
+        ) || 1;
 
 
     // --------------------------------------
@@ -1478,31 +1491,12 @@ if (quantity > availableStock) {
     // UPDATE EXISTING PRODUCT
     // --------------------------------------
 
+    if (existingProduct) {
 
-if (existingProduct) {
+        existingProduct.quantity +=
+            quantity;
 
-    const newQuantity =
-        existingProduct.quantity + quantity;
-
-    if (newQuantity > availableStock) {
-
-        alert(
-            "Only " +
-            availableStock +
-            " item(s) are available. " +
-            "You already have " +
-            existingProduct.quantity +
-            " in your cart."
-        );
-
-        return;
     }
-
-    existingProduct.quantity =
-        newQuantity;
-
-}
-
 
 
     // --------------------------------------
@@ -1604,10 +1598,4 @@ function updateCartCount(){
 }
 
 
-
-document.addEventListener("DOMContentLoaded", () => {
-        
-          updateCartCount();  
-          initializeProductDetails();
-      
-});
+updateCartCount();

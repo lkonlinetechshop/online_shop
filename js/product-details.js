@@ -1487,10 +1487,40 @@ function addToCart() {
         );
 
 
-    const quantity =
-        parseInt(
-            quantityInput.value
-        ) || 1;
+   ```js
+const quantity =
+    parseInt(
+        quantityInput.value
+    ) || 1;
+
+
+// --------------------------------------
+// CHECK GOOGLE SHEET STOCK
+// --------------------------------------
+
+const availableStock =
+    Number(product.stockQuantity) || 0;
+
+if (availableStock <= 0) {
+
+    alert("This product is currently out of stock.");
+
+    return;
+}
+
+if (quantity > availableStock) {
+
+    alert(
+        "Only " +
+        availableStock +
+        " item(s) are available."
+    );
+
+    quantityInput.value = availableStock;
+
+    return;
+}
+```
 
 
     // --------------------------------------

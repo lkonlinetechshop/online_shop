@@ -610,13 +610,35 @@ function createSlug(name) {
 // GET PRODUCT ID FROM URL
 // ==========================================
 
-const urlParams =
-    new URLSearchParams(window.location.search);
+async function initializeProductDetails() {
 
-const productSlug =
-    urlParams.get("product");
+    await loadStockData();
 
+    const urlParams = new URLSearchParams(window.location.search);
+    const productSlug = urlParams.get("product");
 
+    const product = products.find(
+        p => createSlug(p.name) === productSlug
+    );
+
+    if (!product) {
+        console.error("Product not found");
+        return;
+    }
+
+    // Get stock from Google Sheet
+    const currentStock = stockData.get(String(product.id));
+
+    if (currentStock !== undefined) {
+        product.stock = currentStock > 0
+            ? "In Stock"
+            : "Out of Stock";
+
+        product.stockQuantity = currentStock;
+    }
+
+    // Continue your existing product rendering code here
+}
 
 
 

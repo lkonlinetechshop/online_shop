@@ -1127,31 +1127,21 @@ sizeInputs.forEach(function(input) {
         "change",
         function() {
 
-            const price =
-                Number(
-                    this.dataset.price
+            if (
+                typeof updateProductDetails ===
+                "function"
+            ) {
+
+                updateProductDetails(
+                    window.lankaCncStockData || []
                 );
 
-
-            if (selectedPriceElement) {
-
-                selectedPriceElement.textContent =
-                    price.toLocaleString();
-            }
-
-
-            if (currentPriceElement) {
-
-                currentPriceElement.textContent =
-                    "Rs." +
-                    price.toLocaleString();
             }
 
         }
     );
 
 });
-
 
 // ==========================================
 // QUANTITY

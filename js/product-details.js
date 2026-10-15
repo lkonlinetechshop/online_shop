@@ -20,7 +20,7 @@ const products = [
 
         discount: "5%",
         rating: "★★★★★",
-        stock: "In Stock",
+        stock: "",
 
         description:
             "hongda-ac-power-supply-filter-hdzac-20a-20a-230v-for-cnc"

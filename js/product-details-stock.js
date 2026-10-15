@@ -236,6 +236,8 @@ function updateProductDetailsStock(
 
         stockElement.textContent =
             "In Stock";
+//  `In Stock (${stock})`;   // show stock with number
+    
 
         stockElement.classList.remove(
             "out-of-stock"

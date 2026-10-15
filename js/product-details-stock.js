@@ -232,20 +232,19 @@ function updateProductDetailsStock(
         // STOCK TEXT
         // ----------------------------------
 
-        if (stockElement) {
+       if (stockElement) {
 
-            stockElement.textContent =
-                `In Stock (${stock})`;
+        stockElement.textContent =
+            "In Stock";
 
-            stockElement.classList.remove(
-                "out-of-stock"
-            );
+        stockElement.classList.remove(
+            "out-of-stock"
+        );
 
-            stockElement.classList.add(
-                "in-stock"
-            );
-
-        }
+        stockElement.classList.add(
+            "in-stock"
+        );
+    }
 
 
         // ----------------------------------

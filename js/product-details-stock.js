@@ -1,24 +1,27 @@
-```js
 // ==========================================
-// STOCK API
+// LANKACNC PRODUCT STOCK SYSTEM
 // ==========================================
 
+// Google Apps Script Stock API
 const STOCK_API_URL =
     "https://script.google.com/macros/s/AKfycbxYkRyLnMCvU9aecBTwUy62smFCrg6uvuFXnHvFZxYAG4svSwZl-dI-Ox-4sbzM3XLb/exec";
 
 
 // ==========================================
-// LOAD STOCK
+// LOAD STOCK DATA
 // ==========================================
 
 async function loadProductStock() {
 
     try {
 
-        const response =
-            await fetch(STOCK_API_URL, {
+        const response = await fetch(
+            STOCK_API_URL,
+            {
+                method: "GET",
                 cache: "no-store"
-            });
+            }
+        );
 
 
         if (!response.ok) {
@@ -35,7 +38,7 @@ async function loadProductStock() {
 
 
         console.log(
-            "Stock data:",
+            "Stock API data:",
             products
         );
 
@@ -44,26 +47,18 @@ async function loadProductStock() {
         // PRODUCT DETAILS PAGE
         // ======================================
 
-        const productDetails =
-            document.getElementById(
-                "product-details"
-            );
-
-
-        if (productDetails) {
-
-            updateProductDetailsStock(
-                products
-            );
-
-        }
+        updateProductDetailsStock(
+            products
+        );
 
 
         // ======================================
-        // PRODUCT LIST PAGE
+        // PRODUCT LIST / HOME PAGE
         // ======================================
 
-        updateProductCards(products);
+        updateProductCards(
+            products
+        );
 
 
     }
@@ -87,6 +82,31 @@ function updateProductDetailsStock(
     stockProducts
 ) {
 
+    // --------------------------------------
+    // GET PRODUCT DETAILS CONTAINER
+    // --------------------------------------
+
+    const productDetails =
+        document.getElementById(
+            "product-details"
+        );
+
+
+    if (!productDetails) {
+
+        console.warn(
+            "Product details container not found."
+        );
+
+        return;
+
+    }
+
+
+    // --------------------------------------
+    // GET BUTTONS / ELEMENTS
+    // --------------------------------------
+
     const addCartBtn =
         document.getElementById(
             "addCartBtn"
@@ -94,8 +114,8 @@ function updateProductDetailsStock(
 
 
     const stockElement =
-        document.querySelector(
-            "#product-details .stock"
+        productDetails.querySelector(
+            ".stock"
         );
 
 
@@ -117,7 +137,15 @@ function updateProductDetailsStock(
         );
 
 
+    // --------------------------------------
+    // ADD TO CART BUTTON CHECK
+    // --------------------------------------
+
     if (!addCartBtn) {
+
+        console.warn(
+            "Add To Cart button not found."
+        );
 
         return;
 
@@ -127,109 +155,6 @@ function updateProductDetailsStock(
     // ======================================
     // GET PRODUCT ID
     // ======================================
-
-    const urlParams =
-        new URLSearchParams(
-            window.location.search
-        );
-
-
-    const productSlug =
-        urlParams.get("product");
-
-
-    if (!productSlug) {
-
-        return;
-
-    }
-
-
-    // ======================================
-    // CREATE SAME SLUG AS PRODUCT DETAILS
-    // ======================================
-
-    function createSlug(name) {
-
-        return name
-            .toLowerCase()
-            .trim()
-            .replace(
-                /[^a-z0-9\s-]/g,
-                ""
-            )
-            .replace(
-                /\s+/g,
-                "-"
-            )
-            .replace(
-                /-+/g,
-                "-"
-            );
-
-    }
-
-
-    // ======================================
-    // FIND PRODUCT ID FROM PAGE
-    // ======================================
-
-    /*
-       product-details.js creates the product
-       from its slug.
-
-       We can read the product name from
-       the <h1> element.
-    */
-
-    const productTitle =
-        document.querySelector(
-            "#product-details h1"
-        );
-
-
-    if (!productTitle) {
-
-        return;
-
-    }
-
-
-    const productName =
-        productTitle.textContent.trim();
-
-
-    const productIdMatch =
-        stockProducts.find(
-            stockProduct => {
-
-                /*
-                   The stock API should return
-                   the same product id.
-
-                   We match the stock record
-                   with the product name/slug
-                   through the page URL below.
-                */
-
-                return true;
-
-            }
-        );
-
-
-    // ======================================
-    // BETTER MATCH:
-    // USE PRODUCT ID STORED IN DATA ATTRIBUTE
-    // ======================================
-
-    /*
-       product-details.js will add:
-
-       data-product-id="19"
-
-       to #product-details.
-    */
 
     const productId =
         productDetails.getAttribute(
@@ -248,6 +173,16 @@ function updateProductDetailsStock(
     }
 
 
+    console.log(
+        "Product details ID:",
+        productId
+    );
+
+
+    // ======================================
+    // FIND STOCK RECORD
+    // ======================================
+
     const stockProduct =
         stockProducts.find(
             item =>
@@ -259,7 +194,7 @@ function updateProductDetailsStock(
     if (!stockProduct) {
 
         console.error(
-            "Stock record not found for product:",
+            "Stock record not found for product ID:",
             productId
         );
 
@@ -267,6 +202,10 @@ function updateProductDetailsStock(
 
     }
 
+
+    // ======================================
+    // GET STOCK NUMBER
+    // ======================================
 
     const stock =
         Number(
@@ -277,7 +216,7 @@ function updateProductDetailsStock(
     console.log(
         "Product ID:",
         productId,
-        "Stock:",
+        "Current Stock:",
         stock
     );
 
@@ -288,12 +227,15 @@ function updateProductDetailsStock(
 
     if (stock > 0) {
 
+
+        // ----------------------------------
+        // STOCK TEXT
+        // ----------------------------------
+
         if (stockElement) {
 
             stockElement.textContent =
-                "In Stock (" +
-                stock +
-                ")";
+                `In Stock (${stock})`;
 
             stockElement.classList.remove(
                 "out-of-stock"
@@ -306,30 +248,60 @@ function updateProductDetailsStock(
         }
 
 
-        // Maximum quantity
+        // ----------------------------------
+        // QUANTITY
+        // ----------------------------------
 
         if (quantityInput) {
+
+            quantityInput.disabled =
+                false;
 
             quantityInput.max =
                 stock;
 
+
+            let quantity =
+                Number(
+                    quantityInput.value
+                ) || 1;
+
+
+            if (quantity < 1) {
+
+                quantity = 1;
+
+            }
+
+
+            if (quantity > stock) {
+
+                quantity = stock;
+
+            }
+
+
             quantityInput.value =
-                Math.min(
-                    Number(quantityInput.value) || 1,
-                    stock
-                );
+                quantity;
 
         }
 
 
-        // Enable buttons
+        // ----------------------------------
+        // ADD TO CART
+        // ----------------------------------
 
         addCartBtn.disabled =
             false;
 
+
         addCartBtn.innerHTML =
             '<i class="fa-solid fa-cart-shopping"></i> Add To Cart';
 
+
+        // ----------------------------------
+        // PLUS BUTTON
+        // ----------------------------------
 
         if (plusBtn) {
 
@@ -338,6 +310,10 @@ function updateProductDetailsStock(
 
         }
 
+
+        // ----------------------------------
+        // MINUS BUTTON
+        // ----------------------------------
 
         if (minusBtn) {
 
@@ -355,6 +331,11 @@ function updateProductDetailsStock(
 
     else {
 
+
+        // ----------------------------------
+        // STOCK TEXT
+        // ----------------------------------
+
         if (stockElement) {
 
             stockElement.textContent =
@@ -371,16 +352,21 @@ function updateProductDetailsStock(
         }
 
 
-        // Disable Add To Cart
+        // ----------------------------------
+        // ADD TO CART
+        // ----------------------------------
 
         addCartBtn.disabled =
             true;
+
 
         addCartBtn.innerHTML =
             '<i class="fa-solid fa-ban"></i> Out of Stock';
 
 
-        // Disable quantity controls
+        // ----------------------------------
+        // QUANTITY
+        // ----------------------------------
 
         if (quantityInput) {
 
@@ -393,6 +379,10 @@ function updateProductDetailsStock(
         }
 
 
+        // ----------------------------------
+        // PLUS BUTTON
+        // ----------------------------------
+
         if (plusBtn) {
 
             plusBtn.disabled =
@@ -400,6 +390,10 @@ function updateProductDetailsStock(
 
         }
 
+
+        // ----------------------------------
+        // MINUS BUTTON
+        // ----------------------------------
 
         if (minusBtn) {
 
@@ -415,37 +409,52 @@ function updateProductDetailsStock(
     // PROTECT QUANTITY
     // ======================================
 
-    if (stock > 0 && quantityInput) {
+    if (
+        stock > 0 &&
+        quantityInput
+    ) {
 
-        quantityInput.addEventListener(
-            "change",
-            function() {
+        // Prevent duplicate event listeners
+        if (
+            quantityInput.dataset.stockListener !==
+            "true"
+        ) {
 
-                let quantity =
-                    Number(
-                        this.value
-                    ) || 1;
+            quantityInput.addEventListener(
+                "change",
+                function() {
+
+                    let quantity =
+                        Number(
+                            this.value
+                        ) || 1;
 
 
-                if (quantity < 1) {
+                    if (quantity < 1) {
 
-                    quantity = 1;
+                        quantity = 1;
+
+                    }
+
+
+                    if (quantity > stock) {
+
+                        quantity = stock;
+
+                    }
+
+
+                    this.value =
+                        quantity;
 
                 }
+            );
 
 
-                if (quantity > stock) {
+            quantityInput.dataset.stockListener =
+                "true";
 
-                    quantity = stock;
-
-                }
-
-
-                this.value =
-                    quantity;
-
-            }
-        );
+        }
 
     }
 
@@ -459,6 +468,17 @@ function updateProductDetailsStock(
 function updateProductCards(
     products
 ) {
+
+    if (!Array.isArray(products)) {
+
+        console.error(
+            "Stock API did not return an array."
+        );
+
+        return;
+
+    }
+
 
     products.forEach(
         product => {
@@ -494,6 +514,10 @@ function updateProductCards(
                 ) || 0;
 
 
+            // ==============================
+            // IN STOCK
+            // ==============================
+
             if (stock > 0) {
 
                 if (stockElement) {
@@ -523,6 +547,12 @@ function updateProductCards(
                 }
 
             }
+
+
+            // ==============================
+            // OUT OF STOCK
+            // ==============================
+
             else {
 
                 if (stockElement) {
@@ -560,15 +590,18 @@ function updateProductCards(
 
 
 // ==========================================
-// START
+// START STOCK SYSTEM
 // ==========================================
 
 document.addEventListener(
     "DOMContentLoaded",
-    () => {
+    function() {
+
+        console.log(
+            "Stock system started..."
+        );
 
         loadProductStock();
 
     }
 );
-```

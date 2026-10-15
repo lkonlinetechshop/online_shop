@@ -1314,22 +1314,81 @@ function addToCart() {
     // PRODUCT WITH OPTIONS
     // ==========================================
 
-    if (
-        product.options &&
-        product.options.length > 0 &&
-        selectedSizeInput
-    ) {
+if (
+    product.options &&
+    product.options.length > 0 &&
+    selectedSizeInput
+) {
 
-        selectedSize =
-            selectedSizeInput.value;
+    selectedSize =
+        selectedSizeInput.value;
 
 
-        selectedProductPrice =
-            Number(
-                selectedSizeInput.dataset.price
-            );
+    // Get LIVE Google Sheet variant
+    const liveVariant =
+        findLiveProduct(
+            window.lankaCncStockData || [],
+            product.id,
+            selectedSize
+        );
+
+
+    if (!liveVariant) {
+
+        alert(
+            "Selected Bit Size stock information is unavailable."
+        );
+
+        return;
 
     }
+
+
+    const liveStock =
+        Number(
+            liveVariant.stock
+        ) || 0;
+
+
+    const livePrice =
+        Number(
+            liveVariant.price
+        ) || 0;
+
+
+    // Check selected size stock
+    if (liveStock <= 0) {
+
+        alert(
+            "Selected Bit Size is Out of Stock."
+        );
+
+        return;
+
+    }
+
+
+    // Check quantity
+    if (quantity > liveStock) {
+
+        alert(
+            "Only " +
+            liveStock +
+            " item(s) available for this Bit Size."
+        );
+
+        return;
+
+    }
+
+
+    // IMPORTANT
+    // Use Google Sheet price
+
+    selectedProductPrice =
+        livePrice;
+
+}
 
 
     // ==========================================

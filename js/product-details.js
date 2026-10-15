@@ -939,10 +939,15 @@ if (product) {
             product.options[0].price;
     }
 
-
-    container.innerHTML = `
-
-        <div class="product-details">
+container.setAttribute(
+    "data-product-id",
+    product.id
+);
+   container.innerHTML = `
+    <div
+        class="product-details"
+        data-product-id="${product.id}"
+    >
 
 
             <!-- PRODUCT IMAGE -->

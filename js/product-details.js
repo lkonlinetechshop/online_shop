@@ -2,14 +2,14 @@
 const products = [
 
     {
-        id: 19,
+         id: 19,
         name: "hongda-ac-power-supply-filter-hdzac-20a-20a-230v-for-cnc",
         category: "CNC parts",
         image: "images/hongda-ac-power-supply-filter-hdzac-20a-20a-230v-for-cnc.jpg",
         size: "",
-        oldPrice: ,
-        price: ,
-        discount: "",
+        oldPrice: 5145,
+        price: 4900,
+        discount: "5%",
         rating: "★★★★★",
         stock: "",
         description:

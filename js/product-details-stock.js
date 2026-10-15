@@ -1,45 +1,72 @@
+
 // ==========================================
-// LANKACNC PRODUCT STOCK SYSTEM
+// LANKACNC PRODUCT STOCK + PRICE SYSTEM
 // ==========================================
 
-// Google Apps Script Stock API
+
+// ==========================================
+// GOOGLE APPS SCRIPT API
+// ==========================================
+
 const STOCK_API_URL =
     "https://script.google.com/macros/s/AKfycbxYkRyLnMCvU9aecBTwUy62smFCrg6uvuFXnHvFZxYAG4svSwZl-dI-Ox-4sbzM3XLb/exec";
 
 
 // ==========================================
-// LOAD STOCK DATA
+// LOAD STOCK / PRICE DATA
 // ==========================================
 
 async function loadProductStock() {
 
     try {
 
-        const response = await fetch(
-            STOCK_API_URL,
-            {
-                method: "GET",
-                cache: "no-store"
-            }
-        );
+        const response =
+            await fetch(
+                STOCK_API_URL,
+                {
+                    method: "GET",
+                    cache: "no-store"
+                }
+            );
 
+
+        // ======================================
+        // CHECK RESPONSE
+        // ======================================
 
         if (!response.ok) {
 
             throw new Error(
-                "Failed to load stock data"
+                "Failed to load product data"
             );
 
         }
 
 
-        const products =
+        // ======================================
+        // GET JSON
+        // ======================================
+
+        const stockProducts =
             await response.json();
 
 
+        // ======================================
+        // CHECK ARRAY
+        // ======================================
+
+        if (!Array.isArray(stockProducts)) {
+
+            throw new Error(
+                "Stock API did not return an array."
+            );
+
+        }
+
+
         console.log(
-            "Stock API data:",
-            products
+            "LankaCNC API data:",
+            stockProducts
         );
 
 
@@ -47,25 +74,26 @@ async function loadProductStock() {
         // PRODUCT DETAILS PAGE
         // ======================================
 
-        updateProductDetailsStock(
-            products
+        updateProductDetails(
+            stockProducts
         );
 
 
         // ======================================
-        // PRODUCT LIST / HOME PAGE
+        // PRODUCT CARDS / HOME PAGE
         // ======================================
 
         updateProductCards(
-            products
+            stockProducts
         );
 
 
     }
+
     catch (error) {
 
         console.error(
-            "Stock loading error:",
+            "Product stock/price loading error:",
             error
         );
 
@@ -78,13 +106,14 @@ async function loadProductStock() {
 // UPDATE PRODUCT DETAILS PAGE
 // ==========================================
 
-function updateProductDetailsStock(
+function updateProductDetails(
     stockProducts
 ) {
 
-    // --------------------------------------
+
+    // ==========================================
     // GET PRODUCT DETAILS CONTAINER
-    // --------------------------------------
+    // ==========================================
 
     const productDetails =
         document.getElementById(
@@ -103,19 +132,178 @@ function updateProductDetailsStock(
     }
 
 
-    // --------------------------------------
-    // GET BUTTONS / ELEMENTS
-    // --------------------------------------
+    // ==========================================
+    // GET CURRENT PRODUCT
+    // ==========================================
 
-    const addCartBtn =
-        document.getElementById(
-            "addCartBtn"
+    const product =
+        window.currentProduct;
+
+
+    if (!product) {
+
+        console.warn(
+            "Current product not found."
         );
 
+        return;
+
+    }
+
+
+    // ==========================================
+    // GET PRODUCT ID
+    // ==========================================
+
+    const productId =
+        productDetails.getAttribute(
+            "data-product-id"
+        );
+
+
+    if (!productId) {
+
+        console.error(
+            "Product ID not found."
+        );
+
+        return;
+
+    }
+
+
+    console.log(
+        "Product Details ID:",
+        productId
+    );
+
+
+    // ==========================================
+    // FIND GOOGLE SHEET RECORD
+    // ==========================================
+
+    const liveProduct =
+        stockProducts.find(
+            item =>
+                String(item.id) ===
+                String(productId)
+        );
+
+
+    if (!liveProduct) {
+
+        console.warn(
+            "No Google Sheet record found for Product ID:",
+            productId
+        );
+
+        return;
+
+    }
+
+
+    // ==========================================
+    // GET LIVE VALUES
+    // ==========================================
+
+    const stock =
+        Number(
+            liveProduct.stock
+        ) || 0;
+
+
+    const price =
+        Number(
+            liveProduct.price
+        ) || 0;
+
+
+    const oldPrice =
+        Number(
+            liveProduct.oldPrice
+        ) || 0;
+
+
+    const discount =
+        Number(
+            String(
+                liveProduct.discount || 0
+            ).replace(
+                "%",
+                ""
+            )
+        ) || 0;
+
+
+    console.log(
+        "Live Product:",
+        {
+            id: productId,
+            stock: stock,
+            price: price,
+            oldPrice: oldPrice,
+            discount: discount
+        }
+    );
+
+
+    // ==========================================
+    // UPDATE JS PRODUCT OBJECT
+    // ==========================================
+
+    product.stock =
+        stock;
+
+
+    product.price =
+        price;
+
+
+    product.oldPrice =
+        oldPrice;
+
+
+    product.discount =
+        discount + "%";
+
+
+    // ==========================================
+    // GET HTML ELEMENTS
+    // ==========================================
 
     const stockElement =
         productDetails.querySelector(
             ".stock"
+        );
+
+
+    const discountElement =
+        productDetails.querySelector(
+            ".discount"
+        );
+
+
+    const priceElement =
+        document.getElementById(
+            "currentPrice"
+        );
+
+
+    const selectedPriceElement =
+        document.getElementById(
+            "selectedPrice"
+        );
+
+
+    const oldPriceElement =
+        productDetails.querySelector(
+            ".price del"
+        );
+
+
+    const addCartBtn =
+        document.getElementById(
+            "addCartBtn"
         );
 
 
@@ -137,126 +325,126 @@ function updateProductDetailsStock(
         );
 
 
-    // --------------------------------------
-    // ADD TO CART BUTTON CHECK
-    // --------------------------------------
+    // ==========================================
+    // UPDATE DISCOUNT
+    // ==========================================
 
-    if (!addCartBtn) {
+    if (discountElement) {
 
-        console.warn(
-            "Add To Cart button not found."
-        );
-
-        return;
+        discountElement.textContent =
+            "-" + discount + "%";
 
     }
 
 
-    // ======================================
-    // GET PRODUCT ID
-    // ======================================
+    // ==========================================
+    // UPDATE OLD PRICE
+    // ==========================================
 
-    const productId =
-        productDetails.getAttribute(
-            "data-product-id"
-        );
+    if (oldPriceElement) {
 
-
-    if (!productId) {
-
-        console.error(
-            "Product ID not found on product details page."
-        );
-
-        return;
+        oldPriceElement.textContent =
+            "Rs." +
+            oldPrice.toLocaleString();
 
     }
 
 
-    console.log(
-        "Product details ID:",
-        productId
-    );
+    // ==========================================
+    // UPDATE PRICE
+    // ==========================================
+
+    /*
+        IMPORTANT:
+
+        If the product has size/bit options,
+        each option already has its own price
+        in product-details.js.
+
+        Therefore Google Sheet price is used
+        directly for products WITHOUT options.
+
+        Products with options keep their
+        option-specific prices.
+    */
+
+    if (
+        !product.options ||
+        product.options.length === 0
+    ) {
+
+        if (priceElement) {
+
+            priceElement.textContent =
+                "Rs." +
+                price.toLocaleString();
+
+        }
 
 
-    // ======================================
-    // FIND STOCK RECORD
-    // ======================================
+        if (selectedPriceElement) {
 
-    const stockProduct =
-        stockProducts.find(
-            item =>
-                String(item.id) ===
-                String(productId)
-        );
+            selectedPriceElement.textContent =
+                price.toLocaleString();
 
-
-    if (!stockProduct) {
-
-        console.error(
-            "Stock record not found for product ID:",
-            productId
-        );
-
-        return;
+        }
 
     }
 
 
-    // ======================================
-    // GET STOCK NUMBER
-    // ======================================
-
-    const stock =
-        Number(
-            stockProduct.stock
-        ) || 0;
-
-
-    console.log(
-        "Product ID:",
-        productId,
-        "Current Stock:",
-        stock
-    );
-
-
-    // ======================================
-    // IN STOCK
-    // ======================================
+    // ==========================================
+    // UPDATE STOCK
+    // ==========================================
 
     if (stock > 0) {
 
+        // ======================================
+        // IN STOCK
+        // ======================================
 
-        // ----------------------------------
-        // STOCK TEXT
-        // ----------------------------------
+        if (stockElement) {
 
-       if (stockElement) {
-
-        stockElement.textContent =
-            "In Stock";
-//  `In Stock (${stock})`;   // show stock with number
-    
-
-        stockElement.classList.remove(
-            "out-of-stock"
-        );
-
-        stockElement.classList.add(
-            "in-stock"
-        );
-    }
+            stockElement.textContent =
+                "In Stock";
 
 
-        // ----------------------------------
-        // QUANTITY
-        // ----------------------------------
+            stockElement.classList.remove(
+                "out-of-stock"
+            );
+
+
+            stockElement.classList.add(
+                "in-stock"
+            );
+
+        }
+
+
+        // ======================================
+        // ADD TO CART ENABLE
+        // ======================================
+
+        if (addCartBtn) {
+
+            addCartBtn.disabled =
+                false;
+
+
+            addCartBtn.innerHTML =
+                '<i class="fa-solid fa-cart-shopping"></i> Add To Cart';
+
+        }
+
+
+        // ======================================
+        // QUANTITY ENABLE
+        // ======================================
 
         if (quantityInput) {
 
             quantityInput.disabled =
                 false;
+
 
             quantityInput.max =
                 stock;
@@ -288,21 +476,9 @@ function updateProductDetailsStock(
         }
 
 
-        // ----------------------------------
-        // ADD TO CART
-        // ----------------------------------
-
-        addCartBtn.disabled =
-            false;
-
-
-        addCartBtn.innerHTML =
-            '<i class="fa-solid fa-cart-shopping"></i> Add To Cart';
-
-
-        // ----------------------------------
-        // PLUS BUTTON
-        // ----------------------------------
+        // ======================================
+        // PLUS ENABLE
+        // ======================================
 
         if (plusBtn) {
 
@@ -312,9 +488,9 @@ function updateProductDetailsStock(
         }
 
 
-        // ----------------------------------
-        // MINUS BUTTON
-        // ----------------------------------
+        // ======================================
+        // MINUS ENABLE
+        // ======================================
 
         if (minusBtn) {
 
@@ -326,25 +502,22 @@ function updateProductDetailsStock(
     }
 
 
-    // ======================================
-    // OUT OF STOCK
-    // ======================================
-
     else {
 
-
-        // ----------------------------------
-        // STOCK TEXT
-        // ----------------------------------
+        // ======================================
+        // OUT OF STOCK
+        // ======================================
 
         if (stockElement) {
 
             stockElement.textContent =
                 "Out of Stock";
 
+
             stockElement.classList.remove(
                 "in-stock"
             );
+
 
             stockElement.classList.add(
                 "out-of-stock"
@@ -353,26 +526,31 @@ function updateProductDetailsStock(
         }
 
 
-        // ----------------------------------
-        // ADD TO CART
-        // ----------------------------------
+        // ======================================
+        // DISABLE ADD TO CART
+        // ======================================
 
-        addCartBtn.disabled =
-            true;
+        if (addCartBtn) {
 
-
-        addCartBtn.innerHTML =
-            '<i class="fa-solid fa-ban"></i> Out of Stock';
+            addCartBtn.disabled =
+                true;
 
 
-        // ----------------------------------
-        // QUANTITY
-        // ----------------------------------
+            addCartBtn.innerHTML =
+                '<i class="fa-solid fa-ban"></i> Out of Stock';
+
+        }
+
+
+        // ======================================
+        // DISABLE QUANTITY
+        // ======================================
 
         if (quantityInput) {
 
             quantityInput.value =
                 0;
+
 
             quantityInput.disabled =
                 true;
@@ -380,9 +558,9 @@ function updateProductDetailsStock(
         }
 
 
-        // ----------------------------------
-        // PLUS BUTTON
-        // ----------------------------------
+        // ======================================
+        // DISABLE PLUS
+        // ======================================
 
         if (plusBtn) {
 
@@ -392,9 +570,9 @@ function updateProductDetailsStock(
         }
 
 
-        // ----------------------------------
-        // MINUS BUTTON
-        // ----------------------------------
+        // ======================================
+        // DISABLE MINUS
+        // ======================================
 
         if (minusBtn) {
 
@@ -406,24 +584,26 @@ function updateProductDetailsStock(
     }
 
 
-    // ======================================
-    // PROTECT QUANTITY
-    // ======================================
+    // ==========================================
+    // PROTECT QUANTITY FROM EXCEEDING STOCK
+    // ==========================================
 
     if (
         stock > 0 &&
         quantityInput
     ) {
 
-        // Prevent duplicate event listeners
+
         if (
             quantityInput.dataset.stockListener !==
             "true"
         ) {
 
+
             quantityInput.addEventListener(
                 "change",
                 function() {
+
 
                     let quantity =
                         Number(
@@ -459,21 +639,36 @@ function updateProductDetailsStock(
 
     }
 
+
+    // ==========================================
+    // UPDATE PRODUCT SCHEMA
+    // ==========================================
+
+    if (
+        typeof window.updateProductSchema ===
+        "function"
+    ) {
+
+        window.updateProductSchema();
+
+    }
+
 }
 
 
 // ==========================================
-// UPDATE PRODUCT CARDS
+// UPDATE HOME / PRODUCT CARDS
 // ==========================================
 
 function updateProductCards(
-    products
+    stockProducts
 ) {
 
-    if (!Array.isArray(products)) {
+
+    if (!Array.isArray(stockProducts)) {
 
         console.error(
-            "Stock API did not return an array."
+            "Invalid product API data."
         );
 
         return;
@@ -481,12 +676,17 @@ function updateProductCards(
     }
 
 
-    products.forEach(
-        product => {
+    stockProducts.forEach(
+        liveProduct => {
+
+
+            // ==================================
+            // FIND CARD
+            // ==================================
 
             const card =
                 document.querySelector(
-                    `.card[data-id="${product.id}"]`
+                    `.card[data-id="${liveProduct.id}"]`
                 );
 
 
@@ -496,6 +696,43 @@ function updateProductCards(
 
             }
 
+
+            // ==================================
+            // GET VALUES
+            // ==================================
+
+            const stock =
+                Number(
+                    liveProduct.stock
+                ) || 0;
+
+
+            const price =
+                Number(
+                    liveProduct.price
+                ) || 0;
+
+
+            const oldPrice =
+                Number(
+                    liveProduct.oldPrice
+                ) || 0;
+
+
+            const discount =
+                Number(
+                    String(
+                        liveProduct.discount || 0
+                    ).replace(
+                        "%",
+                        ""
+                    )
+                ) || 0;
+
+
+            // ==================================
+            // FIND CARD ELEMENTS
+            // ==================================
 
             const stockElement =
                 card.querySelector(
@@ -509,26 +746,81 @@ function updateProductCards(
                 );
 
 
-            const stock =
-                Number(
-                    product.stock
-                ) || 0;
+            const priceElement =
+                card.querySelector(
+                    ".price strong"
+                );
 
 
-            // ==============================
+            const oldPriceElement =
+                card.querySelector(
+                    ".price del"
+                );
+
+
+            const discountElement =
+                card.querySelector(
+                    ".discount"
+                );
+
+
+            // ==================================
+            // UPDATE PRICE
+            // ==================================
+
+            if (priceElement) {
+
+                priceElement.textContent =
+                    "Rs." +
+                    price.toLocaleString();
+
+            }
+
+
+            // ==================================
+            // UPDATE OLD PRICE
+            // ==================================
+
+            if (oldPriceElement) {
+
+                oldPriceElement.textContent =
+                    "Rs." +
+                    oldPrice.toLocaleString();
+
+            }
+
+
+            // ==================================
+            // UPDATE DISCOUNT
+            // ==================================
+
+            if (discountElement) {
+
+                discountElement.textContent =
+                    "-" +
+                    discount +
+                    "%";
+
+            }
+
+
+            // ==================================
             // IN STOCK
-            // ==============================
+            // ==================================
 
             if (stock > 0) {
+
 
                 if (stockElement) {
 
                     stockElement.textContent =
                         "In Stock";
 
+
                     stockElement.classList.remove(
                         "out-of-stock"
                     );
+
 
                     stockElement.classList.add(
                         "in-stock"
@@ -542,6 +834,7 @@ function updateProductCards(
                     cartButton.disabled =
                         false;
 
+
                     cartButton.textContent =
                         "Add to Cart";
 
@@ -550,20 +843,23 @@ function updateProductCards(
             }
 
 
-            // ==============================
+            // ==================================
             // OUT OF STOCK
-            // ==============================
+            // ==================================
 
             else {
+
 
                 if (stockElement) {
 
                     stockElement.textContent =
                         "Out of Stock";
 
+
                     stockElement.classList.remove(
                         "in-stock"
                     );
+
 
                     stockElement.classList.add(
                         "out-of-stock"
@@ -576,6 +872,7 @@ function updateProductCards(
 
                     cartButton.disabled =
                         true;
+
 
                     cartButton.textContent =
                         "Out of Stock";
@@ -591,7 +888,7 @@ function updateProductCards(
 
 
 // ==========================================
-// START STOCK SYSTEM
+// START PRODUCT STOCK SYSTEM
 // ==========================================
 
 document.addEventListener(
@@ -599,8 +896,9 @@ document.addEventListener(
     function() {
 
         console.log(
-            "Stock system started..."
+            "LankaCNC Stock + Price System started..."
         );
+
 
         loadProductStock();
 

@@ -42,7 +42,7 @@ const products = [
 
         discount: "15%",
         rating: "★★★★★",
-        stock: "In Stock",
+        stock: "",
 
         description:
             "TB6600 Stepper Motor Driver 4A 42VDC"
@@ -66,7 +66,7 @@ const products = [
 
         discount: "8%",
         rating: "★★★★★",
-        stock: "In Stock",
+        stock: "",
 
         description:
             "CW ChuangWei CWD860H Stepper Motor Driver 18-80VAC 7.2A"
@@ -90,7 +90,7 @@ const products = [
 
         discount: "3%",
         rating: "★★★★★",
-        stock: "In Stock",
+        stock: "",
 
         description:
             "24V 10A Power Supply SMPS (Aluminum Cover)"
@@ -115,7 +115,7 @@ const products = [
 
         discount: "2%",
         rating: "★★★★★",
-        stock: "In Stock",
+        stock: "",
 
         description:
             "24V 10A Power Supply SMPS with aluminum cover and cooling fan, suitable for CNC machines and electronic applications."
@@ -142,7 +142,7 @@ const products = [
 
         discount: "5%",
         rating: "★★★★★",
-        stock: "In Stock",
+        stock: "",
 
         description:
             "2.2kW 220V Rituo VFD Inverter — A reliable variable frequency drive for controlling the speed and performance of 220V AC motors. Ideal for CNC machines, pumps, fans, and other industrial equipment, with adjustable motor speed and smooth operation."
@@ -165,7 +165,7 @@ const products = [
 
         discount: "5%",
         rating: "★★★★★",
-        stock: "In Stock",
+        stock: "",
 
         description:
             "RichAuto A18 4-Axis CNC Controller is a compact and reliable DSP controller designed for CNC routers and engraving machines. It supports 4-axis control (X, Y, Z, and A), providing precise and convenient offline operation for cutting, carving, and engraving applications."
@@ -186,7 +186,7 @@ const products = [
 
         discount: "10%",
         rating: "★★★★★",
-        stock: "In Stock",
+        stock: "",
 
         description:
             "Ball Nose Double Flute Spiral Bit",
@@ -247,7 +247,7 @@ const products = [
 
         discount: "10%",
         rating: "★★★★★",
-        stock: "In Stock",
+        stock: "",
 
         description:
             "Flat Nose Single Flute Spiral Bit",
@@ -316,7 +316,7 @@ const products = [
 
         discount: "18%",
         rating: "★★★★★",
-        stock: "In Stock",
+        stock: "",
 
         description:
             "Genuine Windows 7 Pro Key: A new, 100% genuine key for one PC. Permanent Activation: Provides a permanent, full activation for your current installation of Windows 7. IMPORTANT - PLEASE READ: This key is for the current installation only and cannot be reused after formatting. Unlocks All Pro Features: Get full access to advanced security, BitLocker, Remote Desktop, and more. Global Key: Can be used and activated anywhere in the world."
@@ -342,7 +342,7 @@ const products = [
 
         discount: "18%",
         rating: "★★★★★",
-        stock: "In Stock",
+        stock: "",
 
         description:
             "Genuine Windows 11 Pro Key: A new, 100% genuine key for one PC. Permanent Activation: Provides a permanent, full activation for your current installation of Windows 11. IMPORTANT - PLEASE READ: This key is for the current installation only and cannot be reused after formatting. Unlocks All Pro Features: Get full access to advanced security, BitLocker, Remote Desktop, and more. Global Key: Can be used and activated anywhere in the world."
@@ -368,7 +368,7 @@ const products = [
 
         discount: "18%",
         rating: "★★★★★",
-        stock: "In Stock",
+        stock: "",
 
         description:
             "Genuine Windows 10 Pro Key: A new, 100% genuine key for one PC. Permanent Activation: Provides a permanent, full activation for your current installation of Windows 10. IMPORTANT - PLEASE READ: This key is for the current installation only and cannot be reused after formatting. Unlocks All Pro Features: Get full access to advanced security, BitLocker, Remote Desktop, and more. Global Key: Can be used and activated anywhere in the world."
@@ -394,7 +394,7 @@ const products = [
 
         discount: "21%",
         rating: "★★★★★",
-        stock: "In Stock",
+        stock: "",
 
         description:
             "Make the most of your game time with G102 gaming mouse, featuring LIGHTSYNC technology, a gaming-grade sensor and a classic 6-button design. Light up your game and your desk."
@@ -421,7 +421,7 @@ const products = [
 
         discount: "10%",
         rating: "★★★★★",
-        stock: "In Stock",
+        stock: "",
 
         description:
             "For RichAuto A11 CNC Controller A11S A11E A11C 3 Axis Motion Controller Remote for CNC Engraving Cutting English Suitable for 3 axis."
@@ -447,7 +447,7 @@ const products = [
 
         discount: "5%",
         rating: "★★★★☆",
-        stock: "In Stock",
+        stock: "",
 
         description:
             "Support for 4-axis linkage, you can connect four stepper motor drives or servo drives. Maximum step-pulse frequency is 100KHz, which is suitable for the servo or stepping motor. Support automatic probe tool, emergency input, limit switch and electronic hand wheel."
@@ -474,7 +474,7 @@ const products = [
 
         discount: "12%",
         rating: "★★★★★",
-        stock: "In Stock",
+        stock: "",
 
         description:
             "A11E is the English-language version and uses the same operational workflow as the legacy 0501."
@@ -500,7 +500,7 @@ const products = [
 
         discount: "2%",
         rating: "★★★★★",
-        stock: "In Stock",
+        stock: "",
 
         description:
             "The Arduino UNO is the most widely used and documented development board in the Arduino ecosystem. Based on the ATmega328P microcontroller, it offers 14 digital I/O pins, 6 analog inputs, and USB connectivity for programming and serial communication. Ideal for beginners and professionals alike."
@@ -526,7 +526,7 @@ const products = [
 
         discount: "2%",
         rating: "★★★★★",
-        stock: "In Stock",
+        stock: "",
 
         description:
             "Arduino UNO R3 SMD is the open source Embedded Development board launched by Arduino based on Atmega328 SMD Package Microcontroller."
@@ -552,7 +552,7 @@ const products = [
 
         discount: "5%",
         rating: "★★★★★",
-        stock: "In Stock",
+        stock: "",
 
         description:
             "A durable and easy-to-operate machine designed for efficient and consistent production applications. Featuring a stainless-steel working area, adjustable controls, and compact construction, it is ideal for food processing applications and small-scale manufacturing."

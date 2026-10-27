@@ -1,6 +1,29 @@
 
 const products = [
 
+        {
+         id: 20,
+        name: "12V-1A-SMPS-Power-Supply-Open-Type",
+        category: "Electronics",
+        image: "images/12v1asmps.jpg",
+        size: "",
+        oldPrice: 490,
+        price: 450,
+        discount: "5%",
+        rating: "★★★★★",
+        stock: "",
+        description: `
+        <li>Output Frequency: 50/60HZ</li>
+        <li>Output Type: Single</li>
+        <li>Output Current: 0-1A</li>
+        <li>Output Power: 1 - 12W</li>
+        <li>Input Voltage: 100-240V AC</li>
+        <li>Output Voltage: 12V DC</li>
+        <li>Size: 34x68mm</li>
+    `
+
+    },
+
     {
          id: 19,
         name: "hongda-ac-power-supply-filter-hdzac-20a-20a-230v-for-cnc",

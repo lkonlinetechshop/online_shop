@@ -13,6 +13,7 @@ const products = [
         rating: "★★★★★",
         stock: "",
         description: `
+    <ul class="product-description-list">
         <li>Output Frequency: 50/60HZ</li>
         <li>Output Type: Single</li>
         <li>Output Current: 0-1A</li>
@@ -20,8 +21,8 @@ const products = [
         <li>Input Voltage: 100-240V AC</li>
         <li>Output Voltage: 12V DC</li>
         <li>Size: 34x68mm</li>
-    `
-
+    </ul>
+`
     },
 
     {
@@ -903,11 +904,9 @@ if (product) {
 
                 <!-- DESCRIPTION -->
 
-                <p class="product-description">
-
+                <div class="product-description">
                     ${product.description}
-
-                </p>
+                </div>
 
 
                 <!-- MANUAL 1 -->

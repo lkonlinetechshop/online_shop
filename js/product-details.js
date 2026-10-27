@@ -12,7 +12,15 @@ const products = [
         discount: "5%",
         rating: "★★★★★",
         stock: "",
-        description: ""
+        description: `
+        <li>Output Frequency: 50/60HZ</li>
+        <li>Output Type: Single</li>
+        <li>Output Current: 0-1A</li>
+        <li>Output Power: 1 - 12W</li>
+        <li>Input Voltage: 100-240V AC</li>
+        <li>Output Voltage: 12V DC</li>
+        <li>Size: 34x68mm</li>
+    `
 
     },
 

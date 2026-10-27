@@ -3,7 +3,7 @@ const products = [
 
         {
          id: 20,
-        name: "12V-1A-SMPS-Power-Supply-Open-Type",
+        name: "12v-1a-smps-power-supply-open-type",
         category: "Electronics",
         image: "images/12v1asmps.jpg",
         size: "",

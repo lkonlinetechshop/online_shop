@@ -593,7 +593,24 @@ transition: 0.3s ease;
     background: #0ea5e9;
     transform: translateY(-1px);
 }
+.Buy-btn {
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: #38bdf8;
+    color: #111827;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    transition: .25s ease;
+}
 
+.Buy-btn:hover {
+    background: #0ea5e9;
+    transform: translateY(-1px);
+}
 .no-results {
     display: none;
     text-align: center;

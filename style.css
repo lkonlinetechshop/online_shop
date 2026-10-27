@@ -1321,6 +1321,16 @@ margin:20px 0;
 
 }
 
+.product-description-list {
+    margin: 10px 0;
+    padding-left: 25px;
+}
+
+.product-description-list li {
+    margin-bottom: 6px;
+    line-height: 1.6;
+}
+
 
 .product-options {
     margin-top: 20px;

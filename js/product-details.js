@@ -1,6 +1,21 @@
 
 const products = [
 
+         {
+         id: 22,
+        name: "10mm Linear Bearing Block - SCS10UU",
+        category: "CNC parts",
+        image: "images/10mm-linear-bearing-block-scs10uu.jpg",
+        size: "",
+        oldPrice: 840,
+        price: 800,
+        discount: "5%",
+        rating: "★★★★★",
+        stock: "",
+        description:
+            "10mm Linear Bearing Block - SCS10UU"
+    },
+
         {
         id: 21,
         name: "10mm-linear-shaft-smooth-shaft-rod",

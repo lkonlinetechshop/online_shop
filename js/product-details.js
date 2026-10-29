@@ -1,6 +1,21 @@
 
 const products = [
 
+          {
+         id: 23,
+        name: "10mm Linear Shaft Rod Support - SK10",
+        category: "CNC parts",
+        image: "images/10mm-linear-shaft-rod-support-sk10.jpg",
+        size: "",
+        oldPrice: 420,
+        price: 400,
+        discount: "5%",
+        rating: "★★★★★",
+        stock: "",
+        description:
+            "10mm Linear Shaft Rod Support - SK10"
+    },
+
          {
          id: 22,
         name: "10mm Linear Bearing Block - SCS10UU",

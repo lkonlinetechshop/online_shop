@@ -13,7 +13,6 @@ const products = [
         stock: "",
         description: `
     <ul class="product-description-list">
-    10mm Linear Shaft Smooth Shaft Rod
         <li>Diameter : 10mm</li>
         <li>Length : 100 -1000mm optional</li>
         <li>Material : 45 high-quality carbon steel(S45C), chrome-plated, quenching hard shaft</li>

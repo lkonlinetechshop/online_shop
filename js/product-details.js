@@ -20,7 +20,7 @@ const products = [
         <li>Roughness : Ra0.4-0.8</li>
     </ul>
 `,
-        options2: [
+        options: [
             {
                 size: "500mm",
                 price: 1100

@@ -1,6 +1,23 @@
 
 const products = [
 
+          
+
+           {
+         id: 24,
+        name: "12V 1.25A Power Supply SMPS (Aluminum Cover)",
+        category: "CNC parts",
+        image: "images/12v-125a-power-supply-smps-aluminum-cover.jpg",
+        size: "",
+        oldPrice: 1045,
+        price: 950,
+        discount: "10%",
+        rating: "★★★★★",
+        stock: "",
+        description:
+            "12V 1.25A Power Supply SMPS (Aluminum Cover)"
+    },
+          
           {
          id: 23,
         name: "10mm Linear Shaft Rod Support - SK10",

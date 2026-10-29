@@ -2,6 +2,38 @@
 const products = [
 
         {
+        id: 21,
+        name: "10mm Linear Shaft Smooth Shaft Rod",
+        category: "CNC parts",
+        image: "images/10mm-linear-shaft-smooth-shaft-rod.jpg",
+        oldPrice: 1111,
+        price: 1100,
+        discount: "1%",
+        rating: "★★★★★",
+        stock: "",
+        description: `
+    <ul class="product-description-list">
+    10mm Linear Shaft Smooth Shaft Rod
+        <li>Diameter : 10mm</li>
+        <li>Length : 100 -1000mm optional</li>
+        <li>Material : 45 high-quality carbon steel(S45C), chrome-plated, quenching hard shaft</li>
+        <li>Precision : G6</li>
+        <li>Roughness : Ra0.4-0.8</li>
+    </ul>
+`
+        options: [
+            {
+                size: "500mm",
+                price: 1100
+            },
+            {
+                size: "1000mm",
+                price: 2150
+            },     
+        ]
+    },
+
+        {
          id: 20,
         name: "12v-1a-smps-power-supply-open-type",
         category: "Electronics",

@@ -20,7 +20,7 @@ const products = [
         <li>Roughness : Ra0.4-0.8</li>
     </ul>
 `,
-        options: [
+        options2: [
             {
                 size: "500mm",
                 price: 1100
@@ -1046,7 +1046,7 @@ if (product) {
                                 <div class="bit-size-section">
 
                                     <label>
-                                        Bit Size
+                                        Size
                                     </label>
 
 
@@ -1063,7 +1063,7 @@ if (product) {
 
                                                             <input
                                                                 type="radio"
-                                                                name="bitSize"
+                                                                name="Size"
                                                                 value="${option.size}"
                                                                 data-price="${option.price}"
                                                                 ${

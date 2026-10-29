@@ -3,7 +3,7 @@ const products = [
 
         {
         id: 21,
-        name: "10mm Linear Shaft Smooth Shaft Rod",
+        name: "10mm-linear-shaft-smooth-shaft-rod",
         category: "CNC parts",
         image: "images/10mm-linear-shaft-smooth-shaft-rod.jpg",
         oldPrice: 1111,

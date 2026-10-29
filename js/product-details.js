@@ -19,7 +19,7 @@ const products = [
         <li>Precision : G6</li>
         <li>Roughness : Ra0.4-0.8</li>
     </ul>
-`
+`,
         options: [
             {
                 size: "500mm",

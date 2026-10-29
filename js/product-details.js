@@ -1063,7 +1063,7 @@ if (product) {
 
                                                             <input
                                                                 type="radio"
-                                                                name="bitSize"
+                                                                name="Size"
                                                                 value="${option.size}"
                                                                 data-price="${option.price}"
                                                                 ${

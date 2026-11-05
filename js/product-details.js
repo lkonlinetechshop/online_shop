@@ -2,7 +2,7 @@
 const products = [
 
           {
-        id: 26,
+        id: 25,
         name: "cnc-engraving-machine-transformer",
         category: "CNC parts",
         image: "images/cnc-engraving-machine-transformer.jpg",

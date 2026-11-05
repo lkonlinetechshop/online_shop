@@ -3,7 +3,7 @@ const products = [
 
            {
          id: 26,
-        name: "HQD 2.2kW Water Cooled Spindle",
+        name: "HQD 2.2kW Water Cooled Spindle 220V 8A 400Hz 24000rpm",
         category: "CNC parts",
         image: "images/hqd-22kw-water-cooled-spindle-220v-8a-400hz-24000rpm-80x235mm-er20a-4-steel-bearing-model-gdz-23.jpg",
         size: "",

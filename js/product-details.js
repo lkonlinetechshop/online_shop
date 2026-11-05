@@ -14,22 +14,14 @@ const products = [
         stock: "",
         description: 
                    
-                      `Lift: 3.5M
-                      Power: 80W
-                      Flow rate: 3500L/H
-                      Working voltage: 220V-240V
-                      Size: 90mm*80mm*145m
-                      Pump Motor: 100% copper coil
+                      `Lift: 3.5M\n
+                      Power: 80W\n
+                      Flow rate: 3500L/H\n
+                      Working voltage: 220V-240V\n
+                      Size: 90mm*80mm*145m\n
+                      Pump Motor: 100% copper coil\n
 ​                      Apply for: Cooling 0.8KW, 1.5KW, 2.2KW water cooled spindle motor
-              <ul class="product-description-list">
-                  <li>One in and five out oil drain</li>
-                  <li>20m oil pump oil pipe (diameter 4mm)</li>
-                  <li>4m spring wire (Spring steel wire tube)</li>
-                  <li>One in and four out oil drain x 2</li>
-                  <li>Free 12-13 nozzles</li>
-                  
-                  
-              </ul>`
+`
     },
 
 

@@ -14,19 +14,17 @@ const products = [
         stock: "",
         description: 
                    
-                      `
-                      <li>One in and five out oil drain</li>
-                      <li>One in and five out oil drain</li>
-                      <li>One in and five out oil drain</li>
-                      <li>One in and five out oil drain</li>
-                      Lift: 3.5M
-                      Power: 80W
-                      Flow rate: 3500L/H
-                      Working voltage: 220V-240V
-                      Size: 90mm*80mm*145mm
-                      Pump Motor: 100% copper coil
-​                      Apply for: Cooling 0.8KW, 1.5KW, 2.2KW water cooled spindle motor
-`
+            ` Apply for: Cooling 0.8KW, 1.5KW, 2.2KW water cooled spindle motor
+                       <ul class="product-description-list">
+                             <li>Lift: 3.5M</li>
+                             <li>Power: 80W</li>
+                             <li>Flow rate: 3500L/H</li>
+                             <li>Working voltage: 220V-240V</li>
+                             <li>Size: 90mm*80mm*145mm</li>
+                             <li>Pump Motor: 100% copper coil</li>
+                  
+              </ul> `         
+   
     },
 
 

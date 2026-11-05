@@ -14,6 +14,16 @@ const products = [
         stock: "",
         description: 
                    "Kit includes:"
+                      `
+              <ul class="product-description-list">
+                  <li>One in and five out oil drain</li>
+                  <li>20m oil pump oil pipe (diameter 4mm)</li>
+                  <li>4m spring wire (Spring steel wire tube)</li>
+                  <li>One in and four out oil drain x 2</li>
+                  <li>Free 12-13 nozzles</li>
+                  
+                  
+              </ul>`
     },
 
            {

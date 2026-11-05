@@ -14,12 +14,17 @@ const products = [
         stock: "",
         description: 
                    
-                      `Lift: 3.5M\n
-                      Power: 80W\n
-                      Flow rate: 3500L/H\n
-                      Working voltage: 220V-240V\n
-                      Size: 90mm*80mm*145m\n
-                      Pump Motor: 100% copper coil\n
+                      `
+                      <li>One in and five out oil drain</li>
+                      <li>One in and five out oil drain</li>
+                      <li>One in and five out oil drain</li>
+                      <li>One in and five out oil drain</li>
+                      Lift: 3.5M
+                      Power: 80W
+                      Flow rate: 3500L/H
+                      Working voltage: 220V-240V
+                      Size: 90mm*80mm*145mm
+                      Pump Motor: 100% copper coil
 ​                      Apply for: Cooling 0.8KW, 1.5KW, 2.2KW water cooled spindle motor
 `
     },

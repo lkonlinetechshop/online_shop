@@ -2,6 +2,38 @@
 const products = [
 
            {
+         id: 28,
+        name: "80W Submersible Water Pump (3.5m Lift)",
+        category: "CNC parts",
+        image: "images/80w-submersible-water-pump-35m-lift.jpg",
+        size: "",
+        oldPrice: 6555,
+        price: 5700,
+        discount: "15%",
+        rating: "★★★★★",
+        stock: "",
+        description: 
+                   
+                      `Lift: 3.5M
+                      Power: 80W
+                      Flow rate: 3500L/H
+                      Working voltage: 220V-240V
+                      Size: 90mm*80mm*145m
+                      Pump Motor: 100% copper coil
+​                      Apply for: Cooling 0.8KW, 1.5KW, 2.2KW water cooled spindle motor
+              <ul class="product-description-list">
+                  <li>One in and five out oil drain</li>
+                  <li>20m oil pump oil pipe (diameter 4mm)</li>
+                  <li>4m spring wire (Spring steel wire tube)</li>
+                  <li>One in and four out oil drain x 2</li>
+                  <li>Free 12-13 nozzles</li>
+                  
+                  
+              </ul>`
+    },
+
+
+           {
          id: 27,
         name: "Manual 0.5L Oil Pump Lubrication System Kit for CNC - Type B",
         category: "CNC parts",

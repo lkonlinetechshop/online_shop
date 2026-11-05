@@ -13,8 +13,8 @@ const products = [
         rating: "★★★★★",
         stock: "",
         description: 
-                   "Kit includes:"
-                      `
+                   
+                      `Kit includes:
               <ul class="product-description-list">
                   <li>One in and five out oil drain</li>
                   <li>20m oil pump oil pipe (diameter 4mm)</li>

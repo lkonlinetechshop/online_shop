@@ -1,6 +1,36 @@
 
 const products = [
 
+           {
+         id: 26,
+        name: "HQD 2.2kW Water Cooled Spindle",
+        category: "CNC parts",
+        image: "images/hqd-22kw-water-cooled-spindle-220v-8a-400hz-24000rpm-80x235mm-er20a-4-steel-bearing-model-gdz-23.jpg",
+        size: "",
+        oldPrice: 82680,
+        price: 78000,
+        discount: "6%",
+        rating: "★★★★★",
+        stock: "",
+        description: `
+                    HQD 2.2kW Water Cooled Spindle 220V 8A 400Hz 24000rpm 80x235mm ER20A 4 Steel Bearing (Model: GDZ-23)
+                    Model: HQD GDZ-23
+                    Overall dimensions: Φ80x235mm
+                    Rotating speed: 24000RPM
+                    Rated power: 2.2KW
+                    Voltage: 220V
+                    Current: 8A
+                    Frequency: 400HZ
+                    Steel Bearing: 7005C*2, 6002C*2
+                    Chuck: ER20A
+                    Cooling method: Self Water Cooling
+                    Lubrication method: Grease
+                    Number of phases: 3
+
+                    Weight: 6kg
+             `,
+    },
+
           {
         id: 25,
         name: "cnc-engraving-machine-transformer",

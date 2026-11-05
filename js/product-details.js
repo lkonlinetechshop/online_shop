@@ -26,11 +26,11 @@ const products = [
                 price: 20500
             },
             {
-                size: "70V 1000W 6-Group Output",
+                size: "70V 1000W 4-Group Output",
                 price: 21500
             }, 
           {
-                size: "70V 1200W 6-Group Output",
+                size: "70V 1200W 4-Group Output",
                 price: 24000
             },  
           {

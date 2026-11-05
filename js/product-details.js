@@ -1498,7 +1498,7 @@ if (
     if (liveStock <= 0) {
 
         alert(
-            "Selected Bit Size is Out of Stock."
+            "Selected Size is Out of Stock."
         );
 
         return;
@@ -1512,7 +1512,7 @@ if (
         alert(
             "Only " +
             liveStock +
-            " item(s) available for this Bit Size."
+            " item(s) available for this Size."
         );
 
         return;

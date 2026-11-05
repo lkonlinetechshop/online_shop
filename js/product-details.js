@@ -12,7 +12,8 @@ const products = [
         discount: "6%",
         rating: "★★★★★",
         stock: "",
-        description: "HQD 2.2kW Water Cooled Spindle 220V 8A 400Hz 24000rpm 80x235mm ER20A 4 Steel Bearing (Model: GDZ-23)"
+        description: 
+                   "HQD 2.2kW Water Cooled Spindle 220V 8A 400Hz 24000rpm 80x235mm ER20A 4 Steel Bearing (Model: GDZ-23)"
     },
 
           {

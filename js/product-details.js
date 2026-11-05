@@ -14,7 +14,7 @@ const products = [
         description: `
               <ul class="product-description-list">
                   <li>70V 800W 4-Group Output</li>
-                  <li>70V 1000W 6-Group Output</li>
+                  <li>70V 1000W 4-Group Output</li>
                   <li>70V 1200W 4-Group Output</li>
                   <li>70V 1600W 6-Group Output</li>
                   

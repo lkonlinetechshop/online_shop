@@ -1,6 +1,44 @@
 
 const products = [
 
+          {
+        id: 25,
+        name: "cnc-engraving-machine-transformer",
+        category: "CNC parts",
+        image: "images/cnc-engraving-machine-transformer.jpg",
+        oldPrice: 21600,
+        price: 20000,
+        discount: "8%",
+        rating: "★★★★★",
+        stock: "",
+        description: `
+              <ul class="product-description-list">
+                  <li>70V 800W 4-Group Output</li>
+                  <li>70V 1000W 6-Group Output</li>
+                  <li>70V 1200W 4-Group Output</li>
+                  <li>70V 1600W 6-Group Output</li>
+                  
+                  
+              </ul>`,
+        options: [
+            {
+                size: "70V 800W 4-Group Output",
+                price: 20500
+            },
+            {
+                size: "70V 1000W 6-Group Output",
+                price: 21500
+            }, 
+          {
+                size: "70V 1200W 6-Group Output",
+                price: 24000
+            },  
+          {
+                size: "70V 1600W 6-Group Output",
+                price: 30000
+            },  
+        ]
+    },
           
 
            {

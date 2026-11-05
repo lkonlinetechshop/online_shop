@@ -2,6 +2,21 @@
 const products = [
 
            {
+         id: 27,
+        name: "Manual 0.5L Oil Pump Lubrication System Kit for CNC - Type B",
+        category: "CNC parts",
+        image: "images/manual-05l-oil-pump-lubrication-system-kit-for-cnc-type-b.jpg",
+        size: "",
+        oldPrice: 11872,
+        price: 10600,
+        discount: "12%",
+        rating: "★★★★★",
+        stock: "",
+        description: 
+                   "Kit includes:"
+    },
+
+           {
          id: 26,
         name: "HQD 2.2kW Water Cooled Spindle 220V 8A 400Hz 24000rpm",
         category: "CNC parts",

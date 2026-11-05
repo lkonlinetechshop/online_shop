@@ -949,7 +949,7 @@ function setupBitSizeStockSystem() {
                 function() {
 
                     console.log(
-                        "Bit Size Changed:",
+                        "Size Changed:",
                         this.value
                     );
 
@@ -977,7 +977,7 @@ document.addEventListener(
     function() {
 
         console.log(
-            "LankaCNC Price + Bit Size + Stock System started."
+            "LankaCNC Price + Size + Stock System started."
         );
 
 

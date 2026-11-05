@@ -28,7 +28,7 @@ const products = [
                     Number of phases: 3
 
                     Weight: 6kg
-             `,
+             `
     },
 
           {

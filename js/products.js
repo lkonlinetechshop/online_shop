@@ -41,9 +41,15 @@ async function displayProducts() {
              data-image="${image}"
              data-category="${category}">
 
-          <span class="discount">
-            ${safeHTML(product.discount)}
-          </span>
+          const discountValue = Number(product.discount);
+
+const discountPercent = discountValue <= 1
+    ? Math.round(discountValue * 100)
+    : Math.round(discountValue);
+
+const discountBadge = discountPercent > 0
+    ? `<span class="discount">-${discountPercent}% Off</span>`
+    : "";
 
           <a href="product-details.html?product=${encodeURIComponent(slug)}">
             <img src="${image}"

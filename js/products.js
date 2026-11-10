@@ -16,6 +16,11 @@ function safeHTML(value) {
   })[char]);
 }
 
+
+// =====================================
+// DISPLAY PRODUCTS
+// =====================================
+
 async function displayProducts() {
   try {
     const products = await getLankaCNCProducts();
@@ -27,29 +32,46 @@ async function displayProducts() {
     }
 
     productContainer.innerHTML = products.map(product => {
+
       const slug = createSlug(product.name);
 
       const image = safeHTML(product.image);
       const name = safeHTML(product.name);
       const category = safeHTML(product.category);
 
+      const price = Number(product.price) || 0;
+      const oldPrice = Number(product.oldPrice) || 0;
+      const stock = Number(product.stock) || 0;
+
+
+      // =====================================
+      // DISCOUNT CALCULATION
+      // =====================================
+
+      const discountValue = Number(product.discount) || 0;
+
+      const discountPercent = discountValue <= 1
+        ? Math.round(discountValue * 100)
+        : Math.round(discountValue);
+
+      const discountBadge = discountPercent > 0
+        ? `<span class="discount">-${discountPercent}% Off</span>`
+        : "";
+
+
+      // =====================================
+      // PRODUCT CARD
+      // =====================================
+
       return `
         <div class="card"
-             data-id="${product.id}"
+             data-id="${safeHTML(product.id)}"
              data-name="${name}"
-             data-price="${product.price}"
+             data-price="${price}"
              data-image="${image}"
              data-category="${category}">
 
-          const discountValue = Number(product.discount);
-
-const discountPercent = discountValue <= 1
-    ? Math.round(discountValue * 100)
-    : Math.round(discountValue);
-
-const discountBadge = discountPercent > 0
-    ? `<span class="discount">-${discountPercent}% Off</span>`
-    : "";
+          ${discountBadge}
 
           <a href="product-details.html?product=${encodeURIComponent(slug)}">
             <img src="${image}"
@@ -62,32 +84,35 @@ const discountBadge = discountPercent > 0
           <p class="category">${category}</p>
 
           <div class="price">
-            <strong>Rs. ${Number(product.price).toLocaleString()}</strong>
+            <strong>Rs. ${price.toLocaleString()}</strong>
+
             ${
-              product.oldPrice > product.price
-                ? `<del>Rs. ${Number(product.oldPrice).toLocaleString()}</del>`
+              oldPrice > price
+                ? `<del>Rs. ${oldPrice.toLocaleString()}</del>`
                 : ""
             }
           </div>
 
           <p class="stock">
-            ${product.stock > 0 ? "In Stock" : "Out of Stock"}
+            ${stock > 0 ? "In Stock" : "Out of Stock"}
           </p>
 
           <button class="add-cart"
-                  data-id="${product.id}"
+                  data-id="${safeHTML(product.id)}"
                   data-name="${name}"
-                  data-price="${product.price}"
+                  data-price="${price}"
                   data-image="${image}"
-                  ${product.stock <= 0 ? "disabled" : ""}>
+                  ${stock <= 0 ? "disabled" : ""}>
             Add To Cart
           </button>
 
         </div>
       `;
+
     }).join("");
 
   } catch (error) {
+
     console.error(error);
 
     productContainer.innerHTML =

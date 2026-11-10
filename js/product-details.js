@@ -1,594 +1,7 @@
 
-const products = [
-
-           {
-         id: 28,
-        name: "80W Submersible Water Pump (3.5m Lift)",
-        category: "CNC parts",
-        image: "images/80w-submersible-water-pump-35m-lift.jpg",
-        size: "",
-        oldPrice: 6555,
-        price: 5700,
-        discount: "15%",
-        rating: "★★★★★",
-        stock: "",
-        description: 
-                   
-            ` Apply for: Cooling 0.8KW, 1.5KW, 2.2KW water cooled spindle motor
-                       <ul class="product-description-list">
-                             <li>Lift: 3.5M</li>
-                             <li>Power: 80W</li>
-                             <li>Flow rate: 3500L/H</li>
-                             <li>Working voltage: 220V-240V</li>
-                             <li>Size: 90mm*80mm*145mm</li>
-                             <li>Pump Motor: 100% copper coil</li>
-                  
-              </ul> `         
-   
-    },
-
-
-           {
-         id: 27,
-        name: "Manual 0.5L Oil Pump Lubrication System Kit for CNC - Type B",
-        category: "CNC parts",
-        image: "images/manual-05l-oil-pump-lubrication-system-kit-for-cnc-type-b.jpg",
-        size: "",
-        oldPrice: 11872,
-        price: 10600,
-        discount: "12%",
-        rating: "★★★★★",
-        stock: "",
-        description: 
-                   
-                      `Kit includes:
-              <ul class="product-description-list">
-                  <li>One in and five out oil drain</li>
-                  <li>20m oil pump oil pipe (diameter 4mm)</li>
-                  <li>4m spring wire (Spring steel wire tube)</li>
-                  <li>One in and four out oil drain x 2</li>
-                  <li>Free 12-13 nozzles</li>
-                  
-                  
-              </ul>`
-    },
-
-           {
-         id: 26,
-        name: "HQD 2.2kW Water Cooled Spindle 220V 8A 400Hz 24000rpm",
-        category: "CNC parts",
-        image: "images/hqd-22kw-water-cooled-spindle-220v-8a-400hz-24000rpm-80x235mm-er20a-4-steel-bearing-model-gdz-23.jpg",
-        size: "",
-        oldPrice: 82680,
-        price: 78000,
-        discount: "6%",
-        rating: "★★★★★",
-        stock: "",
-        description: 
-                   "HQD 2.2kW Water Cooled Spindle 220V 8A 400Hz 24000rpm 80x235mm ER20A 4 Steel Bearing (Model: GDZ-23)"
-    },
-
-          {
-        id: 25,
-        name: "cnc-engraving-machine-transformer",
-        category: "CNC parts",
-        image: "images/cnc-engraving-machine-transformer.jpg",
-        oldPrice: 21600,
-        price: 20000,
-        discount: "8%",
-        rating: "★★★★★",
-        stock: "",
-        description: `
-              <ul class="product-description-list">
-                  <li>70V 800W 4-Group Output</li>
-                  <li>70V 1000W 4-Group Output</li>
-                  <li>70V 1200W 4-Group Output</li>
-                  <li>70V 1600W 6-Group Output</li>
-                  
-                  
-              </ul>`,
-        options: [
-            {
-                size: "70V 800W 4-Group Output",
-                price: 20500
-            },
-            {
-                size: "70V 1000W 4-Group Output",
-                price: 21500
-            }, 
-          {
-                size: "70V 1200W 4-Group Output",
-                price: 24000
-            },  
-          {
-                size: "70V 1600W 6-Group Output",
-                price: 30000
-            },  
-        ]
-    },
-          
-
-           {
-         id: 24,
-        name: "12V 1.25A Power Supply SMPS (Aluminum Cover)",
-        category: "CNC parts",
-        image: "images/12v-125a-power-supply-smps-aluminum-cover.jpg",
-        size: "",
-        oldPrice: 1045,
-        price: 950,
-        discount: "10%",
-        rating: "★★★★★",
-        stock: "",
-        description:
-            "12V 1.25A Power Supply SMPS (Aluminum Cover)"
-    },
-          
-          {
-         id: 23,
-        name: "10mm Linear Shaft Rod Support - SK10",
-        category: "CNC parts",
-        image: "images/10mm-linear-shaft-rod-support-sk10.jpg",
-        size: "",
-        oldPrice: 420,
-        price: 400,
-        discount: "5%",
-        rating: "★★★★★",
-        stock: "",
-        description:
-            "10mm Linear Shaft Rod Support - SK10"
-    },
-
-         {
-         id: 22,
-        name: "10mm Linear Bearing Block - SCS10UU",
-        category: "CNC parts",
-        image: "images/10mm-linear-bearing-block-scs10uu.jpg",
-        size: "",
-        oldPrice: 840,
-        price: 800,
-        discount: "5%",
-        rating: "★★★★★",
-        stock: "",
-        description:
-            "10mm Linear Bearing Block - SCS10UU"
-    },
-
-        {
-        id: 21,
-        name: "10mm-linear-shaft-smooth-shaft-rod",
-        category: "CNC parts",
-        image: "images/10mm-linear-shaft-smooth-shaft-rod.jpg",
-        oldPrice: 1111,
-        price: 1100,
-        discount: "1%",
-        rating: "★★★★★",
-        stock: "",
-        description: `
-    <ul class="product-description-list">
-        <li>Diameter : 10mm</li>
-        <li>Length : 100 -1000mm optional</li>
-        <li>Material : 45 high-quality carbon steel(S45C), chrome-plated, quenching hard shaft</li>
-        <li>Precision : G6</li>
-        <li>Roughness : Ra0.4-0.8</li>
-    </ul>
-`,
-        options: [
-            {
-                size: "500mm",
-                price: 1100
-            },
-            {
-                size: "1000mm",
-                price: 2150
-            },     
-        ]
-    },
-
-        {
-         id: 20,
-        name: "12v-1a-smps-power-supply-open-type",
-        category: "Electronics",
-        image: "images/12v1asmps.jpg",
-        size: "",
-        oldPrice: 490,
-        price: 450,
-        discount: "5%",
-        rating: "★★★★★",
-        stock: "",
-        description: `
-    <ul class="product-description-list">
-        <li>Output Frequency: 50/60HZ</li>
-        <li>Output Type: Single</li>
-        <li>Output Current: 0-1A</li>
-        <li>Output Power: 1 - 12W</li>
-        <li>Input Voltage: 100-240V AC</li>
-        <li>Output Voltage: 12V DC</li>
-        <li>Size: 34x68mm</li>
-    </ul>
-`
-    },
-
-    {
-         id: 19,
-        name: "hongda-ac-power-supply-filter-hdzac-20a-20a-230v-for-cnc",
-        category: "CNC parts",
-        image: "images/hongda-ac-power-supply-filter-hdzac-20a-20a-230v-for-cnc.jpg",
-        size: "",
-        oldPrice: 5145,
-        price: 4900,
-        discount: "5%",
-        rating: "★★★★★",
-        stock: "",
-        description:
-            "hongda-ac-power-supply-filter-hdzac-20a-20a-230v-for-cnc"
-    },
-
-    {
-        id: 18,
-        name: "TB6600 Stepper Motor Driver 4A 42VDC",
-        category: "CNC parts",
-        image: "images/tb6600-stepper-motor-driver-4a-42vdc.jpg",
-        size: "",
-        oldPrice: 2350,
-        price: 2050,
-        discount: "15%",
-        rating: "★★★★★",
-        stock: "",
-        description:
-            "TB6600 Stepper Motor Driver 4A 42VDC"
-    },
-
-    {
-        id: 17,
-        name: "CW ChuangWei CWD860H",
-        category: "CNC parts",
-        image: "images/cw-chuangwei-cwd860h-stepper-motor-driver-18-80vac-72a.jpg",
-        size: "",
-        oldPrice: 19440,
-        price: 18000,
-        discount: "8%",
-        rating: "★★★★★",
-        stock: "",
-        description:
-            "CW ChuangWei CWD860H Stepper Motor Driver 18-80VAC 7.2A"
-    },
-
-    {
-        id: 16,
-        name: "24V 10A Power Supply SMPS (Aluminum Cover)",
-        category: "CNC parts",
-        image: "images/24v-10a-power-supply-smps-aluminum-cover.jpg",
-        size: "",
-        oldPrice: 3656,
-        price: 3550,
-        discount: "3%",
-        rating: "★★★★★",
-        stock: "",
-        description:
-            "24V 10A Power Supply SMPS (Aluminum Cover)"
-    },
-
-    {
-        id: 15,
-        name: "24V 10A Power Supply SMPS (Aluminum Cover - with Fan)",
-        category: "CNC parts",
-        image: "images/24v-10a-power-supply-smps-aluminum-cover-with-fan.jpg",
-        size: "",
-        oldPrice: 3876,
-        price: 3800,
-        discount: "2%",
-        rating: "★★★★★",
-        stock: "",
-        description:
-            "24V 10A Power Supply SMPS with aluminum cover and cooling fan, suitable for CNC machines and electronic applications."
-    },
-
-    {
-        id: 14,
-        name: "2.2kW 220V Rituo VFD Inverter Variable Frequency Drive",
-        category: "CNC parts",
-        image: "images/2kw-220v-rituo-vfd-inverter-variable-frequency-drive.jpg",
-        manualPdf1: "manuals/2.2kw-220v-rituo-vfd-manual.pdf",
-        manualPdf2: "manuals/DB620 Manual.pdf",
-        size: "",
-        oldPrice: 46200,
-        price: 44000,
-        discount: "5%",
-        rating: "★★★★★",
-        stock: "",
-        description:
-            "2.2kW 220V Rituo VFD Inverter — A reliable variable frequency drive for controlling the speed and performance of 220V AC motors. Ideal for CNC machines, pumps, fans, and other industrial equipment, with adjustable motor speed and smooth operation."
-    },
-
-    {
-        id: 13,
-        name: "RichAuto A18 4 Axis DSP CNC Controller",
-        category: "CNC parts",
-        image: "images/richauto-a18-4-axis-dsp-cnc-controller.jpg",
-        manualPdf1: "manuals/DSP-A18-Operation-Manual.pdf",
-        manualPdf2: "manuals/DSP-A18-Manual.pdf",
-        size: "",
-        oldPrice: 220500,
-        price: 210000,
-        discount: "5%",
-        rating: "★★★★★",
-        stock: "",
-        description:
-            "RichAuto A18 4-Axis CNC Controller is a compact and reliable DSP controller designed for CNC routers and engraving machines. It supports 4-axis control (X, Y, Z, and A), providing precise and convenient offline operation for cutting, carving, and engraving applications."
-    },
-
-    {
-        id: 12,
-        name: "Ball Nose Double Flute Spiral Bit",
-        category: "CNC parts",
-        image: "images/ballnosedouble.jpg",
-        oldPrice: 880,
-        price: 800,
-        discount: "10%",
-        rating: "★★★★★",
-        stock: "",
-        description:
-            "Ball Nose Double Flute Spiral Bit",
-
-        options: [
-            {
-                size: "3.175x12mm",
-                price: 800
-            },
-            {
-                size: "3.175x22mm",
-                price: 950
-            },
-            {
-                size: "4x22mm",
-                price: 1350
-            },
-            {
-                size: "4x32mm",
-                price: 1650
-            },
-            {
-                size: "6x22mm",
-                price: 2100
-            },
-            {
-                size: "6x32mm",
-                price: 3200
-            },
-            {
-                size: "6x62mm",
-                price: 5000
-            },
-            {
-                size: "8x32mm",
-                price: 4600
-            },
-            {
-                size: "8x50mm",
-                price: 5750
-            }
-        ]
-    },
-
-    {
-        id: 11,
-        name: "Flat Nose Single Flute Spiral Bit",
-        category: "CNC parts",
-        image: "images/flatnosesingle.jpg",
-        oldPrice: 935,
-        price: 850,
-        discount: "10%",
-        rating: "★★★★★",
-        stock: "",
-        description:
-            "Flat Nose Single Flute Spiral Bit",
-
-        options: [
-            {
-                size: "3.175x12mm",
-                price: 850
-            },
-            {
-                size: "3.175x22mm",
-                price: 900
-            },
-            {
-                size: "4x22mm",
-                price: 1400
-            },
-            {
-                size: "4x32mm",
-                price: 1700
-            },
-            {
-                size: "6x32mm",
-                price: 2900
-            },
-            {
-                size: "6x62mm",
-                price: 4700
-            },
-            {
-                size: "8x32mm",
-                price: 4500
-            },
-            {
-                size: "8x42mm",
-                price: 5100
-            },
-            {
-                size: "8x50mm",
-                price: 5700
-            },
-            {
-                size: "12x100mm",
-                price: 24500
-            }
-        ]
-    },
-
-    {
-        id: 10,
-        name: "Windows 7 Activation Key",
-        category: "Pc",
-        image: "images/win7.jpg",
-        size: "",
-        oldPrice: 1200,
-        price: 984,
-        discount: "18%",
-        rating: "★★★★★",
-        stock: "",
-        description:
-            "Genuine Windows 7 Pro Key: A new, 100% genuine key for one PC. Permanent Activation: Provides a permanent, full activation for your current installation of Windows 7. IMPORTANT - PLEASE READ: This key is for the current installation only and cannot be reused after formatting. Unlocks All Pro Features: Get full access to advanced security, BitLocker, Remote Desktop, and more. Global Key: Can be used and activated anywhere in the world."
-    },
-
-    {
-        id: 9,
-        name: "Windows 11 Activation Key",
-        category: "Pc",
-        image: "images/win11.jpg",
-        size: "",
-        oldPrice: 1200,
-        price: 984,
-        discount: "18%",
-        rating: "★★★★★",
-        stock: "",
-        description:
-            "Genuine Windows 11 Pro Key: A new, 100% genuine key for one PC. Permanent Activation: Provides a permanent, full activation for your current installation of Windows 11. IMPORTANT - PLEASE READ: This key is for the current installation only and cannot be reused after formatting. Unlocks All Pro Features: Get full access to advanced security, BitLocker, Remote Desktop, and more. Global Key: Can be used and activated anywhere in the world."
-    },
-
-    {
-        id: 8,
-        name: "Windows 10 Activation Key",
-        category: "Pc",
-        image: "images/win10.jpg",
-        size: "",
-        oldPrice: 1200,
-        price: 984,
-        discount: "18%",
-        rating: "★★★★★",
-        stock: "",
-        description:
-            "Genuine Windows 10 Pro Key: A new, 100% genuine key for one PC. Permanent Activation: Provides a permanent, full activation for your current installation of Windows 10. IMPORTANT - PLEASE READ: This key is for the current installation only and cannot be reused after formatting. Unlocks All Pro Features: Get full access to advanced security, BitLocker, Remote Desktop, and more. Global Key: Can be used and activated anywhere in the world."
-    },
-
-    {
-        id: 7,
-        name: "Logitech G102 USB Wired Gaming Mouse",
-        category: "Pc",
-        image: "images/g102.jpg",
-        size: "",
-        oldPrice: 2480,
-        price: 1959,
-        discount: "21%",
-        rating: "★★★★★",
-        stock: "",
-        description:
-            "Make the most of your game time with G102 gaming mouse, featuring LIGHTSYNC technology, a gaming-grade sensor and a classic 6-button design. Light up your game and your desk."
-    },
-
-    {
-        id: 1,
-        name: "RichAuto A11E 3 Axis CNC Controller",
-        category: "CNC parts",
-        image: "images/RichAuto_A11E.jpg",
-        manualPdf1: "manuals/DSP-A11-Manual.pdf",
-        size: "",
-        oldPrice: 126500,
-        price: 115000,
-        discount: "10%",
-        rating: "★★★★★",
-        stock: "",
-        description:
-            "For RichAuto A11 CNC Controller A11S A11E A11C 3 Axis Motion Controller Remote for CNC Engraving Cutting English Suitable for 3 axis."
-    },
-
-    {
-        id: 3,
-        name: "4 Axis CNC Breakout Board For Mach3",
-        category: "CNC parts",
-        image: "images/mach3.jpg",
-        size: "",
-        oldPrice: 5985,
-        price: 5700,
-        discount: "5%",
-        rating: "★★★★☆",
-        stock: "",
-        description:
-            "Support for 4-axis linkage, you can connect four stepper motor drives or servo drives. Maximum step-pulse frequency is 100KHz, which is suitable for the servo or stepping motor. Support automatic probe tool, emergency input, limit switch and electronic hand wheel."
-    },
-
-    {
-        id: 2,
-        name: "Cloned RichAuto A11 3 Axis 0501 DSP CNC Controller",
-        category: "CNC parts",
-        image: "images/cloned_richauto_a11.jpg",
-        manualPdf1: "manuals/DSP-0501-Manual.pdf",
-        size: "",
-        oldPrice: 67200,
-        price: 60000,
-        discount: "12%",
-        rating: "★★★★★",
-        stock: "",
-        description:
-            "A11E is the English-language version and uses the same operational workflow as the legacy 0501."
-    },
-
-    {
-        id: 4,
-        name: "Arduino UNO Original Development Board with USB Cable",
-        category: "Electronics",
-        image: "images/unooriginal.jpg",
-        size: "",
-        oldPrice: 2448,
-        price: 2400,
-        discount: "2%",
-        rating: "★★★★★",
-        stock: "",
-        description:
-            "The Arduino UNO is the most widely used and documented development board in the Arduino ecosystem. Based on the ATmega328P microcontroller, it offers 14 digital I/O pins, 6 analog inputs, and USB connectivity for programming and serial communication. Ideal for beginners and professionals alike."
-    },
-
-    {
-        id: 5,
-        name: "Arduino UNO Normal Development Board with USB Cable",
-        category: "Electronics",
-        image: "images/unonormal.jpg",
-        size: "",
-        oldPrice: 1275,
-        price: 1250,
-        discount: "2%",
-        rating: "★★★★★",
-        stock: "",
-        description:
-            "Arduino UNO R3 SMD is the open source Embedded Development board launched by Arduino based on Atmega328 SMD Package Microcontroller."
-    },
-
-    {
-        id: 6,
-        name: "Smart String Hopper Making machine",
-        category: "Machineries",
-        image: "images/smartstringhopper.jpg",
-        size: "",
-        oldPrice: 82950,
-        price: 79000,
-        discount: "5%",
-        rating: "★★★★★",
-        stock: "",
-        description:
-            "A durable and easy-to-operate machine designed for efficient and consistent production applications. Featuring a stainless-steel working area, adjustable controls, and compact construction, it is ideal for food processing applications and small-scale manufacturing."
-    }
-
-];
-
-
-// ==========================================
-// CREATE URL SLUG
-// ==========================================
-
 function createSlug(name) {
 
-    return name
+    return String(name)
         .toLowerCase()
         .trim()
         .replace(/[^a-z0-9\s-]/g, "")
@@ -597,71 +10,275 @@ function createSlug(name) {
 
 }
 
+function escapeHTML(value) {
 
-// ==========================================
-// GET PRODUCT FROM URL
-// ==========================================
+    return String(value ?? "").replace(/[&<>"']/g, char => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+    })[char]);
 
-const urlParams =
-    new URLSearchParams(window.location.search);
+}
 
-const productSlug =
-    urlParams.get("product");
+function money(value) {
+    return Number(value || 0).toLocaleString("en-LK");
+}
 
+let currentProduct = null;
 
-// ==========================================
-// FIND PRODUCT
-// ==========================================
+async function loadProductDetails() {
 
-const product =
-    products.find(function (p) {
+    const container =
+        document.getElementById("product-details");
 
-        return createSlug(p.name) === productSlug;
+    const slug =
+        new URLSearchParams(window.location.search)
+            .get("product");
 
-    });
+    try {
 
-console.log("Product slug:", productSlug);
-console.log("Product:", product);
+        const products = await getLankaCNCProducts();
 
+        const product = products.find(p =>
+            createSlug(p.name) === slug
+        );
 
-// ==========================================
-// PRODUCT CONTAINER
-// ==========================================
+        if (!product) {
 
-const container =
-    document.getElementById("product-details");
+            container.innerHTML = "<h2>Product Not Found</h2>";
+            return;
 
+        }
 
-// ==========================================
-// MAKE CURRENT PRODUCT AVAILABLE
-// TO product-details-stock.js
-// ==========================================
+        currentProduct = product;
+        window.currentProduct = product;
 
-window.currentProduct = product;
+        const options = Array.isArray(product.options)
+            ? product.options
+            : [];
 
+        const initialPrice = options.length
+            ? Number(options[0].price)
+            : Number(product.price);
 
-// ==========================================
-// UPDATE PRODUCT SCHEMA
-// ==========================================
+        // SEO title
+        document.title = product.name + " | LankaCNC.LK";
 
-window.updateProductSchema = function () {
+        const canonicalURL =
+            window.location.origin +
+            window.location.pathname +
+            "?product=" + encodeURIComponent(createSlug(product.name));
 
-    if (!product) {
-        return;
+        document.querySelector("#canonical-url").href =
+            canonicalURL;
+
+        document.querySelector('meta[name="description"]').content =
+            product.name + " - Buy from LankaCNC.LK. " +
+            product.description;
+
+        document.querySelector('meta[property="og:title"]').content =
+            product.name + " | LankaCNC.LK";
+
+        document.querySelector('meta[property="og:description"]').content =
+            product.description;
+
+        document.querySelector('meta[property="og:image"]').content =
+            new URL(product.image, window.location.href).href;
+
+        document.querySelector('meta[property="og:url"]').content =
+            canonicalURL;
+
+        container.dataset.productId = product.id;
+
+        // Product HTML
+        container.innerHTML = `
+
+            <div class="product-details"
+                 data-product-id="${product.id}">
+
+                <div>
+                    <img
+                        src="${escapeHTML(product.image)}"
+                        alt="${escapeHTML(product.name)}"
+                    >
+                </div>
+
+                <div class="product-info">
+
+                    <span class="discount">
+                        ${product.discount
+                            ? "-" + escapeHTML(product.discount)
+                            : ""}
+                    </span>
+
+                    <h1>${escapeHTML(product.name)}</h1>
+
+                    <p class="category">
+                        ${escapeHTML(product.category)}
+                    </p>
+
+                    <div class="rating">
+                        ${escapeHTML(product.rating)}
+                    </div>
+
+                    <p class="price">
+
+                        ${product.oldPrice ? `
+                            <del>Rs.${money(product.oldPrice)}</del>
+                        ` : ""}
+
+                        <strong id="currentPrice">
+                            Rs.${money(initialPrice)}
+                        </strong>
+
+                    </p>
+
+                    <span class="stock" id="productStock">
+                        ${options.length
+                            ? (Number(options[0].stock) > 0
+                                ? "In Stock"
+                                : "Out of Stock")
+                            : (Number(product.stock) > 0
+                                ? "In Stock"
+                                : "Out of Stock")}
+                    </span>
+
+                    <div class="product-description">
+                        ${escapeHTML(product.description).replace(/\n/g, "<br>")}
+                    </div>
+
+                    ${product.manualPdf1 ? `
+                        <div class="product-manual">
+                            <a href="${escapeHTML(product.manualPdf1)}"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="manual-btn">
+                                <i class="fa-solid fa-file-pdf"></i>
+                                View / Download Manual
+                            </a>
+                        </div>
+                    ` : ""}
+
+                    ${product.manualPdf2 ? `
+                        <div class="product-manual">
+                            <a href="${escapeHTML(product.manualPdf2)}"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="manual-btn">
+                                <i class="fa-solid fa-file-pdf"></i>
+                                View / Download Manual 2
+                            </a>
+                        </div>
+                    ` : ""}
+
+                    <div class="product-options">
+
+                        ${options.length ? `
+                            <div class="bit-size-section">
+
+                                <label>Size</label>
+
+                                <div id="bitSizes">
+
+                                    ${options.map((option, index) => `
+
+                                        <label class="size-option">
+
+                                            <input
+                                                type="radio"
+                                                name="bitSize"
+                                                value="${escapeHTML(option.size)}"
+                                                data-price="${Number(option.price)}"
+                                                data-stock="${Number(option.stock)}"
+                                                ${index === 0 ? "checked" : ""}
+                                            >
+
+                                            <span>
+                                                ${escapeHTML(option.size)}
+                                            </span>
+
+                                        </label>
+
+                                    `).join("")}
+
+                                </div>
+
+                            </div>
+                        ` : ""}
+
+                        <div class="quantity-section">
+
+                            <label>Quantity</label>
+
+                            <div class="quantity-box">
+
+                                <button type="button" id="minusBtn">-</button>
+
+                                <input
+                                    type="text"
+                                    id="quantity"
+                                    value="1"
+                                    readonly
+                                >
+
+                                <button type="button" id="plusBtn">+</button>
+
+                            </div>
+
+                        </div>
+
+                        <div class="selected-price">
+                            Rs.
+                            <span id="selectedPrice">
+                                ${money(initialPrice)}
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="add-cart buy-btn"
+                        id="addCartBtn">
+
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        Add To Cart
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        `;
+
+        updateProductSchema(product);
+
+        setupProductEvents(product);
+
+    } catch (error) {
+
+        console.error(error);
+
+        container.innerHTML =
+            "<h2>Unable to load product. Please try again.</h2>";
+
     }
 
-    const schemaScript =
-        document.getElementById("product-schema");
+}
 
-    if (!schemaScript) {
-        return;
-    }
 
-    const schemaPrice =
-        product.options &&
-        product.options.length > 0
-            ? product.options[0].price
-            : Number(product.price) || 0;
+// ==========================================
+// PRODUCT SCHEMA
+// ==========================================
+
+function updateProductSchema(product) {
+
+    const price = product.options?.length
+        ? product.options[0].price
+        : product.price;
 
     const schema = {
 
@@ -672,17 +289,12 @@ window.updateProductSchema = function () {
         "name": product.name,
 
         "image": [
-            new URL(
-                product.image,
-                window.location.href
-            ).href
+            new URL(product.image, window.location.href).href
         ],
 
-        "description":
-            product.description,
+        "description": product.description,
 
-        "category":
-            product.category,
+        "category": product.category,
 
         "brand": {
             "@type": "Brand",
@@ -693,759 +305,73 @@ window.updateProductSchema = function () {
 
             "@type": "Offer",
 
-            "url":
-                window.location.href,
+            "url": window.location.href,
 
-            "priceCurrency":
-                "LKR",
+            "priceCurrency": "LKR",
 
-            "price":
-                String(schemaPrice),
+            "price": String(price),
 
-            "availability":
-                Number(product.stock) > 0
-                    ? "https://schema.org/InStock"
-                    : "https://schema.org/OutOfStock",
+            "availability": Number(product.stock) > 0
+                ? "https://schema.org/InStock"
+                : "https://schema.org/OutOfStock"
 
-            "seller": {
-
-                "@type":
-                    "Organization",
-
-                "name":
-                    "LankaCNC"
-            }
         }
+
     };
 
-    schemaScript.textContent =
+    document.getElementById("product-schema").textContent =
         JSON.stringify(schema);
-};
-
-
-// ==========================================
-// DISPLAY PRODUCT
-// ==========================================
-
-if (product) {
-
-    // ==========================================
-    // SEO - PRODUCT TITLE
-    // ==========================================
-
-    document.title =
-        product.name +
-        " | LankaCNC.LK";
-
-
-    // ==========================================
-    // SEO - CANONICAL URL
-    // ==========================================
-
-    const canonicalUrl =
-        window.location.origin +
-        window.location.pathname +
-        "?product=" +
-        encodeURIComponent(
-            createSlug(product.name)
-        );
-
-
-    let canonical =
-        document.querySelector(
-            'link[rel="canonical"]'
-        );
-
-
-    if (!canonical) {
-
-        canonical =
-            document.createElement("link");
-
-        canonical.rel =
-            "canonical";
-
-        document.head.appendChild(
-            canonical
-        );
-    }
-
-
-    canonical.href =
-        canonicalUrl;
-
-
-    // ==========================================
-    // SEO - META DESCRIPTION
-    // ==========================================
-
-    let metaDescription =
-        document.querySelector(
-            'meta[name="description"]'
-        );
-
-
-    if (!metaDescription) {
-
-        metaDescription =
-            document.createElement("meta");
-
-        metaDescription.name =
-            "description";
-
-        document.head.appendChild(
-            metaDescription
-        );
-    }
-
-
-    metaDescription.content =
-        product.name +
-        " - Buy from LankaCNC.LK. " +
-        product.description;
-
-
-    // ==========================================
-    // OPEN GRAPH TITLE
-    // ==========================================
-
-    let ogTitle =
-        document.querySelector(
-            'meta[property="og:title"]'
-        );
-
-
-    if (!ogTitle) {
-
-        ogTitle =
-            document.createElement("meta");
-
-        ogTitle.setAttribute(
-            "property",
-            "og:title"
-        );
-
-        document.head.appendChild(
-            ogTitle
-        );
-    }
-
-
-    ogTitle.content =
-        product.name +
-        " | LankaCNC.LK";
-
-
-    // ==========================================
-    // OPEN GRAPH DESCRIPTION
-    // ==========================================
-
-    let ogDescription =
-        document.querySelector(
-            'meta[property="og:description"]'
-        );
-
-
-    if (!ogDescription) {
-
-        ogDescription =
-            document.createElement("meta");
-
-        ogDescription.setAttribute(
-            "property",
-            "og:description"
-        );
-
-        document.head.appendChild(
-            ogDescription
-        );
-    }
-
-
-    ogDescription.content =
-        product.description;
-
-
-    // ==========================================
-    // OPEN GRAPH IMAGE
-    // ==========================================
-
-    let ogImage =
-        document.querySelector(
-            'meta[property="og:image"]'
-        );
-
-
-    if (!ogImage) {
-
-        ogImage =
-            document.createElement("meta");
-
-        ogImage.setAttribute(
-            "property",
-            "og:image"
-        );
-
-        document.head.appendChild(
-            ogImage
-        );
-    }
-
-
-    ogImage.content =
-        new URL(
-            product.image,
-            window.location.href
-        ).href;
-
-
-    // ==========================================
-    // OPEN GRAPH URL
-    // ==========================================
-
-    let ogUrl =
-        document.querySelector(
-            'meta[property="og:url"]'
-        );
-
-
-    if (!ogUrl) {
-
-        ogUrl =
-            document.createElement("meta");
-
-        ogUrl.setAttribute(
-            "property",
-            "og:url"
-        );
-
-        document.head.appendChild(
-            ogUrl
-        );
-    }
-
-
-    ogUrl.content =
-        canonicalUrl;
-
-
-    // ==========================================
-    // PRODUCT SCHEMA ELEMENT
-    // ==========================================
-
-    let schemaScript =
-        document.getElementById(
-            "product-schema"
-        );
-
-
-    if (!schemaScript) {
-
-        schemaScript =
-            document.createElement("script");
-
-        schemaScript.type =
-            "application/ld+json";
-
-        schemaScript.id =
-            "product-schema";
-
-        document.head.appendChild(
-            schemaScript
-        );
-    }
-
-
-    // Initial schema
-    window.updateProductSchema();
-
-
-    // ==========================================
-    // INITIAL PRICE
-    // ==========================================
-
-    let initialPrice =
-        Number(product.price) || 0;
-
-
-    if (
-        product.options &&
-        product.options.length > 0
-    ) {
-
-        initialPrice =
-            Number(
-                product.options[0].price
-            ) || 0;
-    }
-
-
-    // ==========================================
-    // PRODUCT DATA ATTRIBUTE
-    // ==========================================
-
-    container.setAttribute(
-        "data-product-id",
-        product.id
-    );
-
-
-    // ==========================================
-    // PRODUCT HTML
-    // ==========================================
-
-    container.innerHTML = `
-
-        <div
-            class="product-details"
-            data-product-id="${product.id}"
-        >
-
-            <!-- PRODUCT IMAGE -->
-
-            <div>
-
-                <img
-                    src="${product.image}"
-                    alt="${product.name}"
-                >
-
-            </div>
-
-
-            <!-- PRODUCT INFORMATION -->
-
-            <div class="product-info">
-
-
-                <!-- DISCOUNT -->
-
-                <span class="discount">
-
-                    -${product.discount}
-
-                </span>
-
-
-                <!-- PRODUCT NAME -->
-
-                <h1>
-
-                    ${product.name}
-
-                </h1>
-
-
-                <!-- CATEGORY -->
-
-                <p class="category">
-
-                    ${product.category}
-
-                </p>
-
-
-                <!-- RATING -->
-
-                <div class="rating">
-
-                    ${product.rating}
-
-                </div>
-
-
-                <!-- PRICE -->
-
-                <p class="price">
-
-                    <del>
-
-                        Rs.${Number(
-                            product.oldPrice
-                        ).toLocaleString()}
-
-                    </del>
-
-
-                    <strong id="currentPrice">
-
-                        Rs.${initialPrice.toLocaleString()}
-
-                    </strong>
-
-                </p>
-
-
-                <!-- STOCK -->
-
-                <span class="stock">
-
-                    ${product.stock}
-
-                </span>
-
-
-                <!-- DESCRIPTION -->
-
-                <div class="product-description">
-                    ${product.description}
-                </div>
-
-
-                <!-- MANUAL 1 -->
-
-                ${
-                    product.manualPdf1
-                        ? `
-                            <div class="product-manual">
-
-                                <a
-                                    href="${product.manualPdf1}"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="manual-btn"
-                                >
-
-                                    <i class="fa-solid fa-file-pdf"></i>
-
-                                    View / Download Manual
-
-                                </a>
-
-                            </div>
-                        `
-                        : ""
-                }
-
-
-                <!-- MANUAL 2 -->
-
-                ${
-                    product.manualPdf2
-                        ? `
-                            <div class="product-manual">
-
-                                <a
-                                    href="${product.manualPdf2}"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="manual-btn"
-                                >
-
-                                    <i class="fa-solid fa-file-pdf"></i>
-
-                                    View / Download Manual
-
-                                </a>
-
-                            </div>
-                        `
-                        : ""
-                }
-
-
-                <!-- PRODUCT OPTIONS -->
-
-                <div class="product-options">
-
-
-                    <!-- QUANTITY -->
-
-                    <div class="quantity-section">
-
-                        <label>
-                            Quantity
-                        </label>
-
-
-                        <div class="quantity-box">
-
-                            <button
-                                type="button"
-                                id="minusBtn"
-                            >
-                                -
-                            </button>
-
-
-                            <input
-                                type="text"
-                                id="quantity"
-                                value="1"
-                                readonly
-                            >
-
-
-                            <button
-                                type="button"
-                                id="plusBtn"
-                            >
-                                +
-                            </button>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- BIT SIZE -->
-
-                    ${
-                        product.options &&
-                        product.options.length > 0
-                            ? `
-
-                                <div class="bit-size-section">
-
-                                    <label>
-                                        Size
-                                    </label>
-
-
-                                    <div id="bitSizes">
-
-                                        ${
-                                            product.options
-                                                .map(
-                                                    (option, index) => `
-
-                                                        <label
-                                                            class="size-option"
-                                                        >
-
-                                                            <input
-                                                                type="radio"
-                                                                name="bitSize"
-                                                                value="${option.size}"
-                                                                data-price="${option.price}"
-                                                                ${
-                                                                    index === 0
-                                                                        ? "checked"
-                                                                        : ""
-                                                                }
-                                                            >
-
-
-                                                            <span>
-
-                                                                ${option.size}
-
-                                                            </span>
-
-                                                        </label>
-
-                                                    `
-                                                )
-                                                .join("")
-                                        }
-
-                                    </div>
-
-                                </div>
-
-                            `
-                            : ""
-                    }
-
-
-                    <!-- SELECTED PRICE -->
-
-                    <div class="selected-price">
-
-                        Rs.
-
-                        <span id="selectedPrice">
-
-                            ${initialPrice.toLocaleString()}
-
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <!-- ADD TO CART -->
-
-                <button
-                    type="button"
-                    class="add-cart buy-btn"
-                    id="addCartBtn"
-                >
-
-                    <i class="fa-solid fa-cart-shopping"></i>
-
-                    Add To Cart
-
-                </button>
-
-
-            </div>
-
-        </div>
-
-    `;
-}
-
-
-// ==========================================
-// PRODUCT NOT FOUND
-// ==========================================
-
-else {
-
-    container.innerHTML =
-        "<h2>Product Not Found</h2>";
 
 }
 
 
 // ==========================================
-// SIZE INPUTS
+// PRODUCT EVENTS
 // ==========================================
 
-const sizeInputs =
-    document.querySelectorAll(
-        'input[name="bitSize"]'
-    );
+function setupProductEvents(product) {
 
+    const quantityInput =
+        document.getElementById("quantity");
 
-const selectedPriceElement =
-    document.getElementById(
-        "selectedPrice"
-    );
+    document.getElementById("plusBtn").onclick = function() {
 
+        quantityInput.value =
+            Number(quantityInput.value) + 1;
 
-const currentPriceElement =
-    document.getElementById(
-        "currentPrice"
-    );
+    };
 
+    document.getElementById("minusBtn").onclick = function() {
 
-// ==========================================
-// SIZE PRICE CHANGE
-// ==========================================
-
-sizeInputs.forEach(function(input) {
-
-    input.addEventListener(
-        "change",
-        function() {
-
-            if (
-                typeof updateProductDetails ===
-                "function"
-            ) {
-
-                updateProductDetails(
-                    window.lankaCncStockData || []
-                );
-
-            }
-
-        }
-    );
-
-});
-
-// ==========================================
-// QUANTITY
-// ==========================================
-
-const quantityInput =
-    document.getElementById(
-        "quantity"
-    );
-
-
-const plusBtn =
-    document.getElementById(
-        "plusBtn"
-    );
-
-
-const minusBtn =
-    document.getElementById(
-        "minusBtn"
-    );
-
-
-// ==========================================
-// PLUS
-// ==========================================
-
-if (plusBtn) {
-
-    plusBtn.addEventListener(
-        "click",
-        function() {
-
-            let quantity =
-                parseInt(
-                    quantityInput.value
-                ) || 1;
-
-
-            quantity++;
-
-
+        if (Number(quantityInput.value) > 1) {
             quantityInput.value =
-                quantity;
-
+                Number(quantityInput.value) - 1;
         }
-    );
 
-}
+    };
 
+    document.querySelectorAll('input[name="bitSize"]')
+        .forEach(input => {
 
-// ==========================================
-// MINUS
-// ==========================================
+            input.addEventListener("change", function() {
 
-if (minusBtn) {
+                document.getElementById("selectedPrice")
+                    .textContent = money(this.dataset.price);
 
-    minusBtn.addEventListener(
-        "click",
-        function() {
+                document.getElementById("currentPrice")
+                    .textContent = "Rs." + money(this.dataset.price);
 
-            let quantity =
-                parseInt(
-                    quantityInput.value
-                ) || 1;
+                document.getElementById("productStock")
+                    .textContent = Number(this.dataset.stock) > 0
+                        ? "In Stock"
+                        : "Out of Stock";
 
+            });
 
-            if (quantity > 1) {
+        });
 
-                quantity--;
-
-            }
-
-
-            quantityInput.value =
-                quantity;
-
-        }
-    );
-
-}
-
-
-// ==========================================
-// ADD TO CART BUTTON
-// ==========================================
-
-const addCartBtn =
-    document.getElementById(
-        "addCartBtn"
-    );
-
-
-if (addCartBtn) {
-
-    addCartBtn.addEventListener(
-        "click",
-        addToCart
-    );
+    document.getElementById("addCartBtn").onclick =
+        () => addToCart(product);
 
 }
 
@@ -1454,303 +380,101 @@ if (addCartBtn) {
 // ADD TO CART
 // ==========================================
 
-function addToCart() {
+function addToCart(product) {
 
-    if (!product) {
+    const quantity = Number(
+        document.getElementById("quantity").value
+    ) || 1;
 
-        alert(
-            "Product not found!"
-        );
+    const selectedOption =
+        document.querySelector('input[name="bitSize"]:checked');
 
-        return;
-    }
+    const selectedSize = selectedOption
+        ? selectedOption.value
+        : "";
 
+    const selectedPrice = selectedOption
+        ? Number(selectedOption.dataset.price)
+        : Number(product.price);
 
-    // ==========================================
-    // CHECK STOCK
-    // ==========================================
+    const availableStock = selectedOption
+        ? Number(selectedOption.dataset.stock)
+        : Number(product.stock);
 
-    if (
-        Number(product.stock) <= 0
-    ) {
+    if (availableStock <= 0) {
 
-        alert(
-            "This product is Out of Stock."
-        );
-
-        return;
-    }
-
-
-    // ==========================================
-    // GET QUANTITY
-    // ==========================================
-
-    const quantityInput =
-        document.getElementById(
-            "quantity"
-        );
-
-
-    const quantity =
-        parseInt(
-            quantityInput.value
-        ) || 1;
-
-
-    // ==========================================
-    // GET SELECTED SIZE
-    // ==========================================
-
-    const selectedSizeInput =
-        document.querySelector(
-            'input[name="bitSize"]:checked'
-        );
-
-
-    let selectedSize = "";
-
-
-    let selectedProductPrice =
-        Number(product.price) || 0;
-
-
-    // ==========================================
-    // PRODUCT WITH OPTIONS
-    // ==========================================
-
-if (
-    product.options &&
-    product.options.length > 0 &&
-    selectedSizeInput
-) {
-
-    selectedSize =
-        selectedSizeInput.value;
-
-
-    // Get LIVE Google Sheet variant
-    const liveVariant =
-        findLiveProduct(
-            window.lankaCncStockData || [],
-            product.id,
-            selectedSize
-        );
-
-
-    if (!liveVariant) {
-
-        alert(
-            "Selected Bit Size stock information is unavailable."
-        );
-
+        alert("This product is Out of Stock.");
         return;
 
     }
 
+    if (quantity > availableStock) {
 
-    const liveStock =
-        Number(
-            liveVariant.stock
-        ) || 0;
-
-
-    const livePrice =
-        Number(
-            liveVariant.price
-        ) || 0;
-
-
-    // Check selected size stock
-    if (liveStock <= 0) {
-
-        alert(
-            "Selected Size is Out of Stock."
-        );
-
+        alert("Only " + availableStock + " items available.");
         return;
 
     }
 
+    let cart = JSON.parse(
+        localStorage.getItem("cart")
+    ) || [];
 
-    // Check quantity
-    if (quantity > liveStock) {
+    const existingProduct = cart.find(item =>
+        Number(item.id) === Number(product.id) &&
+        item.size === selectedSize
+    );
 
-        alert(
-            "Only " +
-            liveStock +
-            " item(s) available for this Size."
-        );
+    const existingQuantity =
+        existingProduct ? Number(existingProduct.quantity) : 0;
 
+    if (existingQuantity + quantity > availableStock) {
+
+        alert("Available stock is " + availableStock + ".");
         return;
 
     }
-
-
-    // IMPORTANT
-    // Use Google Sheet price
-
-    selectedProductPrice =
-        livePrice;
-
-}
-
-
-    // ==========================================
-    // GET CART
-    // ==========================================
-
-    let cart =
-        JSON.parse(
-            localStorage.getItem("cart")
-        ) || [];
-
-
-    // ==========================================
-    // FIND SAME PRODUCT + SIZE
-    // ==========================================
-
-    const existingProduct =
-        cart.find(function(item) {
-
-            return (
-
-                item.id === product.id &&
-
-                item.size === selectedSize
-
-            );
-
-        });
-
-
-    // ==========================================
-    // UPDATE EXISTING PRODUCT
-    // ==========================================
 
     if (existingProduct) {
 
-        existingProduct.quantity +=
-            quantity;
+        existingProduct.quantity += quantity;
 
-    }
-
-
-    // ==========================================
-    // ADD NEW PRODUCT
-    // ==========================================
-
-    else {
+    } else {
 
         cart.push({
 
-            id:
-                product.id,
+            id: Number(product.id),
 
-            name:
-                product.name,
+            name: product.name,
 
-            price:
-                selectedProductPrice,
+            price: selectedPrice,
 
-            image:
-                product.image,
+            image: product.image,
 
-            size:
-                selectedSize,
+            size: selectedSize,
 
-            quantity:
-                quantity
+            quantity: quantity
 
         });
 
     }
-
-
-    // ==========================================
-    // SAVE CART
-    // ==========================================
 
     localStorage.setItem(
         "cart",
         JSON.stringify(cart)
     );
 
+    alert(product.name + " added to cart!");
 
-    // ==========================================
-    // MESSAGE
-    // ==========================================
-
-    alert(
-
-        product.name +
-
-        (
-            selectedSize
-                ? " - " + selectedSize
-                : ""
-        ) +
-
-        " x " +
-
-        quantity +
-
-        " added to cart!"
-
-    );
-
-
-    // ==========================================
-    // GO TO HOME
-    // ==========================================
-
-    window.location.href =
-        "index.html";
+    window.location.href = "cart.html";
 
 }
 
 
 // ==========================================
-// UPDATE CART COUNT
+// START
 // ==========================================
 
-function updateCartCount() {
-
-    let count = 0;
-
-
-    const cart =
-        JSON.parse(
-            localStorage.getItem("cart")
-        ) || [];
-
-
-    cart.forEach(item => {
-
-        count +=
-            Number(item.quantity) || 0;
-
-    });
-
-
-    const cartCount =
-        document.querySelector(
-            ".cart-count"
-        );
-
-
-    if (cartCount) {
-
-        cartCount.textContent =
-            count;
-
-    }
-
-}
-
-
-// ==========================================
-// INITIAL CART COUNT
-// ==========================================
-
-updateCartCount();
+document.addEventListener(
+    "DOMContentLoaded",
+    loadProductDetails
+);
